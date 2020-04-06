@@ -1,3 +1,3 @@
-# Authentication #
+# Autenticação #
 
 Eduzz OAUTH

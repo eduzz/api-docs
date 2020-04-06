@@ -1,35 +1,33 @@
-# Blinket: My-Tickets #
+# Blinket: Meus Tickets #
 
-The Blinket My-Tickets API allows you to view tickets data of events you have participated.
+A API Blinket Meus Tickets permite visualizar dados de tickets de eventos dos quais você participou.
 
-## My-Tickets event properties ##
+## Meus tickets - propriedades do evento ##
 
-| Attribute | Type | Description
+| Atributo | Tipo de dado | Descrição
 | --------- | ---- | ----------------------------------------------|
-`id` | string | Event id
-`type` | string | Event type in (online, presential)
-`title` | string | Event title
-`description` | string | Event description
-`sale_url` | string | Event sale url
-`stream_url` | string | Event stream url
-`start_date` | string - date-time | Event start date in UTC format
-`end_date` | string - date-time | Event start date in UTC format
-`place` | string | Address place of event
-`country` | string | Address country of event
-`state` | string | Address state of event
-`city` | string | Address city of event
-`district` | string | Address district of event
-`street` | string | Address street of event
-`complement` | string | Address complement of event
-`number` | string | Address number of event
-`zip` | string | Address zipcode of event
-`reference` | string | Address reference of event
+`id` | string | Identificador do evento
+`type` | string | Tipo do evento (online, presential)
+`title` | string | Título do evento
+`description` | string | Descrição do evento
+`sale_url` | string | URL da página de vendas do evento
+`stream_url` | string | URL de transmissão do evento (Somente evento Online)
+`start_date` | string - date-time | Data de início do evento (formato: UTC)
+`end_date` | string - date-time | Data de fim do evento (formato: UTC)
+`place` | string | Local onde será realizado o evento
+`country` | string | País onde será realizado o evento
+`state` | string | Estado onde será realizado o evento
+`city` | string | Cidade onde será realizado o evento
+`district` | string | Bairro onde será realizado o evento
+`street` | string | Rua onde será realizado o evento
+`complement` | string | Complemento onde será realizado o evento
+`number` | string | Número onde será realizado o evento
+`zip` | string | CEP onde será realizado o evento
+`reference` | string | Referência onde será realizado o evento
 
-## List events i've participated
+## Listar eventos que participei
 
-**Summary:** List of events you have participated
-
-**Description:** List of events you have participated
+**Description:** Lista os eventos no quais participei
 
 ### HTTP Request 
 <div class="api-endpoint">
@@ -98,42 +96,40 @@ curl GET https://example.com/blinket/v1/my-tickets/event?page=1&title=test&type=
 }
 ```
 
-**Parameters**
+**Parâmetros**
 
-| Name | Located in | Description | Required | Type |
+| Nome | Tipo do Parâmetro | Descrição | Obrigatório | Tipo de dado |
 | ---- | ---------- | ----------- | -------- | ---- |
-| page | query | Number of pagination page. | No | integer |
-| title | query | Title of event you must search | No | string |
-| type | query | Type of event you must search | No | string |
+| page | query | Número da página referente a paginação | Não | integer |
+| title | query | Título do evento que deseja buscar | Não | string |
+| type | query | Tipo do evento que deseja buscar (online, presential) | Não | string |
 
-**Responses**
+**Respostas**
 
-| Code | Description |
+| Código | Descrição |
 | ---- | ----------- |
-| 200 | successful operation |
-| 404 | Data not found |
+| 200 | Sucesso |
+| 404 | Dado não encontrado |
 
-## My-Tickets invite properties ##
+## Meus Tickets - propriedades do convite ##
 
-| Attribute | Type | Description
+| Atributo | Tipo de dado | Descrição
 | --------- | ---- | ----------------------------------------------|
-`id` | string | Invite ID
-`name` | string | Participant name
-`email` | string | Participant email
-`invoice_id` | integer | Eduzz invoice ID
-`invite_key` | string | Participant invite key ID
-`content_id` | integer | Eduzz content ID
-`status` | string | Participant invite status IN (paid, refunded, locked, presence_confirmed, confirmed)
-`invite_url` | string | URL of invite confirmation
-`ticket_name` | string | Invite ticket name
-`ticket_is_paid` | boolean | If invite ticket is paid or not
-`ticket_show_on_page` | boolean | If invite ticket is showed up in event sale page
+`id` | string | Identificador do convite
+`name` | string | Nome do participante
+`email` | string | Email do participante
+`invoice_id` | integer | Número da fatura Eduzz
+`invite_key` | string | Código do convite do participante
+`content_id` | integer | Código do conteúdo da eduzz
+`status` | string | Status do convite do participante (paid, refunded, locked, presence_confirmed, confirmed)
+`invite_url` | string | URL de confirmação de presença.
+`ticket_name` | string | Nome do ticket do convite
+`ticket_is_paid` | boolean | Se o ticket do convite é pago ou gratuíto
+`ticket_show_on_page` | boolean | Se o ticket é exibido na página de vendas.
 
-## List invites of event i've participated
+## Listar convites de um evento que participei
 
-**Summary:** List of invites of an event you have participated
-
-**Description:** List of invites of an event you have participated
+**Description:** Lista os convites de um evento que participei
 
 ### HTTP Request 
 <div class="api-endpoint">
@@ -174,18 +170,17 @@ curl GET https://example.com/blinket/v1/my-tickets/event/9039jah2-7c1d-4f7a-83e9
 }
 ```
 
-**Parameters**
+**Parâmetros**
 
-| Name | Located in | Description | Required | Type |
+| Nome | Tipo do parâmetro | Descrição | Obrigatório | Tipo de dado |
 | ---- | ---------- | ----------- | -------- | ---- |
-| eventId | path | Id of an event you have participated | Yes | string |
-| page | query | Number of pagination page. | No | integer |
+| eventId | path | Identificador de um evento que participei | Sim | string |
+| page | query | Número da página referente a paginação. | Não | integer |
 
-**Responses**
+**Respostas**
 
-| Code | Description |
+| Código | Descrição |
 | ---- | ----------- |
-| 200 | successful operation |
-| 404 | Data not found |
+| 200 | Sucesso |
+| 404 | Dado não encontrado |
 
-<!-- Converted with the swagger-to-slate https://github.com/lavkumarv/swagger-to-slate -->

@@ -1,12 +1,12 @@
 ---
-title: Eduzz REST API Documentation
+title: Documentação API Rest Eduzz
 
 language_tabs:
   - shell: cURL
 
 toc_footers:
-  - <a href="https://github.com/eduzz/api-docs">Contributing to Eduzz REST API Docs</a>
-  - <a href="https://github.com/tripit/slate">Documentation Powered by Slate</a>
+  - <a href="https://github.com/eduzz/api-docs">Contribua para a documentação API Rest Eduzz</a>
+  - <a href="https://github.com/tripit/slate">Documentação fornecida por Slate</a>
 
 includes:
   - eduzz/introduction

@@ -1,55 +1,55 @@
-# Blinket: Event #
+# Blinket: Eventos #
 
-The Blinket Event API allows you to view event data.
+A API de eventos do Blinket permite visualizar os dados do evento.
 
-## Event properties ##
+## Propriedades do evento ##
 
-| Attribute | Type | Description
+| Atributo | Tipo de dado | Descrição
 | --------- | ---- | ----------------------------------------------|
-`id` | string | Event id
-`type` | string | Event type in (online, presential)
-`title` | string | Event title
-`description` | string | Event description
-`sale_url` | string | Event sale url
-`stream_url` | string | Event stream url
-`start_date` | string - date-time | Event start date in UTC format
-`end_date` | string - date-time | Event start date in UTC format
-`place` | string | Address place of event
-`country` | string | Address country of event
-`state` | string | Address state of event
-`city` | string | Address city of event
-`district` | string | Address district of event
-`street` | string | Address street of event
-`complement` | string | Address complement of event
-`number` | string | Address number of event
-`zip` | string | Address zipcode of event
-`reference` | string | Address reference of event
-`tickets` | array | Tickets data. See [Event - Ticket properties](#event-ticket-properties)
+`id` | string | Identificador do evento
+`type` | string | Tipo do evento (online, presential)
+`title` | string | Título do evento
+`description` | string | Descrição do evento
+`sale_url` | string | URL da página de vendas do evento
+`stream_url` | string | URL de transmissão do evento (Somente evento Online)
+`start_date` | string - date-time | Data de início do evento (formato: UTC)
+`end_date` | string - date-time | Data de fim do evento (formato: UTC)
+`place` | string | Local onde será realizado o evento
+`country` | string | País onde será realizado o evento
+`state` | string | Estado onde será realizado o evento
+`city` | string | Cidade onde será realizado o evento
+`district` | string | Bairro onde será realizado o evento
+`street` | string | Rua onde será realizado o evento
+`complement` | string | Complemento onde será realizado o evento
+`number` | string | Número onde será realizado o evento
+`zip` | string | CEP onde será realizado o evento
+`reference` | string | Referência onde será realizado o evento
+`tickets` | array | Dados dos tickets do evento. Veja [Evento - Propriedades dos tickets](#evento-propriedades-dos-tickets)
 
-### Event - Ticket properties ###
+### Evento - Propriedades dos tickets ###
 
-| Attribute | Type | Description
+| Atributo | Tipo de dado | Descrição
 | --------- | ---- | ----------------------------------------------|
-`id` | string | Ticket id
-`name` | string | Ticket name
-`is_paid` | boolean | If ticket is paid or not
-`show_on_sale_page` | boolean | If ticket is showed up in event sale page
-`lots` | array | Lot data. See [Event - Ticket lot properties](#event-ticket-lot-properties)
+`id` | string | Identificador do ticket
+`name` | string | Nome do ticket
+`is_paid` | boolean | Se o ticket é pago ou gratuito
+`show_on_sale_page` | boolean | Se o ticket está visível na página de vendas
+`lots` | array | Dados dos lotes. Veja [Evento - Propriedades dos lotes](#evento-propriedades-dos-lotes)
 
-### Event - Ticket lot properties ###
+### Evento - Propriedades dos lotes ###
 
-| Attribute | Type | Description
+| Atributo | Tipo de dado | Descrição
 | --------- | ---- | ----------------------------------------------|
-`id` | string | Lot id
-`content_id` | integer | Eduzz content id
-`start_sale_date` | string - date-time | Lot start sale date in UTC format
-`end_sale_date` | string - date-time | Lot end sale date in UTC format
-`total_stock` | integer | Total stock of this lot
-`value` | number - float | "Unit price of this lot"
+`id` | string | Identificador do lote
+`content_id` | integer | Código do conteúdo Eduzz
+`start_sale_date` | string - date-time | Data de início das vendas do lote (formato: UTC)
+`end_sale_date` | string - date-time | Data de fim das vendas do lote (formato: UTC)
+`total_stock` | integer | Estoque total do lote
+`value` | number - float | Preço unitário do lote
 
-## List events
+## Listar eventos
 
-**Description:** List your events data you have organized
+**Description:** Liste os eventos que você organizou
 
 ### HTTP Request 
 <div class="api-endpoint">
@@ -65,7 +65,7 @@ curl GET https://example.com/blinket/v1/event?page=1&title=test&type=online \
     -H "Authorization: Bearer my_token"
 ```
 
-> JSON response example:
+> Exemplo de resposta JSON:
 
 ```json
 {
@@ -118,24 +118,24 @@ curl GET https://example.com/blinket/v1/event?page=1&title=test&type=online \
 }
 ```
 
-**Parameters**
+**Parâmetros**
 
-| Name | Located in | Description | Required | Type |
+| Nome | Tipo do Parâmetro | Descrição | Obrigatório | Tipo de dado |
 | ---- | ---------- | ----------- | -------- | ---- |
-| page | query | Number of pagination page. | No | integer |
-| title | query | Title of event you must search | No | string |
-| type | query | Type of event you must search | No | string |
+| page | query | Número da página referente a paginação | Não | integer |
+| title | query | Título do evento que deseja buscar | Não | string |
+| type | query | Tipo do evento que deseja buscar (online, presential) | Não | string |
 
-**Responses**
+**Respostas**
 
-| Code | Description |
+| Código | Descrição |
 | ---- | ----------- |
-| 200 | successful operation |
-| 404 | Data not found |
+| 200 | Sucesso |
+| 404 | Dado não encontrado |
 
-## Retrieve an event
+## Retornar um evento
 
-**Description:** Get your event data by event id
+**Description:** Obtenha os dados de um evento seu através do identificador
 
 ### HTTP Request 
 <div class="api-endpoint">
@@ -151,7 +151,7 @@ curl GET https://example.com/blinket/v1/event/903uaj99-dbe6-442e-b4f6-47e34cf0m9
     -H "Authorization: Bearer my_token"
 ```
 
-> JSON response example:
+> Exemplo de resposta JSON:
 
 ```json
 {
@@ -194,43 +194,42 @@ curl GET https://example.com/blinket/v1/event/903uaj99-dbe6-442e-b4f6-47e34cf0m9
 }
 ```
 
-**Parameters**
+**Parâmetros**
 
-| Name | Located in | Description | Required | Type |
+| Nome | Tipo do Parâmetro | Descrição | Obrigatório | Tipo de dado |
 | ---- | ---------- | ----------- | -------- | ---- |
-| id | path | ID of event. | Yes | string |
+| id | path | Identficador do evento | Sim | string |
 
-**Responses**
+**Respostas**
 
-| Code | Description |
+| Código | Descrição |
 | ---- | ----------- |
-| 200 | successful operation |
-| 404 | Data not found |
+| 200 | Sucesso |
+| 404 | Dado não encontrado |
 
-## Participant properties ##
+## Propriedades do participante ##
 
-| Attribute | Type | Description
+| Atributo | Tipo de dado | Descrição
 | --------- | ---- | ----------------------------------------------|
-`id` | string | Participant ID"
-`status` | string | Participant status IN (paid, refunded, locked, presence_confirmed, confirmed)
-`name` | string | Participant name
-`email` | string | Participant email
-`invite_key` | string | Participant invite key ID
-`tags` | array | Participant marker tags
-`tickets` | array | Tickets data. See [Participant - tags properties](#participant-tags-properties)
+`id` | string | Identificador do participante
+`status` | string | Status do participante (paid, refunded, locked, presence_confirmed, confirmed)
+`name` | string | Nome do participante
+`email` | string | Email do participante
+`invite_key` | string | Código do convite do participante
+`tags` | array | Marcadores do participante. Veja [Participantes - Marcadores propriedades](#participantes-marcadores-propriedades)
 
-### Participant - Tags properties ###
+### Participantes - Propriedades dos marcadores ###
 
-| Attribute | Type | Description
+| Atributo | Tipo de dado | Descrição
 | --------- | ---- | ----------------------------------------------|
-`id` | string | tag marker ID
-`title` | string | tag marker title
-`color` | string | tag marker hex color
+`id` | string | Identificador do marcador
+`title` | string | Título do marcador
+`color` | string | Cor do marcador (formato HEX HTML)
 
 
-## List event participants
+## Listar participantes de um evento
 
-**Description:** List the participants of your event by event id
+**Description:** Listar os participantes de um evento através do identificador do evento
 
 ### HTTP Request 
 <div class="api-endpoint">
@@ -246,7 +245,7 @@ curl GET https://example.com/blinket/v1/event/903uaj99-dbe6-442e-b4f6-47e34cf0m9
     -H "Authorization: Bearer my_token"
 ```
 
-> JSON response example:
+> Exemplo de resposta JSON:
 
 ```json
 {
@@ -274,28 +273,28 @@ curl GET https://example.com/blinket/v1/event/903uaj99-dbe6-442e-b4f6-47e34cf0m9
 ```
 
 
-**Parameters**
+**Parâmetros**
 
-| Name | Located in | Description | Required | Type |
+| Nome | Tipo do parâmetro | Descrição | Obrigatório | Tipo de dado |
 | ---- | ---------- | ----------- | -------- | ---- |
-| id | path | ID of event | Yes | string |
-| page | query | Number of pagination page. | No | integer |
-| ticket_id | query | Id of a ticket of this event | No | string |
-| status | query | Status of participant you must search | No | string |
-| invite_key | query | Invite key of an participant | No | string |
-| name | query | Name of an participant | No | string |
-| email | query | Email of an participant | No | string |
+| id | path | Identificador do evento | Sim | string |
+| page | query | Número da página referente a paginação | Não | integer |
+| ticket_id | query | Identificador de um ticket do evento | Não | string |
+| status | query | Status do participante que deseja buscar | Não | string |
+| invite_key | query | Código do convite do participante que deseja buscar | Não | string |
+| name | query | Nome do Participante | Não | string |
+| email | query | Email do Participante | Não | string |
 
-**Responses**
+**Respostas**
 
-| Code | Description |
+| Código | Descrição |
 | ---- | ----------- |
-| 200 | successful operation |
-| 404 | Data not found |
+| 200 | Sucesso |
+| 404 | Dado não encontrado |
 
-## Retrieve an event participant
+## Obter um participante
 
-**Description:** Get your participant data of an event you have produced
+**Description:** Obter um participante através do identificador do evento e identificador do participante
 
 ### HTTP Request 
 <div class="api-endpoint">
@@ -311,7 +310,7 @@ curl GET https://example.com/blinket/v1/event/903uaj99-dbe6-442e-b4f6-47e34cf0m9
     -H "Authorization: Bearer my_token"
 ```
 
-> JSON response example:
+> Exemplo de resposta JSON:
 
 ```json
 {
@@ -330,16 +329,16 @@ curl GET https://example.com/blinket/v1/event/903uaj99-dbe6-442e-b4f6-47e34cf0m9
 }
 ```
 
-**Parameters**
+**Parâmetros**
 
-| Name | Located in | Description | Required | Type |
+| Nome | Tipo do parâmetro | Descrição | Obrigatório | Tipo de dado |
 | ---- | ---------- | ----------- | -------- | ---- |
-| eventId | path | ID of event. | Yes | string |
-| participantId | path | ID of participant. | Yes | string |
+| eventId | path | Identificador do evento | Sim | string |
+| participantId | path | Identificador do participante | Sim | string |
 
-**Responses**
+**Respostas**
 
 | Code | Description |
 | ---- | ----------- |
-| 200 | successful operation |
-| 404 | Data not found |
+| 200 | Sucesso |
+| 404 | Dado não encontrado |
