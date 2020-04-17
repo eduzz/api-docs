@@ -11,8 +11,7 @@ A API de serviços que permite gerenciar conteúdos.
 `user_id` | number - integer | Identificador do prestador do serviço
 `work_type` | string | Tipo do serviço (online, presential)
 `moderation` | number - integer | Status da moderação do serviço
-`type` | string | Tipo de pagamento do serviço (normal, signature)
-`signature` | string | Código do contrato de assinatura
+`type` | string | Tipo de pagamento do serviço (normal)
 `cnt_cod` | number - integer | Código do serviço
 `category_id` | number - integer | Identificador da categoria do serviço. Veja [Serviço - Propriedades das categorias](#servico-propriedade-das-categorias)
 `sub_category_id` | number - integer | Identificador da subcategoria do serviço. Veja [Serviço - Propriedades das subcategorias](#servico-propriedade-das-subcategorias)
@@ -25,7 +24,7 @@ A API de serviços que permite gerenciar conteúdos.
 `deadline` | number - integer | Prazo de entrega do serviço
 `deadline_type` | string | Tipo do prazo de entrega (meses, anos)
 `automatic_start` | number - integer | Configuração para início automático do serviço
-`images` | array | Imagens do serviço
+`images` | array | Imagens do serviço. Veja [Serviço - Propriedades das imagens](#servico-propriedade-das-imagens)
 `locations` | array | Locais onde seu serviço será prestado caso seja presencial
 `certifications` | array | Certificações que o prestador possui
 `negotiate` | number - integer | Campo informando se o serviço está aberto à negociações
@@ -52,6 +51,10 @@ A API de serviços que permite gerenciar conteúdos.
 `created` |  string - date-time | Data de criação da subcategoria
 `modified` |  string - date-time | Data da última modificação da subcategoria
 `deleted` |  string - date-time | Data de exclusão da subcategoria
+
+## Serviço - Propriedade das imagens ##
+
+`url` | string | Url da imagem na cdn da Eduzz  
 
 ## Listar meus serviços
 
@@ -627,3 +630,34 @@ curl GET https://example.com/jobzz/v1/sub_category
 | ---- | ----------- |
 | 200 | Sucesso |
 | 404 | Dado não encontrado |
+
+## Salvar imagem na CDN
+
+**Description:** Salva uma imagem na CDN da Eduzz
+
+### HTTP Request 
+<div class="api-endpoint">
+	<div class="endpoint-data">
+		<i class="label label-post">POST</i>
+		<h6>/jobzz/v1/upload/file</h6>
+	</div>
+</div>
+
+```shell
+curl GET https://example.com/jobzz/v1/upload/file
+    -H "Accept: application/json"
+    -H "Authorization: Bearer my_token"
+```
+
+**Parâmetros**
+
+| Nome | Tipo do Parâmetro | Descrição | Obrigatório | Tipo de dado |
+| ---- | ---------- | ----------- | -------- | ---- |
+| file | query | Imagem do serviço | Sim | form-data |
+
+**Respostas**
+
+| Código | Descrição |
+| ---- | ----------- |
+| 204 | Sucesso |
+| 400 | Requisição mal formada |
