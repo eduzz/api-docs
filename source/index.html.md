@@ -13,6 +13,7 @@ includes:
   - eduzz/authentication
   - blinket-v1/event
   - blinket-v1/my-tickets
+  - jobzz-v1/service
 
 search: false
 ---
