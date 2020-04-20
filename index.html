@@ -1,0 +1,1297 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Documentação API Rest Eduzz</title>
+
+    <link rel="icon" href="images/favicon.png" />
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <a href="#" class="logo">
+        <img src="images/logo.png" alt="Logo" />
+      </a>
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">cURL</a>
+        </div>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introducao" class="toc-h1 toc-link" data-title="Introdução">Introdução</a>
+          </li>
+          <li>
+            <a href="#autenticacao" class="toc-h1 toc-link" data-title="Autenticação">Autenticação</a>
+          </li>
+          <li>
+            <a href="#blinket-eventos" class="toc-h1 toc-link" data-title="Blinket: Eventos">Blinket: Eventos</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#propriedades-do-evento" class="toc-h2 toc-link" data-title="Propriedades do evento">Propriedades do evento</a>
+                  </li>
+                  <li>
+                    <a href="#listar-eventos" class="toc-h2 toc-link" data-title="Listar eventos">Listar eventos</a>
+                  </li>
+                  <li>
+                    <a href="#retornar-um-evento" class="toc-h2 toc-link" data-title="Retornar um evento">Retornar um evento</a>
+                  </li>
+                  <li>
+                    <a href="#propriedades-do-participante" class="toc-h2 toc-link" data-title="Propriedades do participante">Propriedades do participante</a>
+                  </li>
+                  <li>
+                    <a href="#listar-participantes-de-um-evento" class="toc-h2 toc-link" data-title="Listar participantes de um evento">Listar participantes de um evento</a>
+                  </li>
+                  <li>
+                    <a href="#obter-um-participante" class="toc-h2 toc-link" data-title="Obter um participante">Obter um participante</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#blinket-meus-tickets" class="toc-h1 toc-link" data-title="Blinket: Meus Tickets">Blinket: Meus Tickets</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#meus-tickets-propriedades-do-evento" class="toc-h2 toc-link" data-title="Meus tickets - propriedades do evento">Meus tickets - propriedades do evento</a>
+                  </li>
+                  <li>
+                    <a href="#listar-eventos-que-participei" class="toc-h2 toc-link" data-title="Listar eventos que participei">Listar eventos que participei</a>
+                  </li>
+                  <li>
+                    <a href="#meus-tickets-propriedades-do-convite" class="toc-h2 toc-link" data-title="Meus Tickets - propriedades do convite">Meus Tickets - propriedades do convite</a>
+                  </li>
+                  <li>
+                    <a href="#listar-convites-de-um-evento-que-participei" class="toc-h2 toc-link" data-title="Listar convites de um evento que participei">Listar convites de um evento que participei</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href="https://github.com/eduzz/api-docs">Contribua para a documentação API Rest Eduzz</a></li>
+            <li><a href="https://github.com/tripit/slate">Documentação fornecida por Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introducao'>Introdução</h1>
+<p>Eduzz API REST</p>
+<h1 id='autenticacao'>Autenticação</h1>
+<p>Eduzz OAUTH</p>
+<h1 id='blinket-eventos'>Blinket: Eventos</h1>
+<p>A API de eventos do Blinket permite visualizar os dados do evento.</p>
+<h2 id='propriedades-do-evento'>Propriedades do evento</h2>
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo de dado</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Identificador do evento</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>Tipo do evento (online, presential)</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>string</td>
+<td>Título do evento</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td>Descrição do evento</td>
+</tr>
+<tr>
+<td><code>sale_url</code></td>
+<td>string</td>
+<td>URL da página de vendas do evento</td>
+</tr>
+<tr>
+<td><code>stream_url</code></td>
+<td>string</td>
+<td>URL de transmissão do evento (Somente evento Online)</td>
+</tr>
+<tr>
+<td><code>start_date</code></td>
+<td>string - date-time</td>
+<td>Data de início do evento (formato: UTC)</td>
+</tr>
+<tr>
+<td><code>end_date</code></td>
+<td>string - date-time</td>
+<td>Data de fim do evento (formato: UTC)</td>
+</tr>
+<tr>
+<td><code>place</code></td>
+<td>string</td>
+<td>Local onde será realizado o evento</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td>string</td>
+<td>País onde será realizado o evento</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>string</td>
+<td>Estado onde será realizado o evento</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>string</td>
+<td>Cidade onde será realizado o evento</td>
+</tr>
+<tr>
+<td><code>district</code></td>
+<td>string</td>
+<td>Bairro onde será realizado o evento</td>
+</tr>
+<tr>
+<td><code>street</code></td>
+<td>string</td>
+<td>Rua onde será realizado o evento</td>
+</tr>
+<tr>
+<td><code>complement</code></td>
+<td>string</td>
+<td>Complemento onde será realizado o evento</td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td>string</td>
+<td>Número onde será realizado o evento</td>
+</tr>
+<tr>
+<td><code>zip</code></td>
+<td>string</td>
+<td>CEP onde será realizado o evento</td>
+</tr>
+<tr>
+<td><code>reference</code></td>
+<td>string</td>
+<td>Referência onde será realizado o evento</td>
+</tr>
+<tr>
+<td><code>tickets</code></td>
+<td>array</td>
+<td>Dados dos tickets do evento. Veja <a href="#evento-propriedades-dos-tickets">Evento - Propriedades dos tickets</a></td>
+</tr>
+</tbody></table>
+<h3 id='evento-propriedades-dos-tickets'>Evento - Propriedades dos tickets</h3>
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo de dado</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Identificador do ticket</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Nome do ticket</td>
+</tr>
+<tr>
+<td><code>is_paid</code></td>
+<td>boolean</td>
+<td>Se o ticket é pago ou gratuito</td>
+</tr>
+<tr>
+<td><code>show_on_sale_page</code></td>
+<td>boolean</td>
+<td>Se o ticket está visível na página de vendas</td>
+</tr>
+<tr>
+<td><code>lots</code></td>
+<td>array</td>
+<td>Dados dos lotes. Veja <a href="#evento-propriedades-dos-lotes">Evento - Propriedades dos lotes</a></td>
+</tr>
+</tbody></table>
+<h3 id='evento-propriedades-dos-lotes'>Evento - Propriedades dos lotes</h3>
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo de dado</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Identificador do lote</td>
+</tr>
+<tr>
+<td><code>content_id</code></td>
+<td>integer</td>
+<td>Código do conteúdo Eduzz</td>
+</tr>
+<tr>
+<td><code>start_sale_date</code></td>
+<td>string - date-time</td>
+<td>Data de início das vendas do lote (formato: UTC)</td>
+</tr>
+<tr>
+<td><code>end_sale_date</code></td>
+<td>string - date-time</td>
+<td>Data de fim das vendas do lote (formato: UTC)</td>
+</tr>
+<tr>
+<td><code>total_stock</code></td>
+<td>integer</td>
+<td>Estoque total do lote</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td>number - float</td>
+<td>Preço unitário do lote</td>
+</tr>
+</tbody></table>
+<h2 id='listar-eventos'>Listar eventos</h2>
+<p><strong>Description:</strong> Liste os eventos que você organizou</p>
+<h3 id='http-request'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">GET</i>
+        <h6>/blinket/v1/event</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl GET https://example.com/blinket/v1/event?page<span class="o">=</span>1&amp;title<span class="o">=</span><span class="nb">test</span>&amp;type<span class="o">=</span>online <span class="se">\</span>
+    -H <span class="s2">"Accept: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span>
+</code></pre>
+<blockquote>
+<p>Exemplo de resposta JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"items_per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_items"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9039jah2-7c1d-4f7a-83e9-e3b9e2f3992j"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example 1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example 1 description"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sale_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://evento.blinket.com.br/example-1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"stream_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.ex"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-04T21:29:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-19T21:29:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"place"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"complement"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9039bd46-7c1d-4f7a-83e9-e3b9e2f390e1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example 2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example 2 description"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sale_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://evento.blinket.com.br/example-1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"stream_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.ex"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-04T21:29:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-19T21:29:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"place"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"complement"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>query</td>
+<td>Número da página referente a paginação</td>
+<td>Não</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>title</td>
+<td>query</td>
+<td>Título do evento que deseja buscar</td>
+<td>Não</td>
+<td>string</td>
+</tr>
+<tr>
+<td>type</td>
+<td>query</td>
+<td>Tipo do evento que deseja buscar (online, presential)</td>
+<td>Não</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Dado não encontrado</td>
+</tr>
+</tbody></table>
+<h2 id='retornar-um-evento'>Retornar um evento</h2>
+<p><strong>Description:</strong> Obtenha os dados de um evento seu através do identificador</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">GET</i>
+        <h6>/blinket/v1/event/{id}</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl GET https://example.com/blinket/v1/event/903uaj99-dbe6-442e-b4f6-47e34cf0m957 <span class="se">\</span>
+    -H <span class="s2">"Accept: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span>
+</code></pre>
+<blockquote>
+<p>Exemplo de resposta JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"903uaj99-dbe6-442e-b4f6-47e34cf0m957"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"presential"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a example description"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sale_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://evento.blinket.com.br/example"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"stream_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-04T21:33:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-18T21:30:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"place"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An event place"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brazil"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sorocaba"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jardim Magnolia"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Av Sorocaba"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"complement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18044-390"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Eduzz"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tickets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90jah2e99-dd4c-4fed-8ee4-cde55fejajanc"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket Example"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"show_on_sale_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lots"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9039be9a-df55-4f96-af8d-73a927987651"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"content_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">000001</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"start_sale_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-04T03:00:00Z"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"end_sale_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-18T21:30:00Z"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"total_stock"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>Identficador do evento</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Dado não encontrado</td>
+</tr>
+</tbody></table>
+<h2 id='propriedades-do-participante'>Propriedades do participante</h2>
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo de dado</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Identificador do participante</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>string</td>
+<td>Status do participante (paid, refunded, locked, presence_confirmed, confirmed)</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Nome do participante</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>Email do participante</td>
+</tr>
+<tr>
+<td><code>invite_key</code></td>
+<td>string</td>
+<td>Código do convite do participante</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>array</td>
+<td>Marcadores do participante. Veja <a href="#participantes-marcadores-propriedades">Participantes - Marcadores propriedades</a></td>
+</tr>
+</tbody></table>
+<h3 id='participantes-propriedades-dos-marcadores'>Participantes - Propriedades dos marcadores</h3>
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo de dado</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Identificador do marcador</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>string</td>
+<td>Título do marcador</td>
+</tr>
+<tr>
+<td><code>color</code></td>
+<td>string</td>
+<td>Cor do marcador (formato HEX HTML)</td>
+</tr>
+</tbody></table>
+<h2 id='listar-participantes-de-um-evento'>Listar participantes de um evento</h2>
+<p><strong>Description:</strong> Listar os participantes de um evento através do identificador do evento</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">GET</i>
+        <h6>/blinket/v1/event/{id}/participant</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl GET https://example.com/blinket/v1/event/903uaj99-dbe6-442e-b4f6-47e34cf0m957/participant <span class="se">\</span>
+    -H <span class="s2">"Accept: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span>
+</code></pre>
+<blockquote>
+<p>Exemplo de resposta JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"items_per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_items"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"902f3c60-271d-hab1-a999-f29021acacd1s"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"confirmed"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Participant example 1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"participant1@email.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"invite_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000001-1"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"902f3c60-271d-hab1-a999-f29021acacd2a"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"confirmed"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Participant example 2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"participant2@email.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"invite_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000001-2"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>Identificador do evento</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+<tr>
+<td>page</td>
+<td>query</td>
+<td>Número da página referente a paginação</td>
+<td>Não</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>ticket_id</td>
+<td>query</td>
+<td>Identificador de um ticket do evento</td>
+<td>Não</td>
+<td>string</td>
+</tr>
+<tr>
+<td>status</td>
+<td>query</td>
+<td>Status do participante que deseja buscar</td>
+<td>Não</td>
+<td>string</td>
+</tr>
+<tr>
+<td>invite_key</td>
+<td>query</td>
+<td>Código do convite do participante que deseja buscar</td>
+<td>Não</td>
+<td>string</td>
+</tr>
+<tr>
+<td>name</td>
+<td>query</td>
+<td>Nome do Participante</td>
+<td>Não</td>
+<td>string</td>
+</tr>
+<tr>
+<td>email</td>
+<td>query</td>
+<td>Email do Participante</td>
+<td>Não</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Dado não encontrado</td>
+</tr>
+</tbody></table>
+<h2 id='obter-um-participante'>Obter um participante</h2>
+<p><strong>Description:</strong> Obter um participante através do identificador do evento e identificador do participante</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">GET</i>
+        <h6>/blinket/v1/event/{eventId}/participant/{participantId}</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl GET https://example.com/blinket/v1/event/903uaj99-dbe6-442e-b4f6-47e34cf0m957/participant/902f3c60-271d-hab1-a999-f29021acacd1s <span class="se">\</span>
+    -H <span class="s2">"Accept: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span>
+</code></pre>
+<blockquote>
+<p>Exemplo de resposta JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"902f3c60-271d-hab1-a999-f29021acacd1s"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"confirmed"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Participant example 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"participant1@email.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"invite_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000001-1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manually"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adicionado Manualmente"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>eventId</td>
+<td>path</td>
+<td>Identificador do evento</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+<tr>
+<td>participantId</td>
+<td>path</td>
+<td>Identificador do participante</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Dado não encontrado</td>
+</tr>
+</tbody></table>
+<h1 id='blinket-meus-tickets'>Blinket: Meus Tickets</h1>
+<p>A API Blinket Meus Tickets permite visualizar dados de tickets de eventos dos quais você participou.</p>
+<h2 id='meus-tickets-propriedades-do-evento'>Meus tickets - propriedades do evento</h2>
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo de dado</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Identificador do evento</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>Tipo do evento (online, presential)</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>string</td>
+<td>Título do evento</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td>Descrição do evento</td>
+</tr>
+<tr>
+<td><code>sale_url</code></td>
+<td>string</td>
+<td>URL da página de vendas do evento</td>
+</tr>
+<tr>
+<td><code>stream_url</code></td>
+<td>string</td>
+<td>URL de transmissão do evento (Somente evento Online)</td>
+</tr>
+<tr>
+<td><code>start_date</code></td>
+<td>string - date-time</td>
+<td>Data de início do evento (formato: UTC)</td>
+</tr>
+<tr>
+<td><code>end_date</code></td>
+<td>string - date-time</td>
+<td>Data de fim do evento (formato: UTC)</td>
+</tr>
+<tr>
+<td><code>place</code></td>
+<td>string</td>
+<td>Local onde será realizado o evento</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td>string</td>
+<td>País onde será realizado o evento</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>string</td>
+<td>Estado onde será realizado o evento</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>string</td>
+<td>Cidade onde será realizado o evento</td>
+</tr>
+<tr>
+<td><code>district</code></td>
+<td>string</td>
+<td>Bairro onde será realizado o evento</td>
+</tr>
+<tr>
+<td><code>street</code></td>
+<td>string</td>
+<td>Rua onde será realizado o evento</td>
+</tr>
+<tr>
+<td><code>complement</code></td>
+<td>string</td>
+<td>Complemento onde será realizado o evento</td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td>string</td>
+<td>Número onde será realizado o evento</td>
+</tr>
+<tr>
+<td><code>zip</code></td>
+<td>string</td>
+<td>CEP onde será realizado o evento</td>
+</tr>
+<tr>
+<td><code>reference</code></td>
+<td>string</td>
+<td>Referência onde será realizado o evento</td>
+</tr>
+</tbody></table>
+<h2 id='listar-eventos-que-participei'>Listar eventos que participei</h2>
+<p><strong>Description:</strong> Lista os eventos no quais participei</p>
+<h3 id='http-request'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">GET</i>
+        <h6>/blinket/v1/my-tickets/event</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl GET https://example.com/blinket/v1/my-tickets/event?page<span class="o">=</span>1&amp;title<span class="o">=</span><span class="nb">test</span>&amp;type<span class="o">=</span>online <span class="se">\</span>
+    -H <span class="s2">"Accept: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span>
+</code></pre>
+<blockquote>
+<p>JSON response example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"items_per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_items"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9039jah2-7c1d-4f7a-83e9-e3b9e2f3992j"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example 1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example 1 description"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sale_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://evento.blinket.com.br/example-1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"stream_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.ex"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-04T21:29:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-19T21:29:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"place"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"complement"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9039bd46-7c1d-4f7a-83e9-e3b9e2f390e1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example 2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example 2 description"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sale_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://evento.blinket.com.br/example-1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"stream_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.ex"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-04T21:29:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-19T21:29:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"place"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"complement"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>query</td>
+<td>Número da página referente a paginação</td>
+<td>Não</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>title</td>
+<td>query</td>
+<td>Título do evento que deseja buscar</td>
+<td>Não</td>
+<td>string</td>
+</tr>
+<tr>
+<td>type</td>
+<td>query</td>
+<td>Tipo do evento que deseja buscar (online, presential)</td>
+<td>Não</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Dado não encontrado</td>
+</tr>
+</tbody></table>
+<h2 id='meus-tickets-propriedades-do-convite'>Meus Tickets - propriedades do convite</h2>
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo de dado</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Identificador do convite</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Nome do participante</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>Email do participante</td>
+</tr>
+<tr>
+<td><code>invoice_id</code></td>
+<td>integer</td>
+<td>Número da fatura Eduzz</td>
+</tr>
+<tr>
+<td><code>invite_key</code></td>
+<td>string</td>
+<td>Código do convite do participante</td>
+</tr>
+<tr>
+<td><code>content_id</code></td>
+<td>integer</td>
+<td>Código do conteúdo da eduzz</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>string</td>
+<td>Status do convite do participante (paid, refunded, locked, presence_confirmed, confirmed)</td>
+</tr>
+<tr>
+<td><code>invite_url</code></td>
+<td>string</td>
+<td>URL de confirmação de presença.</td>
+</tr>
+<tr>
+<td><code>ticket_name</code></td>
+<td>string</td>
+<td>Nome do ticket do convite</td>
+</tr>
+<tr>
+<td><code>ticket_is_paid</code></td>
+<td>boolean</td>
+<td>Se o ticket do convite é pago ou gratuíto</td>
+</tr>
+<tr>
+<td><code>ticket_show_on_page</code></td>
+<td>boolean</td>
+<td>Se o ticket é exibido na página de vendas.</td>
+</tr>
+</tbody></table>
+<h2 id='listar-convites-de-um-evento-que-participei'>Listar convites de um evento que participei</h2>
+<p><strong>Description:</strong> Lista os convites de um evento que participei</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">GET</i>
+        <h6>/blinket/v1/my-tickets/event/{eventId}</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl GET https://example.com/blinket/v1/my-tickets/event/9039jah2-7c1d-4f7a-83e9-e3b9e2f3992j?page<span class="o">=</span>1 <span class="se">\</span>
+    -H <span class="s2">"Accept: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span>
+</code></pre>
+<blockquote>
+<p>JSON response example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"items_per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_items"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9039jah2-7c1d-4f7a-83e9-e3b9e2f3992j"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Participant example"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"participant@email.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"invoice_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">000001</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"invite_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000001-1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"content_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">000001</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"presence_confirmed"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"invite_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ticket_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket Example"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ticket_is_paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ticket_show_on_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>eventId</td>
+<td>path</td>
+<td>Identificador de um evento que participei</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+<tr>
+<td>page</td>
+<td>query</td>
+<td>Número da página referente a paginação.</td>
+<td>Não</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Dado não encontrado</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">cURL</a>
+          </div>
+      </div>
+	</div>
+
+
+  </body>
+</html>
