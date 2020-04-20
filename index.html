@@ -264,6 +264,47 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#jobzz-servico" class="toc-h1 toc-link" data-title="Jobzz: Serviço">Jobzz: Serviço</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#propriedades-do-servico" class="toc-h2 toc-link" data-title="Propriedades do serviço">Propriedades do serviço</a>
+                  </li>
+                  <li>
+                    <a href="#servico-propriedade-das-categorias" class="toc-h2 toc-link" data-title="Serviço - Propriedade das categorias">Serviço - Propriedade das categorias</a>
+                  </li>
+                  <li>
+                    <a href="#servico-propriedade-das-subcategorias" class="toc-h2 toc-link" data-title="Serviço - Propriedade das subcategorias">Serviço - Propriedade das subcategorias</a>
+                  </li>
+                  <li>
+                    <a href="#servico-propriedade-das-imagens" class="toc-h2 toc-link" data-title="Serviço - Propriedade das imagens">Serviço - Propriedade das imagens</a>
+                  </li>
+                  <li>
+                    <a href="#listar-meus-servicos" class="toc-h2 toc-link" data-title="Listar meus serviços">Listar meus serviços</a>
+                  </li>
+                  <li>
+                    <a href="#detalhes-do-servico" class="toc-h2 toc-link" data-title="Detalhes do serviço">Detalhes do serviço</a>
+                  </li>
+                  <li>
+                    <a href="#criar-servico" class="toc-h2 toc-link" data-title="Criar serviço">Criar serviço</a>
+                  </li>
+                  <li>
+                    <a href="#editar-servico" class="toc-h2 toc-link" data-title="Editar serviço">Editar serviço</a>
+                  </li>
+                  <li>
+                    <a href="#excluir-servico" class="toc-h2 toc-link" data-title="Excluir serviço">Excluir serviço</a>
+                  </li>
+                  <li>
+                    <a href="#listar-categorias" class="toc-h2 toc-link" data-title="Listar categorias">Listar categorias</a>
+                  </li>
+                  <li>
+                    <a href="#listar-subcategorias" class="toc-h2 toc-link" data-title="Listar subcategorias">Listar subcategorias</a>
+                  </li>
+                  <li>
+                    <a href="#salvar-imagem-na-cdn" class="toc-h2 toc-link" data-title="Salvar imagem na CDN">Salvar imagem na CDN</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href="https://github.com/eduzz/api-docs">Contribua para a documentação API Rest Eduzz</a></li>
@@ -1281,6 +1322,1141 @@
 <tr>
 <td>404</td>
 <td>Dado não encontrado</td>
+</tr>
+</tbody></table>
+<h1 id='jobzz-servico'>Jobzz: Serviço</h1>
+<p>A API de serviços que permite gerenciar conteúdos.</p>
+<h2 id='propriedades-do-servico'>Propriedades do serviço</h2>
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo de dado</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>number - integer</td>
+<td>Identificador do serviço</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td>string</td>
+<td>Chave do serviço</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>number - integer</td>
+<td>Identificador do prestador do serviço</td>
+</tr>
+<tr>
+<td><code>work_type</code></td>
+<td>string</td>
+<td>Tipo do serviço (online, presential)</td>
+</tr>
+<tr>
+<td><code>moderation</code></td>
+<td>number - integer</td>
+<td>Status da moderação do serviço</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>Tipo de pagamento do serviço (normal)</td>
+</tr>
+<tr>
+<td><code>cnt_cod</code></td>
+<td>number - integer</td>
+<td>Código do serviço</td>
+</tr>
+<tr>
+<td><code>category_id</code></td>
+<td>number - integer</td>
+<td>Identificador da categoria do serviço. Veja <a href="#servico-propriedade-das-categorias">Serviço - Propriedades das categorias</a></td>
+</tr>
+<tr>
+<td><code>sub_category_id</code></td>
+<td>number - integer</td>
+<td>Identificador da subcategoria do serviço. Veja <a href="#servico-propriedade-das-subcategorias">Serviço - Propriedades das subcategorias</a></td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>string</td>
+<td>Título do serviço</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td>Descrição do serviço</td>
+</tr>
+<tr>
+<td><code>visible</code></td>
+<td>number - integer</td>
+<td>Campo informando se o serviço está visível na vitrine</td>
+</tr>
+<tr>
+<td><code>active</code></td>
+<td>number - integer</td>
+<td>Campo informando se o serviço está disponível para venda</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td>number - float</td>
+<td>Valor do serviço</td>
+</tr>
+<tr>
+<td><code>value_type</code></td>
+<td>string</td>
+<td>Tipo de cobrança</td>
+</tr>
+<tr>
+<td><code>deadline</code></td>
+<td>number - integer</td>
+<td>Prazo de entrega do serviço</td>
+</tr>
+<tr>
+<td><code>deadline_type</code></td>
+<td>string</td>
+<td>Tipo do prazo de entrega (meses, anos)</td>
+</tr>
+<tr>
+<td><code>automatic_start</code></td>
+<td>number - integer</td>
+<td>Configuração para início automático do serviço</td>
+</tr>
+<tr>
+<td><code>images</code></td>
+<td>array</td>
+<td>Imagens do serviço. Veja <a href="#servico-propriedade-das-imagens">Serviço - Propriedades das imagens</a></td>
+</tr>
+<tr>
+<td><code>locations</code></td>
+<td>array</td>
+<td>Locais onde seu serviço será prestado caso seja presencial</td>
+</tr>
+<tr>
+<td><code>certifications</code></td>
+<td>array</td>
+<td>Certificações que o prestador possui</td>
+</tr>
+<tr>
+<td><code>negotiate</code></td>
+<td>number - integer</td>
+<td>Campo informando se o serviço está aberto à negociações</td>
+</tr>
+<tr>
+<td><code>value_to_be_discussed</code></td>
+<td>boolean</td>
+<td>Configuração de valor incial aberto a negociação</td>
+</tr>
+<tr>
+<td><code>created</code></td>
+<td>string - date-time</td>
+<td>Data de criação do serviço</td>
+</tr>
+<tr>
+<td><code>modified</code></td>
+<td>string - date-time</td>
+<td>Data da última modificação do serviço</td>
+</tr>
+<tr>
+<td><code>deleted</code></td>
+<td>string - date-time</td>
+<td>Data em que o serviço foi deletado</td>
+</tr>
+</tbody></table>
+<h2 id='servico-propriedade-das-categorias'>Serviço - Propriedade das categorias</h2>
+<p><code>id</code> |  number - integer | Identificador da categoria
+<code>key</code> |  string | Chave da categoria
+<code>name</code> |  string | Nome da categoria
+<code>created</code> |  string - date-time | Data de criação da categoria
+<code>modified</code> |  string - date-time | Data da última modificação da categoria
+<code>deleted</code> |  string - date-time | Data de exclusão da categoria</p>
+<h2 id='servico-propriedade-das-subcategorias'>Serviço - Propriedade das subcategorias</h2>
+<p><code>id</code> |  number - integer | Identificador da subcategoria
+<code>key</code> |  string | Chave da subcategoria
+<code>category_id</code> |  number - integer | Identificador da categoria
+<code>name</code> |  string | Nome da subcategoria
+<code>created</code> |  string - date-time | Data de criação da subcategoria
+<code>modified</code> |  string - date-time | Data da última modificação da subcategoria
+<code>deleted</code> |  string - date-time | Data de exclusão da subcategoria</p>
+<h2 id='servico-propriedade-das-imagens'>Serviço - Propriedade das imagens</h2>
+<p><code>url</code> | string | Url da imagem na cdn da Eduzz  </p>
+<h2 id='listar-meus-servicos'>Listar meus serviços</h2>
+<p><strong>Description:</strong> Lista os servicos criados por mim</p>
+<h3 id='http-request'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">GET</i>
+        <h6>/jobzz/v1/service</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl GET https://example.com/jobzz/v1/service?page<span class="o">=</span>1&amp;per_page<span class="o">=</span>2
+    -H <span class="s2">"Accept: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span>
+</code></pre>
+<blockquote>
+<p>Exemplo de resposta JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"items_per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_items"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7c85574b"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"work_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"moderation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"cnt_cod"</span><span class="p">:</span><span class="w"> </span><span class="mi">334747</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"sub_category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is an example of description"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"visible"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.45</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"deadline_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"month"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"automatic_start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"/uploads/images/40/5f/488aa90009b99a2eeebdebe7432b.png"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"locations"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"certifications"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"negotiate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value_to_be_discussed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{}"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-02 11:05:31"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-02 11:18:45"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7c85574b"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"work_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"moderation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"cnt_cod"</span><span class="p">:</span><span class="w"> </span><span class="mi">334747</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"sub_category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is an example of description"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"visible"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.45</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"deadline_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"month"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"automatic_start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"/uploads/images/40/5f/488aa90009b99a2eeebdebe7432b.png"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"locations"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"certifications"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"negotiate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value_to_be_discussed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{}"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-02 11:05:31"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-02 11:18:45"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>query</td>
+<td>Número da página referente a paginação</td>
+<td>Não</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>query</td>
+<td>Items por página</td>
+<td>Não</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>moderation</td>
+<td>query</td>
+<td>Status da moderação do serviço</td>
+<td>Não</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Dado não encontrado</td>
+</tr>
+</tbody></table>
+<h2 id='detalhes-do-servico'>Detalhes do serviço</h2>
+<p><strong>Description:</strong> Exibe informações de um serviço específico através do seu identificador</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">GET</i>
+        <h6>/jobzz/v1/service/{id}</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl GET https://example.com/jobzz/v1/service/a66a65a7?page<span class="o">=</span>1&amp;per_page<span class="o">=</span>2
+    -H <span class="s2">"Accept: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span>
+</code></pre>
+<blockquote>
+<p>Exemplo de resposta JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4863</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a66a65a7"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18115</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"work_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"moderation"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cnt_cod"</span><span class="p">:</span><span class="w"> </span><span class="mi">305800</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sub_category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is an example of description"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"visible"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.11</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="mi">999</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"deadline_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"day"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"automatic_start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"/uploads/images/cd/5a/bd6c6655ea0e72472383911d70ec.png"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"certifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"negotiate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value_to_be_discussed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-16 11:30:31"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-24 09:37:54"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>Identficador do evento</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Dado não encontrado</td>
+</tr>
+</tbody></table>
+<h2 id='criar-servico'>Criar serviço</h2>
+<p><strong>Description:</strong> Cria um novo serviço na plataforma</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">POST</i>
+        <h6>/jobzz/v1/service</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl GET https://example.com/jobzz/v1/service/a66a65a7?page<span class="o">=</span>1&amp;per_page<span class="o">=</span>2
+    -H <span class="s2">"Accept: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span>
+</code></pre>
+<blockquote>
+<p>Exemplo de resposta JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16260</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e9e8ac97"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18115</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"work_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"moderation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cnt_cod"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sub_category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"group_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is an example of description"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"visible"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.45</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deadline_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"month"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"automatic_start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"/uploads/images/4c/03/634bf06856d195c4e799e2719759.png"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"locations"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"certifications"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"negotiate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"value_to_be_discussed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{}"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-16 11:30:31"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-24 09:37:54"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>work_type</td>
+<td>query</td>
+<td>Tipo do serviço</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+<tr>
+<td>type</td>
+<td>query</td>
+<td>Tipo de cobrança</td>
+<td>Não</td>
+<td>string</td>
+</tr>
+<tr>
+<td>category</td>
+<td>query</td>
+<td>Categoria do serviço</td>
+<td>Não</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>sub_category_id</td>
+<td>query</td>
+<td>Subcategoria do serviço</td>
+<td>Não</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>title</td>
+<td>query</td>
+<td>Título do serviço</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+<tr>
+<td>description</td>
+<td>query</td>
+<td>Descrição do serviço</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+<tr>
+<td>visible</td>
+<td>query</td>
+<td>Visibilidade na vitrine da plataforma</td>
+<td>Não</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>active</td>
+<td>query</td>
+<td>Disponibilidade de venda</td>
+<td>Não</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>value</td>
+<td>query</td>
+<td>Valor do serviço</td>
+<td>Sim</td>
+<td>number - float</td>
+</tr>
+<tr>
+<td>deadline</td>
+<td>query</td>
+<td>Prazo de entrega</td>
+<td>Sim</td>
+<td>number - integer</td>
+</tr>
+<tr>
+<td>deadline_type</td>
+<td>query</td>
+<td>Tipo de prazo de entrega</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+<tr>
+<td>images</td>
+<td>query</td>
+<td>Imagens do serviço</td>
+<td>Sim</td>
+<td>array</td>
+</tr>
+<tr>
+<td>location</td>
+<td>query</td>
+<td>Locais onde seu serviço será prestado caso presencial</td>
+<td>Não</td>
+<td>array</td>
+</tr>
+<tr>
+<td>location.*.country</td>
+<td>query</td>
+<td>País onde seu serviço será prestado caso presencial</td>
+<td>Não</td>
+<td>string</td>
+</tr>
+<tr>
+<td>location.*.state</td>
+<td>query</td>
+<td>Estado onde seu serviço será prestado caso presencial</td>
+<td>Não</td>
+<td>string</td>
+</tr>
+<tr>
+<td>location.*.cities</td>
+<td>query</td>
+<td>Cidades onde seu serviço será prestado caso presencial</td>
+<td>Não</td>
+<td>array</td>
+</tr>
+<tr>
+<td>location.*.cities</td>
+<td>query</td>
+<td>Cidade onde seu serviço será prestado caso presencial</td>
+<td>Não</td>
+<td>string</td>
+</tr>
+<tr>
+<td>negotiation</td>
+<td>query</td>
+<td>Disponibilidade de negociação</td>
+<td>Não</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>automatic_start</td>
+<td>query</td>
+<td>Início imediatamente após a compra</td>
+<td>Não</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>value_to_be_discussed</td>
+<td>query</td>
+<td>Valor inicial do serviço a ser discutido</td>
+<td>Sim</td>
+<td>boolean</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Dado não encontrado</td>
+</tr>
+</tbody></table>
+<h2 id='editar-servico'>Editar serviço</h2>
+<p><strong>Description:</strong> Edita um serviço na plataforma através do seu identificador</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">PUT</i>
+        <h6>/jobzz/v1/service/e9e8ac97</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl GET https://example.com/jobzz/v1/service/a66a65a7?page<span class="o">=</span>1&amp;per_page<span class="o">=</span>2
+    -H <span class="s2">"Accept: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span>
+</code></pre>
+<blockquote>
+<p>Exemplo de resposta JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16260</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e9e8ac97"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18115</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"work_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"moderation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cnt_cod"</span><span class="p">:</span><span class="w"> </span><span class="mi">342827</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sub_category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is an example of description"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"visible"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deadline_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"day"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"automatic_start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"/uploads/images/a5/f0/62356680585b9d4d802a666a9d9e.png"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"locations"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"certifications"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"negotiate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"value_to_be_discussed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{}"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-16 14:34:42"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-16 14:34:44"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>work_type</td>
+<td>query</td>
+<td>Tipo do serviço</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+<tr>
+<td>type</td>
+<td>query</td>
+<td>Tipo de cobrança</td>
+<td>Não</td>
+<td>string</td>
+</tr>
+<tr>
+<td>category</td>
+<td>query</td>
+<td>Categoria do serviço</td>
+<td>Não</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>sub_category_id</td>
+<td>query</td>
+<td>Subcategoria do serviço</td>
+<td>Não</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>title</td>
+<td>query</td>
+<td>Título do serviço</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+<tr>
+<td>description</td>
+<td>query</td>
+<td>Descrição do serviço</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+<tr>
+<td>visible</td>
+<td>query</td>
+<td>Visibilidade na vitrine da plataforma</td>
+<td>Não</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>active</td>
+<td>query</td>
+<td>Disponibilidade de venda</td>
+<td>Não</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>value</td>
+<td>query</td>
+<td>Valor do serviço</td>
+<td>Sim</td>
+<td>number - float</td>
+</tr>
+<tr>
+<td>deadline</td>
+<td>query</td>
+<td>Prazo de entrega</td>
+<td>Sim</td>
+<td>number - integer</td>
+</tr>
+<tr>
+<td>deadline_type</td>
+<td>query</td>
+<td>Tipo de prazo de entrega</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+<tr>
+<td>images</td>
+<td>query</td>
+<td>Imagens do serviço</td>
+<td>Sim</td>
+<td>array</td>
+</tr>
+<tr>
+<td>location</td>
+<td>query</td>
+<td>Locais onde seu serviço será prestado caso presencial</td>
+<td>Não</td>
+<td>array</td>
+</tr>
+<tr>
+<td>location.*.country</td>
+<td>query</td>
+<td>País onde seu serviço será prestado caso presencial</td>
+<td>Não</td>
+<td>string</td>
+</tr>
+<tr>
+<td>location.*.state</td>
+<td>query</td>
+<td>Estado onde seu serviço será prestado caso presencial</td>
+<td>Não</td>
+<td>string</td>
+</tr>
+<tr>
+<td>location.*.cities</td>
+<td>query</td>
+<td>Cidades onde seu serviço será prestado caso presencial</td>
+<td>Não</td>
+<td>array</td>
+</tr>
+<tr>
+<td>location.*.cities</td>
+<td>query</td>
+<td>Cidade onde seu serviço será prestado caso presencial</td>
+<td>Não</td>
+<td>string</td>
+</tr>
+<tr>
+<td>negotiation</td>
+<td>query</td>
+<td>Disponibilidade de negociação</td>
+<td>Não</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>automatic_start</td>
+<td>query</td>
+<td>Início imediatamente após a compra</td>
+<td>Não</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>value_to_be_discussed</td>
+<td>query</td>
+<td>Valor inicial do serviço a ser discutido</td>
+<td>Sim</td>
+<td>boolean</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Dado não encontrado</td>
+</tr>
+</tbody></table>
+<h2 id='excluir-servico'>Excluir serviço</h2>
+<p><strong>Description:</strong> Exclui um serviço da plataforma através do seu identificador</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">DELETE</i>
+        <h6>/jobzz/v1/service/e9e8ac97</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl GET https://example.com/jobzz/v1/service/a66a65a7?page<span class="o">=</span>1&amp;per_page<span class="o">=</span>2
+    -H <span class="s2">"Accept: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span>
+</code></pre>
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>Identificador do serviço</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td>Sucesso</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Dado não encontrado</td>
+</tr>
+</tbody></table>
+<h2 id='listar-categorias'>Listar categorias</h2>
+<p><strong>Description:</strong> Lista categorias da plataforma</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">GET</i>
+        <h6>/jobzz/v1/category</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl GET https://example.com/jobzz/v1/category
+    -H <span class="s2">"Accept: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span>
+</code></pre>
+<blockquote>
+<p>Exemplo de resposta JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bc8f7202"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Design e Animação"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-15 14:09:34"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-06 15:29:46"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f286baaf"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finanças"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-15 14:09:34"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-15 14:09:34"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bf0df829"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marketing Digital e Vendas"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-15 14:09:35"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-06 15:30:17"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">207</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eb6d21f6"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Negócios"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-12 10:56:58"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-09 14:50:28"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38d94de6"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saúde e Beleza"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-15 14:09:34"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-06 15:29:08"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a256e48"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sites e Tecnologia"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-15 14:09:35"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-06 15:30:57"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Dado não encontrado</td>
+</tr>
+</tbody></table>
+<h2 id='listar-subcategorias'>Listar subcategorias</h2>
+<p><strong>Description:</strong> Lista subcategorias da plataforma</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">GET</i>
+        <h6>/jobzz/v1/sub_category</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl GET https://example.com/jobzz/v1/sub_category
+    -H <span class="s2">"Accept: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span>
+</code></pre>
+<blockquote>
+<p>Exemplo de resposta JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">106</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b84c0f5b"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fotografia e Edição de Imagens"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-14 12:08:19"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-14 12:08:19"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">82</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ade7dbef"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AudioBook"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-14 09:52:55"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-14 10:02:15"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">81</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"65367aac"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Identidade Visual"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-14 09:52:55"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-14 10:02:15"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3e7c9a5b"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Artes para Rede Social"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-14 09:52:55"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-14 10:02:15"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8f300630"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Locução e Produção de Áudio"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22 14:58:52"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-16 09:00:37"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60a84235"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cartão de Visita"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-26 17:10:08"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-26 17:10:08"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a2147feb"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Criação de Logo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-15 14:09:37"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-06 15:32:56"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9ac68854"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Produção e Edição de Vídeo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-15 14:09:36"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-16 09:00:37"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>category_id</td>
+<td>path</td>
+<td>Identificador da categoria</td>
+<td>Sim</td>
+<td>number - integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Dado não encontrado</td>
+</tr>
+</tbody></table>
+<h2 id='salvar-imagem-na-cdn'>Salvar imagem na CDN</h2>
+<p><strong>Description:</strong> Salva uma imagem na CDN da Eduzz</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">POST</i>
+        <h6>/jobzz/v1/upload/file</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl GET https://example.com/jobzz/v1/upload/file
+    -H <span class="s2">"Accept: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span>
+</code></pre>
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>file</td>
+<td>query</td>
+<td>Imagem do serviço</td>
+<td>Sim</td>
+<td>form-data</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td>Sucesso</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Requisição mal formada</td>
 </tr>
 </tbody></table>
 
