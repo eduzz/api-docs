@@ -337,7 +337,7 @@ curl GET https://example.com/jobzz/v1/service/a66a65a7?page=1&per_page=2
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">PUT</i>
-		<h6>/jobzz/v1/service/e9e8ac97</h6>
+		<h6>/jobzz/v1/service/{id}</h6>
 	</div>
 </div>
 
