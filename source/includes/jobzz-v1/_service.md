@@ -35,6 +35,8 @@ A API de serviços que permite gerenciar conteúdos.
 
 ## Serviço - Propriedade das categorias ##
 
+| Atributo | Tipo de dado | Descrição
+| --------- | ---- | ----------------------------------------------|
 `id` |  number - integer | Identificador da categoria
 `key` |  string | Chave da categoria
 `name` |  string | Nome da categoria
@@ -44,6 +46,8 @@ A API de serviços que permite gerenciar conteúdos.
 
 ## Serviço - Propriedade das subcategorias ##
 
+| Atributo | Tipo de dado | Descrição
+| --------- | ---- | ----------------------------------------------|
 `id` |  number - integer | Identificador da subcategoria
 `key` |  string | Chave da subcategoria
 `category_id` |  number - integer | Identificador da categoria
@@ -54,6 +58,8 @@ A API de serviços que permite gerenciar conteúdos.
 
 ## Serviço - Propriedade das imagens ##
 
+| Atributo | Tipo de dado | Descrição
+| --------- | ---- | ----------------------------------------------|
 `url` | string | Url da imagem na cdn da Eduzz  
 
 ## Listar meus serviços
