@@ -1466,22 +1466,102 @@
 </tr>
 </tbody></table>
 <h2 id='servico-propriedade-das-categorias'>Serviço - Propriedade das categorias</h2>
-<p><code>id</code> |  number - integer | Identificador da categoria
-<code>key</code> |  string | Chave da categoria
-<code>name</code> |  string | Nome da categoria
-<code>created</code> |  string - date-time | Data de criação da categoria
-<code>modified</code> |  string - date-time | Data da última modificação da categoria
-<code>deleted</code> |  string - date-time | Data de exclusão da categoria</p>
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo de dado</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>number - integer</td>
+<td>Identificador da categoria</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td>string</td>
+<td>Chave da categoria</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Nome da categoria</td>
+</tr>
+<tr>
+<td><code>created</code></td>
+<td>string - date-time</td>
+<td>Data de criação da categoria</td>
+</tr>
+<tr>
+<td><code>modified</code></td>
+<td>string - date-time</td>
+<td>Data da última modificação da categoria</td>
+</tr>
+<tr>
+<td><code>deleted</code></td>
+<td>string - date-time</td>
+<td>Data de exclusão da categoria</td>
+</tr>
+</tbody></table>
 <h2 id='servico-propriedade-das-subcategorias'>Serviço - Propriedade das subcategorias</h2>
-<p><code>id</code> |  number - integer | Identificador da subcategoria
-<code>key</code> |  string | Chave da subcategoria
-<code>category_id</code> |  number - integer | Identificador da categoria
-<code>name</code> |  string | Nome da subcategoria
-<code>created</code> |  string - date-time | Data de criação da subcategoria
-<code>modified</code> |  string - date-time | Data da última modificação da subcategoria
-<code>deleted</code> |  string - date-time | Data de exclusão da subcategoria</p>
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo de dado</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>number - integer</td>
+<td>Identificador da subcategoria</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td>string</td>
+<td>Chave da subcategoria</td>
+</tr>
+<tr>
+<td><code>category_id</code></td>
+<td>number - integer</td>
+<td>Identificador da categoria</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Nome da subcategoria</td>
+</tr>
+<tr>
+<td><code>created</code></td>
+<td>string - date-time</td>
+<td>Data de criação da subcategoria</td>
+</tr>
+<tr>
+<td><code>modified</code></td>
+<td>string - date-time</td>
+<td>Data da última modificação da subcategoria</td>
+</tr>
+<tr>
+<td><code>deleted</code></td>
+<td>string - date-time</td>
+<td>Data de exclusão da subcategoria</td>
+</tr>
+</tbody></table>
 <h2 id='servico-propriedade-das-imagens'>Serviço - Propriedade das imagens</h2>
-<p><code>url</code> | string | Url da imagem na cdn da Eduzz  </p>
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo de dado</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>url</code></td>
+<td>string</td>
+<td>Url da imagem na cdn da Eduzz</td>
+</tr>
+</tbody></table>
 <h2 id='listar-meus-servicos'>Listar meus serviços</h2>
 <p><strong>Description:</strong> Lista os servicos criados por mim</p>
 <h3 id='http-request'>HTTP Request</h3>
@@ -1934,7 +2014,7 @@
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-post">PUT</i>
-        <h6>/jobzz/v1/service/e9e8ac97</h6>
+        <h6>/jobzz/v1/service/{id}</h6>
     </div>
 </div>
 <pre class="highlight shell tab-shell"><code>curl GET https://example.com/jobzz/v1/service/a66a65a7?page<span class="o">=</span>1&amp;per_page<span class="o">=</span>2
