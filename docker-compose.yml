@@ -1,0 +1,10 @@
+version: "3"
+services:
+  api-docs:
+    build:
+      dockerfile: ./docker/Dockerfile
+      context: .
+    ports:
+      - 4567:4567
+    volumes:
+      - ./source:/usr/src/app/source
