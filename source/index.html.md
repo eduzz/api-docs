@@ -14,6 +14,8 @@ includes:
   - blinket-v1/event
   - blinket-v1/my-tickets
   - jobzz-v1/service
+  - nutror-v1/certificates-learner
+  - nutror-v1/courses-learner
 
-search: false
+search: true
 ---
