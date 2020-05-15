@@ -200,7 +200,7 @@
     </style>
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all_nosearch.js"></script>
+      <script src="javascripts/all.js"></script>
   </head>
 
   <body class="index" data-languages="[&quot;shell&quot;]">
@@ -217,6 +217,10 @@
         <div class="lang-selector">
               <a href="#" data-language-name="shell">cURL</a>
         </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#introducao" class="toc-h1 toc-link" data-title="Introdução">Introdução</a>
@@ -302,6 +306,31 @@
                   </li>
                   <li>
                     <a href="#salvar-imagem-na-cdn" class="toc-h2 toc-link" data-title="Salvar imagem na CDN">Salvar imagem na CDN</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#nutror-certificados-do-aluno" class="toc-h1 toc-link" data-title="Nutror: Certificados do aluno">Nutror: Certificados do aluno</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#propriedades-da-lisagem" class="toc-h2 toc-link" data-title="Propriedades da lisagem">Propriedades da lisagem</a>
+                  </li>
+                  <li>
+                    <a href="#listar-certificados-do-aluno" class="toc-h2 toc-link" data-title="Listar certificados do aluno">Listar certificados do aluno</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#nutror-cursos-do-aluno" class="toc-h1 toc-link" data-title="Nutror: Cursos do aluno">Nutror: Cursos do aluno</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#propriedades-da-lisagem" class="toc-h2 toc-link" data-title="Propriedades da lisagem">Propriedades da lisagem</a>
+                  </li>
+                  <li>
+                    <a href="#tipos-de-curso" class="toc-h2 toc-link" data-title="Tipos de curso">Tipos de curso</a>
+                  </li>
+                  <li>
+                    <a href="#listar-cursos-do-aluno" class="toc-h2 toc-link" data-title="Listar cursos do aluno">Listar cursos do aluno</a>
                   </li>
               </ul>
           </li>
@@ -2233,7 +2262,7 @@
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-post">DELETE</i>
-        <h6>/jobzz/v1/service/e9e8ac97</h6>
+        <h6>/jobzz/v1/service/{id}</h6>
     </div>
 </div>
 <pre class="highlight shell tab-shell"><code>curl GET https://example.com/jobzz/v1/service/a66a65a7?page<span class="o">=</span>1&amp;per_page<span class="o">=</span>2
@@ -2537,6 +2566,456 @@
 <tr>
 <td>400</td>
 <td>Requisição mal formada</td>
+</tr>
+</tbody></table>
+<h1 id='nutror-certificados-do-aluno'>Nutror: Certificados do aluno</h1>
+<p>API de listagem de certificados do aluno.</p>
+<h2 id='propriedades-da-lisagem'>Propriedades da lisagem</h2>
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo de dado</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>Link do certificado para download</td>
+</tr>
+<tr>
+<td>course_image</td>
+<td>string</td>
+<td>Link da imagem do curso</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>Título do curso</td>
+</tr>
+</tbody></table>
+<h2 id='listar-certificados-do-aluno'>Listar certificados do aluno</h2>
+<p><strong>Description:</strong> Lista de certificados</p>
+<h3 id='http-request'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">GET</i>
+        <h6>/nutror/v1/certificates</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl GET https://example.com/nutror/v1/certificates?page<span class="o">=</span>1&amp;items_per_page<span class="o">=</span>1
+    -H <span class="s2">"Accept: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span>
+</code></pre>
+<blockquote>
+<p>Exemplo de resposta JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"items_per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"total_items"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.nutror.com/assets/img/logo.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"course_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.nutror.com/assets/img/logo.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Curso"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>query</td>
+<td>Número da página referente a paginação</td>
+<td>Não</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>items_per_page</td>
+<td>query</td>
+<td>Items por página</td>
+<td>Não</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+</tr>
+</tbody></table>
+<h1 id='nutror-cursos-do-aluno'>Nutror: Cursos do aluno</h1>
+<p>API de listagem de cursos do aluno.</p>
+<h2 id='propriedades-da-lisagem'>Propriedades da lisagem</h2>
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo de dado</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>Identificador do curso</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>string</td>
+<td>Título do curso</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>Tipo do curso. Veja <a href="#tipos-de-curso">Tipos de curso</a></td>
+</tr>
+<tr>
+<td><code>logo</code></td>
+<td>string</td>
+<td>Link do logo</td>
+</tr>
+<tr>
+<td><code>slug</code></td>
+<td>string</td>
+<td>Slug</td>
+</tr>
+<tr>
+<td><code>published</code></td>
+<td>boolean</td>
+<td>Se o curso esta publicado</td>
+</tr>
+<tr>
+<td><code>hash</code></td>
+<td>string</td>
+<td>Hash do curso</td>
+</tr>
+<tr>
+<td><code>release_at</code></td>
+<td>string - date-time</td>
+<td>Data de liberação (formato: UTC)</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>string</td>
+<td>Estado do aluno no curso. Veja <a href="#estado-do-aluno-no-curso">Estado do aluno no curso</a></td>
+</tr>
+<tr>
+<td><code>link</code></td>
+<td>string</td>
+<td>Link do curso no Nutror</td>
+</tr>
+<tr>
+<td><code>producer.id</code></td>
+<td>integer</td>
+<td>Identificador do produtor</td>
+</tr>
+<tr>
+<td><code>producer.name</code></td>
+<td>string</td>
+<td>Nome do produtor</td>
+</tr>
+<tr>
+<td><code>producer.avatar</code></td>
+<td>string</td>
+<td>Link da imagem do avatar do produtor</td>
+</tr>
+<tr>
+<td><code>category.id</code></td>
+<td>integer</td>
+<td>Identificador da categoria</td>
+</tr>
+<tr>
+<td><code>category.name</code></td>
+<td>string</td>
+<td>Nome da categoria</td>
+</tr>
+<tr>
+<td><code>author.id</code></td>
+<td>integer</td>
+<td>Identificador do autor</td>
+</tr>
+<tr>
+<td><code>author.name</code></td>
+<td>string</td>
+<td>Nome do autor</td>
+</tr>
+<tr>
+<td><code>author.avatar</code></td>
+<td>string</td>
+<td>Link da imagem do avatar do autor</td>
+</tr>
+<tr>
+<td><code>author.description</code></td>
+<td>string</td>
+<td>Descrição do autor</td>
+</tr>
+<tr>
+<td><code>customization.header_background_color</code></td>
+<td>string</td>
+<td>Cor do cabeçalho</td>
+</tr>
+<tr>
+<td><code>customization.image_cover</code></td>
+<td>string</td>
+<td>Link da imagem do banner de capa</td>
+</tr>
+<tr>
+<td><code>customization.title_color</code></td>
+<td>string</td>
+<td>Cor do título</td>
+</tr>
+<tr>
+<td><code>customization.header_link_color</code></td>
+<td>string</td>
+<td>Cor dos links do cabeçalho</td>
+</tr>
+<tr>
+<td><code>customization.avatar</code></td>
+<td>string</td>
+<td>Link da imagem de identificação</td>
+</tr>
+<tr>
+<td><code>customization.cover_background_color</code></td>
+<td>string</td>
+<td>Cor de fundo</td>
+</tr>
+<tr>
+<td><code>customization.logo_login</code></td>
+<td>string</td>
+<td>Link da imagem do logo para o login</td>
+</tr>
+<tr>
+<td><code>customization.login_background_image</code></td>
+<td>string</td>
+<td>Link da imagem do de fundo para o login</td>
+</tr>
+<tr>
+<td><code>customization.theme</code></td>
+<td>integer</td>
+<td>Tema</td>
+</tr>
+<tr>
+<td><code>customization.layout</code></td>
+<td>boolean</td>
+<td>Se o curso esta usando o layout novo</td>
+</tr>
+<tr>
+<td><code>customization.description_color</code></td>
+<td>string</td>
+<td>Cor da descrição</td>
+</tr>
+<tr>
+<td><code>customizations.header_background_color</code></td>
+<td>string</td>
+<td>Cor do cabeçalho</td>
+</tr>
+<tr>
+<td><code>customizations.image_cover</code></td>
+<td>string</td>
+<td>Link da imagem do banner de capa</td>
+</tr>
+<tr>
+<td><code>customizations.title_color</code></td>
+<td>string</td>
+<td>Cor do título</td>
+</tr>
+<tr>
+<td><code>customizations.header_link_color</code></td>
+<td>string</td>
+<td>Cor dos links do cabeçalho</td>
+</tr>
+<tr>
+<td><code>customizations.avatar</code></td>
+<td>string</td>
+<td>Link da imagem de identificação</td>
+</tr>
+<tr>
+<td><code>customizations.cover_background_color</code></td>
+<td>string</td>
+<td>Cor de fundo</td>
+</tr>
+<tr>
+<td><code>customizations.logo_login</code></td>
+<td>string</td>
+<td>Link da imagem do logo para o login</td>
+</tr>
+<tr>
+<td><code>customizations.login_background_image</code></td>
+<td>string</td>
+<td>Link da imagem do de fundo para o login</td>
+</tr>
+<tr>
+<td><code>customizations.theme</code></td>
+<td>integer</td>
+<td>Tema</td>
+</tr>
+<tr>
+<td><code>customizations.layout</code></td>
+<td>boolean</td>
+<td>Se o curso esta usando o layout novo</td>
+</tr>
+<tr>
+<td><code>customizations.description_color</code></td>
+<td>string</td>
+<td>Cor da descrição</td>
+</tr>
+</tbody></table>
+<h2 id='tipos-de-curso'>Tipos de curso</h2>
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>course</code></td>
+<td>Curso</td>
+</tr>
+<tr>
+<td><code>club</code></td>
+<td>Portal de recorrência</td>
+</tr>
+<tr>
+<td><code>package</code></td>
+<td>Pacote</td>
+</tr>
+</tbody></table>
+<h2 id='listar-cursos-do-aluno'>Listar cursos do aluno</h2>
+<p><strong>Description:</strong> Lista de cursos</p>
+<h3 id='http-request'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">GET</i>
+        <h6>/nutror/v1/courses</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl GET https://example.com/nutror/v1/courses?page<span class="o">=</span>1&amp;items_per_page<span class="o">=</span>1
+    -H <span class="s2">"Accept: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span>
+</code></pre>
+<blockquote>
+<p>Exemplo de resposta JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"items_per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_items"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123213</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Curso"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"course"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.nutror.com/assets/img/logo.png"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"curso"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"published"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gs17692ge6g12"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"release_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-14T20:18:32Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"learner"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cursos.nutror.com/curso/gs17692ge6g12/curso"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"producer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">167123490</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Produtor"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.nutror.com/assets/img/logo.png"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"customization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"header_background_color"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"image_cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.nutror.com/assets/img/logo.png"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"title_color"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"header_link_color"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.nutror.com/assets/img/logo.png"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"cover_background_color"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"logo_login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.nutror.com/assets/img/logo.png"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"login_background_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.nutror.com/assets/img/logo.png"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"theme"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"layout"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"description_color"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"customizations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"header_background_color"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"image_cover"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.nutror.com/assets/img/logo.png"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"title_color"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"header_link_color"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.nutror.com/assets/img/logo.png"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"cover_background_color"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"logo_login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.nutror.com/assets/img/logo.png"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"login_background_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.nutror.com/assets/img/logo.png"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"theme"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"layout"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"description_color"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">513123126</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nome da categoria"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">45453</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nome do autor"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.nutror.com/assets/img/logo.png"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Descrição do autor"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>query</td>
+<td>Número da página referente a paginação</td>
+<td>Não</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>items_per_page</td>
+<td>query</td>
+<td>Items por página</td>
+<td>Não</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
 </tr>
 </tbody></table>
 
