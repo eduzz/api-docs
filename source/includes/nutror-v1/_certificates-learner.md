@@ -2,7 +2,7 @@
 
 API de listagem de certificados do aluno.
 
-## Propriedades da lisagem ##
+## Propriedades da listagem ##
 
 | Atributo     | Tipo de dado | Descrição                         |
 |--------------|--------------|-----------------------------------|

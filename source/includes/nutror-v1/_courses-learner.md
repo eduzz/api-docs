@@ -2,14 +2,14 @@
 
 API de listagem de cursos do aluno.
 
-## Propriedades da lisagem ##
+## Propriedades da listagem ##
 
 | Atributo                                 | Tipo de dado       | Descrição                                                                            |
 |------------------------------------------|--------------------|--------------------------------------------------------------------------------------|
 | `id`                                     | integer            | Identificador do curso                                                               |
 | `title`                                  | string             | Título do curso                                                                      |
 | `type`                                   | string             | Tipo do curso. Veja [Tipos de curso](#tipos-de-curso)                                |
-| `logo`                                   | string             | Link do logo                                                                          |
+| `logo`                                   | string             | Link do logo                                                                         |
 | `slug`                                   | string             | Slug                                                                                 |
 | `published`                              | boolean            | Se o curso esta publicado                                                            |
 | `hash`                                   | string             | Hash do curso                                                                        |
