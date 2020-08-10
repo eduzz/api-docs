@@ -23,7 +23,7 @@ POST: https://accounts-api.eduzz.com/oauth/token
 
 Body: {
   "client_id": "{appId}",
-  "client_secret": "appSecret",
+  "client_secret": "{appSecret}",
   "code": "{code}",
   "grant_type": "authorization_code"
 }
