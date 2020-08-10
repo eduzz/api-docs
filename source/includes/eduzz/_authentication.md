@@ -29,4 +29,18 @@ Body: {
 }
 ```
 
-4. Após este envio você receberá uma resposta contento um token que deverá ser armazenado em sua base de dados e utilizado para obter os dados do cliente.
+4. Após este envio você receberá uma resposta contento um token que deverá ser armazenado em sua base de dados e utilizado para obter os dados do cliente. ex:
+
+```
+{
+    "token_type": "bearer",
+    "access_token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "user": {
+        "id": "ffffffff-ffff-ffff-ffff-e1102821d3ef",
+        "eduzzId": 0,
+        "nutrorId": 0,
+        "name": "Fulano da Silva",
+        "email": "fulano@ciclano.com"
+    }
+}
+```
