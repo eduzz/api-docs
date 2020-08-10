@@ -313,7 +313,7 @@
             <a href="#nutror-certificados-do-aluno" class="toc-h1 toc-link" data-title="Nutror: Certificados do aluno">Nutror: Certificados do aluno</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#propriedades-da-lisagem" class="toc-h2 toc-link" data-title="Propriedades da lisagem">Propriedades da lisagem</a>
+                    <a href="#propriedades-da-listagem" class="toc-h2 toc-link" data-title="Propriedades da listagem">Propriedades da listagem</a>
                   </li>
                   <li>
                     <a href="#listar-certificados-do-aluno" class="toc-h2 toc-link" data-title="Listar certificados do aluno">Listar certificados do aluno</a>
@@ -324,13 +324,24 @@
             <a href="#nutror-cursos-do-aluno" class="toc-h1 toc-link" data-title="Nutror: Cursos do aluno">Nutror: Cursos do aluno</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#propriedades-da-lisagem" class="toc-h2 toc-link" data-title="Propriedades da lisagem">Propriedades da lisagem</a>
+                    <a href="#propriedades-da-listagem" class="toc-h2 toc-link" data-title="Propriedades da listagem">Propriedades da listagem</a>
                   </li>
                   <li>
                     <a href="#tipos-de-curso" class="toc-h2 toc-link" data-title="Tipos de curso">Tipos de curso</a>
                   </li>
                   <li>
                     <a href="#listar-cursos-do-aluno" class="toc-h2 toc-link" data-title="Listar cursos do aluno">Listar cursos do aluno</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#orbita-vendas" class="toc-h1 toc-link" data-title="Órbita: Vendas">Órbita: Vendas</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#listar-vendas" class="toc-h2 toc-link" data-title="Listar vendas">Listar vendas</a>
+                  </li>
+                  <li>
+                    <a href="#retornar-uma-venda" class="toc-h2 toc-link" data-title="Retornar uma venda">Retornar uma venda</a>
                   </li>
               </ul>
           </li>
@@ -346,8 +357,47 @@
         <h1 id='introducao'>Introdução</h1>
 <p>Eduzz API REST</p>
 <h1 id='autenticacao'>Autenticação</h1>
-<p>Eduzz OAUTH</p>
-<h1 id='blinket-eventos'>Blinket: Eventos</h1>
+<p>A API da Eduzz usa Oauth2 como meio de autenticação.</p>
+
+<p>Para gerar o token siga o fluxo abaixo</p>
+
+<ol>
+<li>Redirecione o usuário para o endpoint de autorização, passando o seu id de aplicativo (appId) e a URL de retorno (redirectUrl).</li>
+</ol>
+<pre class="highlight plaintext"><code>https://accounts.eduzz.com/oauth/authorize?client_id={appId}&amp;redirect_uri={redirectUrl}
+</code></pre>
+<ol>
+<li>Após o usuário autorizar seu aplicativo, o sistema irá redirecioná-lo para o seu site, ex:</li>
+</ol>
+<pre class="highlight plaintext"><code>{redirectUrl}?code=the_authorization_code
+</code></pre>
+<ol>
+<li>Para terminar o fluxo de autenticação, você precisará enviar uma requisição para a api do Eduzz accounts enviando o code, seu id de aplicativo (appId) e o seu secret (appSecret)</li>
+</ol>
+<pre class="highlight plaintext"><code>POST: https://accounts-api.eduzz.com/oauth/token
+
+Body: {
+  "client_id": "{appId}",
+  "client_secret": "{appSecret}",
+  "code": "{code}",
+  "grant_type": "authorization_code"
+}
+</code></pre>
+<ol>
+<li>Após este envio você receberá uma resposta contento um token que deverá ser armazenado em sua base de dados e utilizado para obter os dados do cliente. ex:</li>
+</ol>
+<pre class="highlight plaintext"><code>{
+    "token_type": "bearer",
+    "access_token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "user": {
+        "id": "ffffffff-ffff-ffff-ffff-e1102821d3ef",
+        "eduzzId": 0,
+        "nutrorId": 0,
+        "name": "Fulano da Silva",
+        "email": "fulano@ciclano.com"
+    }
+}
+</code></pre><h1 id='blinket-eventos'>Blinket: Eventos</h1>
 <p>A API de eventos do Blinket permite visualizar os dados do evento.</p>
 <h2 id='propriedades-do-evento'>Propriedades do evento</h2>
 <table><thead>
@@ -2570,7 +2620,7 @@
 </tbody></table>
 <h1 id='nutror-certificados-do-aluno'>Nutror: Certificados do aluno</h1>
 <p>API de listagem de certificados do aluno.</p>
-<h2 id='propriedades-da-lisagem'>Propriedades da lisagem</h2>
+<h2 id='propriedades-da-listagem'>Propriedades da listagem</h2>
 <table><thead>
 <tr>
 <th>Atributo</th>
@@ -2666,7 +2716,7 @@
 </tbody></table>
 <h1 id='nutror-cursos-do-aluno'>Nutror: Cursos do aluno</h1>
 <p>API de listagem de cursos do aluno.</p>
-<h2 id='propriedades-da-lisagem'>Propriedades da lisagem</h2>
+<h2 id='propriedades-da-listagem'>Propriedades da listagem</h2>
 <table><thead>
 <tr>
 <th>Atributo</th>
@@ -3016,6 +3066,684 @@
 <tr>
 <td>200</td>
 <td>Sucesso</td>
+</tr>
+</tbody></table>
+<h1 id='orbita-vendas'>Órbita: Vendas</h1>
+<p>A API de vendas do Órbita permite visualizar os dados das vendas.</p>
+<h2 id='listar-vendas'>Listar vendas</h2>
+<p><strong>Description:</strong> Liste as vendas que você efetuou</p>
+<h3 id='http-request'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">GET</i>
+        <h6>/orbita/v1/sales</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl GET https://example.com/orbita/v1/sales?start_date<span class="o">=</span>2020-01-01&amp;end_date<span class="o">=</span>2020-01-07 <span class="se">\</span>
+    -H <span class="s2">"Accept: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span>
+</code></pre>
+<blockquote>
+<p>Exemplo de resposta JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">57</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"items_per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"total_items"</span><span class="p">:</span><span class="w"> </span><span class="mi">1402</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123321</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-08-09T02:54:38Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"paid_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-08-09T02:54:41Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discount_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_recover"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_infinite_funnel"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"gross_gain"</span><span class="p">:</span><span class="w"> </span><span class="mf">480.09</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"net_gain"</span><span class="p">:</span><span class="w"> </span><span class="mf">480.09</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"affiliate_gain"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fee_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">-18.91</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"others_fees_values"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">499</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total_interest_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">499</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"refund_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mastercard"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123321</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nome do Cliente"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"emaildocliente@dominio.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X99999999999"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cellphone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11999999999"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"producer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nome do Produtor"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"affiliate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nome do Afiliado"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"main_content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">99999999</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nome do Conteúdo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SKU_Conteudo"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paga"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"utm_source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"utm_source"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"utm_campaign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"utm_campaign"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"utm_medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"utm_medium"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"utm_content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"utm_content"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tracker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trk"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tracker2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trk2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tracker3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tr3"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo de dado</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>Identificador da venda</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>string - date-time</td>
+<td>Data de criação da venda</td>
+</tr>
+<tr>
+<td><code>paid_at</code></td>
+<td>string - date-time</td>
+<td>Data de pagamento da venda</td>
+</tr>
+<tr>
+<td><code>discount_amount</code></td>
+<td>number - float</td>
+<td>Valor do desconto</td>
+</tr>
+<tr>
+<td><code>is_recover</code></td>
+<td>boolean</td>
+<td>Se foi uma venda recuperada</td>
+</tr>
+<tr>
+<td><code>is_infinite_funnel</code></td>
+<td>boolean</td>
+<td>Se foi uma venda por funil infinito</td>
+</tr>
+<tr>
+<td><code>gross_gain</code></td>
+<td>number - float</td>
+<td>Ganho bruto da venda</td>
+</tr>
+<tr>
+<td><code>net_gain</code></td>
+<td>number - float</td>
+<td>Ganho líquido da venda</td>
+</tr>
+<tr>
+<td><code>affiliate_gain</code></td>
+<td>number - float</td>
+<td>Ganho líquido do afiliado</td>
+</tr>
+<tr>
+<td><code>fee_value</code></td>
+<td>number - float</td>
+<td>Taxa da Eduzz sobre a venda</td>
+</tr>
+<tr>
+<td><code>others_fees_values</code></td>
+<td>number - float</td>
+<td>Outras valores</td>
+</tr>
+<tr>
+<td><code>total_value</code></td>
+<td>number - float</td>
+<td>Valor total da venda</td>
+</tr>
+<tr>
+<td><code>total_interest_value</code></td>
+<td>number - float</td>
+<td>Valor total da venda com juros</td>
+</tr>
+<tr>
+<td><code>refund_value</code></td>
+<td>number - float</td>
+<td>Valor de reembolso</td>
+</tr>
+<tr>
+<td><code>payment_method</code></td>
+<td>string</td>
+<td>Descrição do método de pagamento</td>
+</tr>
+<tr>
+<td><code>client.id</code></td>
+<td>integer</td>
+<td>Identificador do cliente</td>
+</tr>
+<tr>
+<td><code>client.name</code></td>
+<td>string</td>
+<td>Nome do cliente</td>
+</tr>
+<tr>
+<td><code>client.email</code></td>
+<td>string</td>
+<td>E-mail do cliente</td>
+</tr>
+<tr>
+<td><code>client.document</code></td>
+<td>string</td>
+<td>Documento do cliente</td>
+</tr>
+<tr>
+<td><code>client.cellphone</code></td>
+<td>string</td>
+<td>Celular do cliente</td>
+</tr>
+<tr>
+<td><code>producer.name</code></td>
+<td>string</td>
+<td>Nome do Produtor</td>
+</tr>
+<tr>
+<td><code>affiliate.name</code></td>
+<td>string</td>
+<td>Nome do Afiliado</td>
+</tr>
+<tr>
+<td><code>main_content.id</code></td>
+<td>integer</td>
+<td>Identificador do principal conteúdo da venda</td>
+</tr>
+<tr>
+<td><code>main_content.name</code></td>
+<td>string</td>
+<td>Nome do principal conteúdo da venda</td>
+</tr>
+<tr>
+<td><code>main_content.sku</code></td>
+<td>string</td>
+<td>SKU do princiupal conteúdo da venda</td>
+</tr>
+<tr>
+<td><code>status.name</code></td>
+<td>string</td>
+<td>Descrição do status da venda</td>
+</tr>
+<tr>
+<td><code>utm_source</code></td>
+<td>string</td>
+<td>UTM Source da venda</td>
+</tr>
+<tr>
+<td><code>utm_campaign</code></td>
+<td>string</td>
+<td>UTM Campaign da venda</td>
+</tr>
+<tr>
+<td><code>utm_medium</code></td>
+<td>string</td>
+<td>UTM Medium da venda</td>
+</tr>
+<tr>
+<td><code>utm_content</code></td>
+<td>string</td>
+<td>UTM Content</td>
+</tr>
+<tr>
+<td><code>tracker</code></td>
+<td>string</td>
+<td>Tracker da venda</td>
+</tr>
+<tr>
+<td><code>tracker2</code></td>
+<td>string</td>
+<td>Tracker 2 da venda</td>
+</tr>
+<tr>
+<td><code>tracker3</code></td>
+<td>string</td>
+<td>Tracker 3 da venda</td>
+</tr>
+</tbody></table>
+
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>start_date</td>
+<td>query</td>
+<td>Data inicial para listar as vendas</td>
+<td>Sim</td>
+<td>string - date</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>query</td>
+<td>Data final para listar as vendas</td>
+<td>Sim</td>
+<td>string - date</td>
+</tr>
+<tr>
+<td>page</td>
+<td>query</td>
+<td>Número da página referente a paginação</td>
+<td>Não</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>query</td>
+<td>Registros por página (max 25)</td>
+<td>Não</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+</tr>
+</tbody></table>
+<h2 id='retornar-uma-venda'>Retornar uma venda</h2>
+<p><strong>Description:</strong> Retorna uma venda que você efetuou</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">GET</i>
+        <h6>/orbita/v1/sales/{id}</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl GET https://example.com/orbita/v1/sales/123321 <span class="se">\</span>
+    -H <span class="s2">"Accept: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span>
+</code></pre>
+<blockquote>
+<p>Exemplo de resposta JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123321</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-08-09T02:54:38Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"paid_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-08-09T02:54:41Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"discount_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_recover"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_infinite_funnel"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"gross_gain"</span><span class="p">:</span><span class="w"> </span><span class="mf">480.09</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"net_gain"</span><span class="p">:</span><span class="w"> </span><span class="mf">480.09</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"affiliate_gain"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fee_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">-18.91</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"others_fees_values"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"total_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">499</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"total_interest_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">499</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"refund_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mastercard"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"client"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123321</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nome do Cliente"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"emaildocliente@dominio.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X99999999999"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cellphone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11999999999"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"producer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nome do Produtor"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"affiliate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nome do Afiliado"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"main_content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">99999999</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nome do Conteúdo"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SKU_Conteudo"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paga"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"utm_source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"utm_source"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"utm_campaign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"utm_campaign"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"utm_medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"utm_medium"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"utm_content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"utm_content"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tracker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trk"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tracker2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trk2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tracker3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tr3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Descrição do Item da Venda"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Infoproduto"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SKU_Item"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_bump"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">79.2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coupon_key"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"gross_gain"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"net_gain"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"partner_gain"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">79.2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total_interest_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">79.2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fee_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"anticipation_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"others_fees_values"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo de dado</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>Identificador da venda</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>string - date-time</td>
+<td>Data de criação da venda</td>
+</tr>
+<tr>
+<td><code>paid_at</code></td>
+<td>string - date-time</td>
+<td>Data de pagamento da venda</td>
+</tr>
+<tr>
+<td><code>discount_amount</code></td>
+<td>number - float</td>
+<td>Valor do desconto</td>
+</tr>
+<tr>
+<td><code>is_recover</code></td>
+<td>boolean</td>
+<td>Se foi uma venda recuperada</td>
+</tr>
+<tr>
+<td><code>is_infinite_funnel</code></td>
+<td>boolean</td>
+<td>Se foi uma venda por funil infinito</td>
+</tr>
+<tr>
+<td><code>gross_gain</code></td>
+<td>number - float</td>
+<td>Ganho bruto da venda</td>
+</tr>
+<tr>
+<td><code>net_gain</code></td>
+<td>number - float</td>
+<td>Ganho líquido da venda</td>
+</tr>
+<tr>
+<td><code>affiliate_gain</code></td>
+<td>number - float</td>
+<td>Ganho líquido do afiliado</td>
+</tr>
+<tr>
+<td><code>fee_value</code></td>
+<td>number - float</td>
+<td>Taxa da Eduzz sobre a venda</td>
+</tr>
+<tr>
+<td><code>others_fees_values</code></td>
+<td>number - float</td>
+<td>Outras valores</td>
+</tr>
+<tr>
+<td><code>total_value</code></td>
+<td>number - float</td>
+<td>Valor total da venda</td>
+</tr>
+<tr>
+<td><code>total_interest_value</code></td>
+<td>number - float</td>
+<td>Valor total da venda com juros</td>
+</tr>
+<tr>
+<td><code>refund_value</code></td>
+<td>number - float</td>
+<td>Valor de reembolso</td>
+</tr>
+<tr>
+<td><code>payment_method</code></td>
+<td>string</td>
+<td>Descrição do método de pagamento</td>
+</tr>
+<tr>
+<td><code>client.id</code></td>
+<td>integer</td>
+<td>Identificador do cliente</td>
+</tr>
+<tr>
+<td><code>client.name</code></td>
+<td>string</td>
+<td>Nome do cliente</td>
+</tr>
+<tr>
+<td><code>client.email</code></td>
+<td>string</td>
+<td>E-mail do cliente</td>
+</tr>
+<tr>
+<td><code>client.document</code></td>
+<td>string</td>
+<td>Documento do cliente</td>
+</tr>
+<tr>
+<td><code>client.cellphone</code></td>
+<td>string</td>
+<td>Celular do cliente</td>
+</tr>
+<tr>
+<td><code>producer.name</code></td>
+<td>string</td>
+<td>Nome do Produtor</td>
+</tr>
+<tr>
+<td><code>affiliate.name</code></td>
+<td>string</td>
+<td>Nome do Afiliado</td>
+</tr>
+<tr>
+<td><code>main_content.id</code></td>
+<td>integer</td>
+<td>Identificador do principal conteúdo da venda</td>
+</tr>
+<tr>
+<td><code>main_content.name</code></td>
+<td>string</td>
+<td>Nome do principal conteúdo da venda</td>
+</tr>
+<tr>
+<td><code>main_content.sku</code></td>
+<td>string</td>
+<td>SKU do princiupal conteúdo da venda</td>
+</tr>
+<tr>
+<td><code>status.name</code></td>
+<td>string</td>
+<td>Descrição do status da venda</td>
+</tr>
+<tr>
+<td><code>utm_source</code></td>
+<td>string</td>
+<td>UTM Source da venda</td>
+</tr>
+<tr>
+<td><code>utm_campaign</code></td>
+<td>string</td>
+<td>UTM Campaign da venda</td>
+</tr>
+<tr>
+<td><code>utm_medium</code></td>
+<td>string</td>
+<td>UTM Medium da venda</td>
+</tr>
+<tr>
+<td><code>utm_content</code></td>
+<td>string</td>
+<td>UTM Content</td>
+</tr>
+<tr>
+<td><code>tracker</code></td>
+<td>string</td>
+<td>Tracker da venda</td>
+</tr>
+<tr>
+<td><code>tracker2</code></td>
+<td>string</td>
+<td>Tracker 2 da venda</td>
+</tr>
+<tr>
+<td><code>tracker3</code></td>
+<td>string</td>
+<td>Tracker 3 da venda</td>
+</tr>
+<tr>
+<td><code>items.description</code></td>
+<td>string</td>
+<td>Descrição do item</td>
+</tr>
+<tr>
+<td><code>items.type</code></td>
+<td>string</td>
+<td>Tipo do item</td>
+</tr>
+<tr>
+<td><code>items.sku</code></td>
+<td>string</td>
+<td>SKU do item</td>
+</tr>
+<tr>
+<td><code>items.is_bump</code></td>
+<td>boolean</td>
+<td>Se foi o item de Order Bump</td>
+</tr>
+<tr>
+<td><code>items.quantity</code></td>
+<td>integer</td>
+<td>Quantidade do item</td>
+</tr>
+<tr>
+<td><code>items.value</code></td>
+<td>number - float</td>
+<td>Valor unitário do item</td>
+</tr>
+<tr>
+<td><code>items.description</code></td>
+<td>string</td>
+<td>Descrição do item</td>
+</tr>
+<tr>
+<td><code>items.coupon_key</code></td>
+<td>string</td>
+<td>Código de cupom de desconto do item</td>
+</tr>
+<tr>
+<td><code>items.discount</code></td>
+<td>number - float</td>
+<td>Desconto do item</td>
+</tr>
+<tr>
+<td><code>items.gross_gain</code></td>
+<td>number - float</td>
+<td>Ganho bruto do item</td>
+</tr>
+<tr>
+<td><code>items.net_gain</code></td>
+<td>number - float</td>
+<td>Ganho líquido do item</td>
+</tr>
+<tr>
+<td><code>items.partner_gain</code></td>
+<td>number - float</td>
+<td>Ganho do parceiro no item</td>
+</tr>
+<tr>
+<td><code>items.total_value</code></td>
+<td>number - float</td>
+<td>Valor total do item</td>
+</tr>
+<tr>
+<td><code>items.total_interest_value</code></td>
+<td>number - float</td>
+<td>Valor total do item com juros</td>
+</tr>
+<tr>
+<td><code>items.fee_value</code></td>
+<td>number - float</td>
+<td>Valor da taxa sobre o item</td>
+</tr>
+<tr>
+<td><code>items.anticipation_value</code></td>
+<td>number - float</td>
+<td>Valor de antecipação do item</td>
+</tr>
+<tr>
+<td><code>items.others_fees_values</code></td>
+<td>number - float</td>
+<td>Outras taxas sobre o item</td>
+</tr>
+</tbody></table>
+
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>Identificador da venda</td>
+<td>Sim</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Dado não encontrado</td>
 </tr>
 </tbody></table>
 
