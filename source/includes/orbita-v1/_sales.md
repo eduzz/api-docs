@@ -117,12 +117,13 @@ curl GET https://example.com/orbita/v1/sales?start_date=2020-01-01&end_date=2020
 
 **Parâmetros**
 
-| Nome       | Tipo do Parâmetro | Descrição                              | Obrigatório | Tipo de dado  |
-| ---------- | ----------------- | -------------------------------------- | ----------- | ------------- |
-| start_date | query             | Data inicial para listar as vendas     | Sim         | string - date |
-| end_date   | query             | Data final para listar as vendas       | Sim         | string - date |
-| page       | query             | Número da página referente a paginação | Não         | integer       |
-| per_page   | query             | Registros por página (max 25)          | Não         | integer       |
+| Nome       | Tipo do Parâmetro | Descrição                                                             | Obrigatório | Tipo de dado  |
+| ---------- | ----------------- | --------------------------------------------------------------------- | ----------- | ------------- |
+| start_date | query             | Data inicial para listar as vendas                                    | Sim         | string - date |
+| end_date   | query             | Data final para listar as vendas                                      | Sim         | string - date |
+| date_type  | query             | Tipo de data da venda - "creation" (criação) ou "payment" (pagamento) | Não         | integer       |
+| page       | query             | Número da página referente a paginação                                | Não         | integer       |
+| per_page   | query             | Registros por página (max 25)                                         | Não         | integer       |
 
 **Respostas**
 
