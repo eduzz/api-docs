@@ -3113,7 +3113,17 @@ Body: {
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nome do Cliente"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"emaildocliente@dominio.com"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X99999999999"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"cellphone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11999999999"</span><span class="w">
+        </span><span class="s2">"foreign_document"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cellphone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11999999999"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BR"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"São Paulo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"neighborhood"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11999999999"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"zipcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Endereço do Cliente"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"addr_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1997"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"addr_complement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"complemento do endereço"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PT"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"producer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nome do Produtor"</span><span class="w">
@@ -3243,9 +3253,59 @@ Body: {
 <td>Documento do cliente</td>
 </tr>
 <tr>
+<td><code>client.foreign_document</code></td>
+<td>string</td>
+<td>Documento Estrangeiro do cliente</td>
+</tr>
+<tr>
 <td><code>client.cellphone</code></td>
 <td>string</td>
 <td>Celular do cliente</td>
+</tr>
+<tr>
+<td><code>client.country</code></td>
+<td>string</td>
+<td>País do cliente</td>
+</tr>
+<tr>
+<td><code>client.state</code></td>
+<td>string</td>
+<td>Estado do cliente</td>
+</tr>
+<tr>
+<td><code>client.city</code></td>
+<td>string</td>
+<td>Cidade do cliente</td>
+</tr>
+<tr>
+<td><code>client.neighborhood</code></td>
+<td>string</td>
+<td>Bairro do cliente</td>
+</tr>
+<tr>
+<td><code>client.zipcode</code></td>
+<td>string</td>
+<td>CEP do cliente</td>
+</tr>
+<tr>
+<td><code>client.street</code></td>
+<td>string</td>
+<td>Rua do cliente</td>
+</tr>
+<tr>
+<td><code>client.addr_number</code></td>
+<td>string</td>
+<td>Número do endereço do cliente</td>
+</tr>
+<tr>
+<td><code>client.addr_complement</code></td>
+<td>string</td>
+<td>Complemento do endereço do cliente</td>
+</tr>
+<tr>
+<td><code>client.language</code></td>
+<td>string</td>
+<td>Idioma do cliente</td>
 </tr>
 <tr>
 <td><code>producer.name</code></td>
@@ -3419,7 +3479,17 @@ Body: {
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nome do Cliente"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"emaildocliente@dominio.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X99999999999"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cellphone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11999999999"</span><span class="w">
+    </span><span class="s2">"foreign_document"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cellphone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11999999999"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"São Paulo"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"neighborhood"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11999999999"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zipcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Endereço do Cliente"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addr_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1997"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addr_complement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"complemento do endereço"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PT"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"producer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nome do Produtor"</span><span class="w">
@@ -3567,9 +3637,59 @@ Body: {
 <td>Documento do cliente</td>
 </tr>
 <tr>
+<td><code>client.foreign_document</code></td>
+<td>string</td>
+<td>Documento Estrangeiro do cliente</td>
+</tr>
+<tr>
 <td><code>client.cellphone</code></td>
 <td>string</td>
 <td>Celular do cliente</td>
+</tr>
+<tr>
+<td><code>client.country</code></td>
+<td>string</td>
+<td>País do cliente</td>
+</tr>
+<tr>
+<td><code>client.state</code></td>
+<td>string</td>
+<td>Estado do cliente</td>
+</tr>
+<tr>
+<td><code>client.city</code></td>
+<td>string</td>
+<td>Cidade do cliente</td>
+</tr>
+<tr>
+<td><code>client.neighborhood</code></td>
+<td>string</td>
+<td>Bairro do cliente</td>
+</tr>
+<tr>
+<td><code>client.zipcode</code></td>
+<td>string</td>
+<td>CEP do cliente</td>
+</tr>
+<tr>
+<td><code>client.street</code></td>
+<td>string</td>
+<td>Rua do cliente</td>
+</tr>
+<tr>
+<td><code>client.addr_number</code></td>
+<td>string</td>
+<td>Número do endereço do cliente</td>
+</tr>
+<tr>
+<td><code>client.addr_complement</code></td>
+<td>string</td>
+<td>Complemento do endereço do cliente</td>
+</tr>
+<tr>
+<td><code>client.language</code></td>
+<td>string</td>
+<td>Idioma do cliente</td>
 </tr>
 <tr>
 <td><code>producer.name</code></td>
