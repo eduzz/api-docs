@@ -89,51 +89,51 @@ curl GET https://example.com/orbita/v1/sales?start_date=2020-01-01&end_date=2020
 }
 ```
 
-| Atributo                  | Tipo de dado       | Descrição                                    |
-| ------------------------- | ------------------ | -------------------------------------------- |
-| `id`                      | integer            | Identificador da venda                       |
-| `created_at`              | string - date-time | Data de criação da venda                     |
-| `paid_at`                 | string - date-time | Data de pagamento da venda                   |
-| `discount_amount`         | number - float     | Valor do desconto                            |
-| `is_recover`              | boolean            | Se foi uma venda recuperada                  |
-| `is_infinite_funnel`      | boolean            | Se foi uma venda por funil infinito          |
-| `gross_gain`              | number - float     | Ganho bruto da venda                         |
-| `net_gain`                | number - float     | Ganho líquido da venda                       |
-| `affiliate_gain`          | number - float     | Ganho líquido do afiliado                    |
-| `fee_value`               | number - float     | Taxa da Eduzz sobre a venda                  |
-| `others_fees_values`      | number - float     | Outras valores                               |
-| `total_value`             | number - float     | Valor total da venda                         |
-| `total_interest_value`    | number - float     | Valor total da venda com juros               |
-| `refund_value`            | number - float     | Valor de reembolso                           |
-| `payment_method`          | string             | Descrição do método de pagamento             |
-| `client.id`               | integer            | Identificador do cliente                     |
-| `client.name`             | string             | Nome do cliente                              |
-| `client.email`            | string             | E-mail do cliente                            |
-| `client.document`         | string             | Documento do cliente                         |
-| `client.foreign_document` | string             | Documento Estrangeiro do cliente             |
-| `client.cellphone`        | string             | Celular do cliente                           |
-| `client.country`          | string             | País do cliente                              |
-| `client.state`            | string             | Estado do cliente                            |
-| `client.city`             | string             | Cidade do cliente                            |
-| `client.neighborhood`     | string             | Bairro do cliente                            |
-| `client.zipcode`          | string             | CEP do cliente                               |
-| `client.street`           | string             | Rua do cliente                               |
-| `client.addr_number`      | string             | Número do endereço do cliente                |
-| `client.addr_complement`  | string             | Complemento do endereço do cliente           |
-| `client.language`         | string             | Idioma do cliente                            |
-| `producer.name`           | string             | Nome do Produtor                             |
-| `affiliate.name`          | string             | Nome do Afiliado                             |
-| `main_content.id`         | integer            | Identificador do principal conteúdo da venda |
-| `main_content.name`       | string             | Nome do principal conteúdo da venda          |
-| `main_content.sku`        | string             | SKU do princiupal conteúdo da venda          |
-| `status.name`             | string             | Descrição do status da venda                 |
-| `utm_source`              | string             | UTM Source da venda                          |
-| `utm_campaign`            | string             | UTM Campaign da venda                        |
-| `utm_medium`              | string             | UTM Medium da venda                          |
-| `utm_content`             | string             | UTM Content                                  |
-| `tracker`                 | string             | Tracker da venda                             |
-| `tracker2`                | string             | Tracker 2 da venda                           |
-| `tracker3`                | string             | Tracker 3 da venda                           |
+| Atributo                    | Tipo de dado       | Descrição                                    |
+| --------------------------- | ------------------ | -------------------------------------------- |
+| `id`                        | integer            | Identificador da venda                       |
+| `created_at`                | string - date-time | Data de criação da venda                     |
+| `paid_at`                   | string - date-time | Data de pagamento da venda                   |
+| `discount_amount`           | number - float     | Valor do desconto                            |
+| `is_recover`                | boolean            | Se foi uma venda recuperada                  |
+| `is_infinite_funnel`        | boolean            | Se foi uma venda por funil infinito          |
+| `gross_gain`                | number - float     | Ganho bruto da venda                         |
+| `net_gain`                  | number - float     | Ganho líquido da venda                       |
+| `affiliate_gain`            | number - float     | Ganho líquido do afiliado                    |
+| `fee_value`                 | number - float     | Taxa da Eduzz sobre a venda                  |
+| `others_fees_values`        | number - float     | Outras valores                               |
+| `total_value`               | number - float     | Valor total da venda                         |
+| `total_interest_value`      | number - float     | Valor total da venda com juros               |
+| `refund_value`              | number - float     | Valor de reembolso                           |
+| `payment_method`            | string             | Descrição do método de pagamento             |
+| `customer.id`               | integer            | Identificador do cliente                     |
+| `customer.name`             | string             | Nome do cliente                              |
+| `customer.email`            | string             | E-mail do cliente                            |
+| `customer.document`         | string             | Documento do cliente                         |
+| `customer.foreign_document` | string             | Documento Estrangeiro do cliente             |
+| `customer.cellphone`        | string             | Celular do cliente                           |
+| `customer.country`          | string             | País do cliente                              |
+| `customer.state`            | string             | Estado do cliente                            |
+| `customer.city`             | string             | Cidade do cliente                            |
+| `customer.neighborhood`     | string             | Bairro do cliente                            |
+| `customer.zipcode`          | string             | CEP do cliente                               |
+| `customer.street`           | string             | Rua do cliente                               |
+| `customer.addr_number`      | string             | Número do endereço do cliente                |
+| `customer.addr_complement`  | string             | Complemento do endereço do cliente           |
+| `customer.language`         | string             | Idioma do cliente                            |
+| `producer.name`             | string             | Nome do Produtor                             |
+| `affiliate.name`            | string             | Nome do Afiliado                             |
+| `main_content.id`           | integer            | Identificador do principal conteúdo da venda |
+| `main_content.name`         | string             | Nome do principal conteúdo da venda          |
+| `main_content.sku`          | string             | SKU do princiupal conteúdo da venda          |
+| `status.name`               | string             | Descrição do status da venda                 |
+| `utm_source`                | string             | UTM Source da venda                          |
+| `utm_campaign`              | string             | UTM Campaign da venda                        |
+| `utm_medium`                | string             | UTM Medium da venda                          |
+| `utm_content`               | string             | UTM Content                                  |
+| `tracker`                   | string             | Tracker da venda                             |
+| `tracker2`                  | string             | Tracker 2 da venda                           |
+| `tracker3`                  | string             | Tracker 3 da venda                           |
 
 **Parâmetros**
 
@@ -268,21 +268,21 @@ curl GET https://example.com/orbita/v1/sales/123321 \
 | `total_interest_value`       | number - float     | Valor total da venda com juros               |
 | `refund_value`               | number - float     | Valor de reembolso                           |
 | `payment_method`             | string             | Descrição do método de pagamento             |
-| `client.id`                  | integer            | Identificador do cliente                     |
-| `client.name`                | string             | Nome do cliente                              |
-| `client.email`               | string             | E-mail do cliente                            |
-| `client.document`            | string             | Documento do cliente                         |
-| `client.foreign_document`    | string             | Documento Estrangeiro do cliente             |
-| `client.cellphone`           | string             | Celular do cliente                           |
-| `client.country`             | string             | País do cliente                              |
-| `client.state`               | string             | Estado do cliente                            |
-| `client.city`                | string             | Cidade do cliente                            |
-| `client.neighborhood`        | string             | Bairro do cliente                            |
-| `client.zipcode`             | string             | CEP do cliente                               |
-| `client.street`              | string             | Rua do cliente                               |
-| `client.addr_number`         | string             | Número do endereço do cliente                |
-| `client.addr_complement`     | string             | Complemento do endereço do cliente           |
-| `client.language`            | string             | Idioma do cliente                            |
+| `customer.id`                | integer            | Identificador do cliente                     |
+| `customer.name`              | string             | Nome do cliente                              |
+| `customer.email`             | string             | E-mail do cliente                            |
+| `customer.document`          | string             | Documento do cliente                         |
+| `customer.foreign_document`  | string             | Documento Estrangeiro do cliente             |
+| `customer.cellphone`         | string             | Celular do cliente                           |
+| `customer.country`           | string             | País do cliente                              |
+| `customer.state`             | string             | Estado do cliente                            |
+| `customer.city`              | string             | Cidade do cliente                            |
+| `customer.neighborhood`      | string             | Bairro do cliente                            |
+| `customer.zipcode`           | string             | CEP do cliente                               |
+| `customer.street`            | string             | Rua do cliente                               |
+| `customer.addr_number`       | string             | Número do endereço do cliente                |
+| `customer.addr_complement`   | string             | Complemento do endereço do cliente           |
+| `customer.language`          | string             | Idioma do cliente                            |
 | `producer.name`              | string             | Nome do Produtor                             |
 | `affiliate.name`             | string             | Nome do Afiliado                             |
 | `main_content.id`            | integer            | Identificador do principal conteúdo da venda |
