@@ -46,7 +46,7 @@ curl GET https://example.com/orbita/v1/sales?start_date=2020-01-01&end_date=2020
       "total_interest_value": 499,
       "refund_value": 0,
       "payment_method": "Mastercard",
-      "client": {
+      "customer": {
         "id": 123321,
         "name": "Nome do Cliente",
         "email": "emaildocliente@dominio.com",
@@ -190,7 +190,7 @@ curl GET https://example.com/orbita/v1/sales/123321 \
   "total_interest_value": 499,
   "refund_value": 0,
   "payment_method": "Mastercard",
-  "client": {
+  "customer": {
     "id": 123321,
     "name": "Nome do Cliente",
     "email": "emaildocliente@dominio.com",
