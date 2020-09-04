@@ -42,7 +42,7 @@ A API Blinket Meus Tickets permite visualizar dados de tickets de eventos dos qu
 </div>
 
 ```shell
-curl GET https://example.com/blinket/v1/my-tickets/event?page=1&title=test&type=presential \
+curl GET https://api-eduzz.com/blinket/v1/my-tickets/event?page=1&title=test&type=presential \
     -H "Accept: application/json"
     -H "Authorization: Bearer my_token"
 ```
@@ -112,11 +112,11 @@ curl GET https://example.com/blinket/v1/my-tickets/event?page=1&title=test&type=
 
 **Parâmetros**
 
-| Nome  | Tipo do Parâmetro | Descrição                                             | Obrigatório | Tipo de dado |
-| ----- | ----------------- | ----------------------------------------------------- | ----------- | ------------ |
-| page  | query             | Número da página referente a paginação                | Não         | integer      |
-| title | query             | Título do evento que deseja buscar                    | Não         | string       |
-| type  | query             | Tipo do evento que deseja buscar (online, presential) | Não         | string       |
+| Nome  | Tipo do Parâmetro | Descrição                              | Obrigatório | Tipo de dado              |
+| ----- | ----------------- | -------------------------------------- | ----------- | ------------------------- |
+| page  | query             | Número da página referente a paginação | Não         | integer                   |
+| title | query             | Título do evento que deseja buscar     | Não         | string                    |
+| type  | query             | Tipo do evento que deseja buscar       | Não         | enum (online, presential) |
 
 **Respostas**
 
@@ -157,11 +157,11 @@ curl GET https://example.com/blinket/v1/my-tickets/event?page=1&title=test&type=
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">GET</i>
-		<h6>/blinket/v1/my-tickets/event/{eventId}</h6>
+		<h6>/blinket/v1/my-tickets/event/{event_id}</h6>
 	</div>
 </div>
 ```shell
-curl GET https://example.com/blinket/v1/my-tickets/event/9039jah2-7c1d-4f7a-83e9-e3b9e2f3992j?page=1 \
+curl GET https://api-eduzz.com/blinket/v1/my-tickets/event/9039jah2-7c1d-4f7a-83e9-e3b9e2f3992j?page=1 \
     -H "Accept: application/json"
     -H "Authorization: Bearer my_token"
 ```
@@ -235,10 +235,10 @@ curl GET https://example.com/blinket/v1/my-tickets/event/9039jah2-7c1d-4f7a-83e9
 
 **Parâmetros**
 
-| Nome    | Tipo do parâmetro | Descrição                                 | Obrigatório | Tipo de dado |
-| ------- | ----------------- | ----------------------------------------- | ----------- | ------------ |
-| eventId | path              | Identificador de um evento que participei | Sim         | string       |
-| page    | query             | Número da página referente a paginação.   | Não         | integer      |
+| Nome     | Tipo do parâmetro | Descrição                                 | Obrigatório | Tipo de dado |
+| -------- | ----------------- | ----------------------------------------- | ----------- | ------------ |
+| event_id | path              | Identificador de um evento que participei | Sim         | string       |
+| page     | query             | Número da página referente a paginação.   | Não         | integer      |
 
 **Respostas**
 
@@ -248,15 +248,6 @@ curl GET https://example.com/blinket/v1/my-tickets/event/9039jah2-7c1d-4f7a-83e9
 | 404    | Dado não encontrado |
 
 ## Meus tickets - formulário de ajuda
-
-| Atributo      | Tipo de dado | Descrição                                                                                                                                                                   |
-| ------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `event_id`    | string       | Identificador do evento                                                                                                                                                     |
-| `subject_opt` | string       | Dúvidas sobre o evento que devem ser direcionadas direto para o produtor, deixe como "producer". Caso se trate de dúvidas referentes ao pagamento e a eduzz, deixe "eduzz". |
-| `subject`     | string       | Título/Categoria do problema, sugestões: "Problema com a compra", "Tenho dúvidas sobre o evento", "Críticas ou Sugestões", "Outros"                                         |
-| `message`     | string       | Conteúdo da mensagem, máximo de 1.000 caracteres                                                                                                                            |
-
-## Mensagem de suporte
 
 **Description:** Permite ao participante enviar uma mensagem de suporte ao produtor do evento ou a eduzz
 
@@ -269,7 +260,7 @@ curl GET https://example.com/blinket/v1/my-tickets/event/9039jah2-7c1d-4f7a-83e9
 	</div>
 </div>
 ```shell
-curl POST https://example.com/blinket/v1/my-tickets/helpsend_mytickets \
+curl POST https://api-eduzz.com/blinket/v1/my-tickets/helpsend_mytickets \
     -H "Accept: application/json" \
     -H "Authorization: Bearer my_token" \
     --form 'event_id=8fe8b52c-850c-4d2a-9042-7938237b567a' \
@@ -286,6 +277,15 @@ curl POST https://example.com/blinket/v1/my-tickets/helpsend_mytickets \
 }
 ```
 
+**Parâmetros**
+
+| Nome        | Tipo do parâmetro | Descrição                                                                                                                                                                   | Obrigatório | Tipo de dado           |
+| ----------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ---------------------- |
+| event_id    | body              | Identificador do evento                                                                                                                                                     | Sim         | string                 |
+| subject_opt | body              | Dúvidas sobre o evento que devem ser direcionadas direto para o produtor, deixe como "producer". Caso se trate de dúvidas referentes ao pagamento e a eduzz, deixe "eduzz". | Sim         | enum (eduzz, producer) |
+| subject     | body              | Título/Categoria do problema, sugestões: "Problema com a compra", "Tenho dúvidas sobre o evento", "Críticas ou Sugestões", "Outros"                                         | Sim         | string                 |
+| message     | body              | Conteúdo da mensagem.                                                                                                                                                       | Sim         | string, max:1000       |
+
 **Respostas**
 
 | Código | Descrição           |
@@ -294,13 +294,6 @@ curl POST https://example.com/blinket/v1/my-tickets/helpsend_mytickets \
 | 404    | Dado não encontrado |
 
 ## Meus tickets - Reenvio de tickets
-
-| Atributo   | Tipo de dado | Descrição                                                  |
-| ---------- | ------------ | ---------------------------------------------------------- |
-| `email`    | string       | Email do usuário que gostaria de enviar novamente o ticket |
-| `event_id` | string       | Identificador do evento                                    |
-
-## Reenvio de tickets
 
 **Description:** Permite ao proprietário do ticket Reenviar o ingresso por email para quem ele transferiu
 
@@ -313,7 +306,7 @@ curl POST https://example.com/blinket/v1/my-tickets/helpsend_mytickets \
 	</div>
 </div>
 ```shell
-curl POST https://example.com/blinket/v1/my-tickets/send_ticket_again \
+curl POST https://api-eduzz.com/blinket/v1/my-tickets/send_ticket_again \
     -H "Accept: application/json" \
     -H "Authorization: Bearer my_token" \
     --form 'email=clienteumjobzz+0805@gmail.com' \
@@ -327,6 +320,135 @@ curl POST https://example.com/blinket/v1/my-tickets/send_ticket_again \
   "success": true
 }
 ```
+
+**Parâmetros**
+
+| Nome     | Tipo do parâmetro | Descrição                                                  | Obrigatório | Tipo de dado |
+| -------- | ----------------- | ---------------------------------------------------------- | ----------- | ------------ |
+| event_id | body              | Identificador do evento                                    | Sim         | string       |
+| email    | body              | Email do usuário que gostaria de enviar novamente o ticket | Sim         | string       |
+
+**Respostas**
+
+| Código | Descrição           |
+| ------ | ------------------- |
+| 200    | Sucesso             |
+| 404    | Dado não encontrado |
+
+## Meus tickets - Confirmar dados do ingresso
+
+**Description:** Permite ao detentor do ticket confirmar os dados do ingresso. No sistema é a ação do botão "Este ticket é meu."
+
+### HTTP Request
+
+<div class="api-endpoint">
+	<div class="endpoint-data">
+		<i class="label label-post">POST</i>
+		<h6>/blinket/v1/my-tickets/set_as_mine</h6>
+	</div>
+</div>
+```shell
+curl POST https://api-eduzz.com/blinket/v1/my-tickets/set_as_mine \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer my_token" \
+    --form 'id=8e4a5432-1781-4f5a-8d3d-31dd01868aef'
+```
+
+> JSON response example:
+
+```json
+{
+  "success": true,
+  "data": {
+    "eduzz_owner_id": 60235725,
+    "eduzz_content_id": 250242,
+    "subscribed": "2019-07-30 12:01:52",
+    "document": "30496865021",
+    "document_type": "cpf",
+    "email": "clienteumjobzz+20122019_2@gmail.com",
+    "event_id": "8e2dba65-214c-48a4-99f8-380ba645329c",
+    "invoice_id": 4995433,
+    "eduzz_first_owner_id": 35821795,
+    "id": "8e4a5432-1781-4f5a-8d3d-31dd01868aef",
+    "invite_key": "250242-5",
+    "name": "Teste User Blinket",
+    "phone_number": "11999999999",
+    "status": "presence_confirmed"
+  }
+}
+```
+
+**Parâmetros**
+
+| Nome | Tipo do parâmetro | Descrição               | Obrigatório | Tipo de dado |
+| ---- | ----------------- | ----------------------- | ----------- | ------------ |
+| id   | body              | Identificador do evento | Sim         | string       |
+
+**Respostas**
+
+| Código | Descrição           |
+| ------ | ------------------- |
+| 200    | Sucesso             |
+| 404    | Dado não encontrado |
+
+## Meus tickets - Transferir ticket para outra pessoa
+
+**Description:** Permite ao proprietário do ticket Transferir para outra pessoa
+
+### HTTP Request
+
+<div class="api-endpoint">
+	<div class="endpoint-data">
+		<i class="label label-post">POST</i>
+		<h6>/blinket/v1/my-tickets/transfer_ticket</h6>
+	</div>
+</div>
+```shell
+curl POST https://api-eduzz.com/blinket/v1/my-tickets/transfer_ticket \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer my_token" \
+    --form 'id=8e4a5432-1781-4f5a-8d3d-31dd01868aef' \
+    --form 'document=30496865021' \
+    --form 'document_type=cpf' \
+    --form 'email=clienteumjobzz+20122019_2@gmail.com' \
+    --form 'name=Teste User Blinket' \
+    --form 'phone=11999999999'
+```
+
+> JSON response example:
+
+```json
+{
+  "success": true,
+  "data": {
+    "eduzz_owner_id": 60235725,
+    "eduzz_content_id": 250242,
+    "subscribed": "2019-07-30 12:01:52",
+    "document": "30496865021",
+    "document_type": "cpf",
+    "email": "clienteumjobzz+20122019_2@gmail.com",
+    "event_id": "8e2dba65-214c-48a4-99f8-380ba645329c",
+    "invoice_id": 4995433,
+    "eduzz_first_owner_id": 35821795,
+    "id": "8e4a5432-1781-4f5a-8d3d-31dd01868aef",
+    "invite_key": "250242-5",
+    "name": "Teste User Blinket",
+    "phone_number": "11999999999",
+    "status": "presence_confirmed"
+  }
+}
+```
+
+**Parâmetros**
+
+| Nome          | Tipo do parâmetro | Descrição                                                    | Obrigatório | Tipo de dado         |
+| ------------- | ----------------- | ------------------------------------------------------------ | ----------- | -------------------- |
+| id            | body              | Identificador do evento                                      | Sim         | string               |
+| name          | body              | Nome completo da pessoa que receberá o ticket                | Sim         | string, max:100      |
+| document      | body              | Documento da pessoa que receberá o ticket. CPF ou passaporte | Sim         | string, max:20       |
+| document_type | body              | Tipo do documento da pessoa que receberá o ticket            | Sim         | enum (cpf, passport) |
+| phone         | body              | Celular da pessoa que receberá o ticket                      | Sim         | string               |
+| email         | body              | E-mail da pessoa que receberá o ticket                       | Sim         | string               |
 
 **Respostas**
 
