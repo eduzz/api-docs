@@ -266,6 +266,18 @@
                   <li>
                     <a href="#listar-convites-de-um-evento-que-participei" class="toc-h2 toc-link" data-title="Listar convites de um evento que participei">Listar convites de um evento que participei</a>
                   </li>
+                  <li>
+                    <a href="#meus-tickets-formulario-de-ajuda" class="toc-h2 toc-link" data-title="Meus tickets - formulário de ajuda">Meus tickets - formulário de ajuda</a>
+                  </li>
+                  <li>
+                    <a href="#meus-tickets-reenvio-de-tickets" class="toc-h2 toc-link" data-title="Meus tickets - Reenvio de tickets">Meus tickets - Reenvio de tickets</a>
+                  </li>
+                  <li>
+                    <a href="#meus-tickets-confirmar-dados-do-ingresso" class="toc-h2 toc-link" data-title="Meus tickets - Confirmar dados do ingresso">Meus tickets - Confirmar dados do ingresso</a>
+                  </li>
+                  <li>
+                    <a href="#meus-tickets-transferir-ticket-para-outra-pessoa" class="toc-h2 toc-link" data-title="Meus tickets - Transferir ticket para outra pessoa">Meus tickets - Transferir ticket para outra pessoa</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1071,16 +1083,6 @@ Body: {
 <td>Descrição do evento</td>
 </tr>
 <tr>
-<td><code>sale_url</code></td>
-<td>string</td>
-<td>URL da página de vendas do evento</td>
-</tr>
-<tr>
-<td><code>stream_url</code></td>
-<td>string</td>
-<td>URL de transmissão do evento (Somente evento Online)</td>
-</tr>
-<tr>
 <td><code>start_date</code></td>
 <td>string - date-time</td>
 <td>Data de início do evento (formato: UTC)</td>
@@ -1091,52 +1093,77 @@ Body: {
 <td>Data de fim do evento (formato: UTC)</td>
 </tr>
 <tr>
-<td><code>place</code></td>
+<td><code>sale_url</code></td>
+<td>string</td>
+<td>URL da página de vendas do evento</td>
+</tr>
+<tr>
+<td><code>event_img_url</code></td>
+<td>string</td>
+<td>URL da imagem do evento</td>
+</tr>
+<tr>
+<td><code>stream_url</code></td>
+<td>string</td>
+<td>URL de transmissão do evento (Somente evento Online)</td>
+</tr>
+<tr>
+<td><code>unassigned</code></td>
+<td>string</td>
+<td>Ingressos sem atribuição, que é necessário confirmar os dados</td>
+</tr>
+<tr>
+<td><code>is_gift</code></td>
+<td>string</td>
+<td>Se o ticket é presente</td>
+</tr>
+<tr>
+<td><code>address.place</code></td>
 <td>string</td>
 <td>Local onde será realizado o evento</td>
 </tr>
 <tr>
-<td><code>country</code></td>
+<td><code>address.country</code></td>
 <td>string</td>
 <td>País onde será realizado o evento</td>
 </tr>
 <tr>
-<td><code>state</code></td>
+<td><code>address.state</code></td>
 <td>string</td>
 <td>Estado onde será realizado o evento</td>
 </tr>
 <tr>
-<td><code>city</code></td>
+<td><code>address.city</code></td>
 <td>string</td>
 <td>Cidade onde será realizado o evento</td>
 </tr>
 <tr>
-<td><code>district</code></td>
+<td><code>address.district</code></td>
 <td>string</td>
 <td>Bairro onde será realizado o evento</td>
 </tr>
 <tr>
-<td><code>street</code></td>
+<td><code>address.street</code></td>
 <td>string</td>
 <td>Rua onde será realizado o evento</td>
 </tr>
 <tr>
-<td><code>complement</code></td>
+<td><code>address.complement</code></td>
 <td>string</td>
 <td>Complemento onde será realizado o evento</td>
 </tr>
 <tr>
-<td><code>number</code></td>
+<td><code>address.number</code></td>
 <td>string</td>
 <td>Número onde será realizado o evento</td>
 </tr>
 <tr>
-<td><code>zip</code></td>
+<td><code>address.zip</code></td>
 <td>string</td>
 <td>CEP onde será realizado o evento</td>
 </tr>
 <tr>
-<td><code>reference</code></td>
+<td><code>address.reference</code></td>
 <td>string</td>
 <td>Referência onde será realizado o evento</td>
 </tr>
@@ -1150,7 +1177,7 @@ Body: {
         <h6>/blinket/v1/my-tickets/event</h6>
     </div>
 </div>
-<pre class="highlight shell tab-shell"><code>curl GET https://example.com/blinket/v1/my-tickets/event?page<span class="o">=</span>1&amp;title<span class="o">=</span><span class="nb">test</span>&amp;type<span class="o">=</span>online <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl GET https://api-eduzz.com/blinket/v1/my-tickets/event?page<span class="o">=</span>1&amp;title<span class="o">=</span><span class="nb">test</span>&amp;type<span class="o">=</span>presential <span class="se">\</span>
     -H <span class="s2">"Accept: application/json"</span>
     -H <span class="s2">"Authorization: Bearer my_token"</span>
 </code></pre>
@@ -1158,52 +1185,62 @@ Body: {
 <p>JSON response example:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"items_per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total_items"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9039jah2-7c1d-4f7a-83e9-e3b9e2f3992j"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example 1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example 1 description"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"sale_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://evento.blinket.com.br/example-1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"stream_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.ex"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-04T21:29:00Z"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-19T21:29:00Z"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"place"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"complement"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9039bd46-7c1d-4f7a-83e9-e3b9e2f390e1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example 2"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example 2 description"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"sale_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://evento.blinket.com.br/example-1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"stream_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.ex"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-05-04T21:29:00Z"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-19T21:29:00Z"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"place"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"complement"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"items_per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"total_items"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"907785d6-7d12-4d42-b746-912993a4e267"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"presential"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Imersão Especialista em Marketing Digital 2021 - São Paulo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"O mundo est&amp;aacute; cada vez mais digitalizado. Com mais de 1 bilh&amp;atilde;o de usu&amp;aacute;rios, a m&amp;iacute;dia digital est&amp;aacute; criando um impacto significativo em nossas vidas diariamente. </span><span class="se">\n\n</span><span class="s2">Pensando nisso, n&amp;oacute;s criamos um ambiente totalmente controlado para que voc&amp;ecirc; fique totalmente imerso durante 2 dias com os melhores especialistas em marketing digital e ao fim dessa jornada voc&amp;ecirc; seja capaz de trabalhar totalmente focado no markting digital. "</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-15 08:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-17 17:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sale_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://evento.blinket.com.br/imersao-especialista-em-marketing-digital-2020-sp"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"event_img_src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.eduzzcdn.com/myeduzz/upload/cd/b8/cdb81ed2ff214024a185acdf348e015a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stream_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"unassigned"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_gift"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"place"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anfiteatro Camargo Guarnieri, University of São Paulo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua do Anfiteatro"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"109"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"complement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anfiteatro Vermelho"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Próximo à Raia Olímpica da USP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Butantã"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05508-060"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"São Paulo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brazil"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8d66dd17-2715-467e-8ffb-b1abedc4808e"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"presential"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Feira de Carreiras"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis lorem nec ante tincidunt porttitor. Nulla et condimentum nunc. Sed vitae magna orci. Quisque gravida leo id nisi commodo vestibulum. Vivamus id ligula eget risus blandit vestibulum non nec metus. Maecenas condimentum a justo eget accumsan. Nulla in pretium tortor."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-26 07:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-28 18:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sale_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://evento.blinket.com.br/feira_de_carreiras"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"event_img_src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.eduzzcdn.com/myeduzz/upload/87/48/8748ed441da04d30ac4a0f9e63ad7807"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stream_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"unassigned"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_gift"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"place"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Impacta Certificação e Treinamento"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Avenida Paulista"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1009"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"complement"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"district"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bela Vista"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01311-100"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"São Paulo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brasil"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Parâmetros</strong></p>
@@ -1234,9 +1271,9 @@ Body: {
 <tr>
 <td>type</td>
 <td>query</td>
-<td>Tipo do evento que deseja buscar (online, presential)</td>
+<td>Tipo do evento que deseja buscar</td>
 <td>Não</td>
-<td>string</td>
+<td>enum (online, presential)</td>
 </tr>
 </tbody></table>
 
@@ -1271,6 +1308,21 @@ Body: {
 <td>Identificador do convite</td>
 </tr>
 <tr>
+<td><code>subscribed</code></td>
+<td>string</td>
+<td>Data que o participante foi adicionado a lista de presença</td>
+</tr>
+<tr>
+<td><code>eduzz_owner_id</code></td>
+<td>string</td>
+<td>Id do usuário (no Orbita) do participante que utilizará este ingresso</td>
+</tr>
+<tr>
+<td><code>eduzz_first_owner_id</code></td>
+<td>string</td>
+<td>Código do lote (Também é o mesmo código do conteúdo na Eduzz)</td>
+</tr>
+<tr>
 <td><code>name</code></td>
 <td>string</td>
 <td>Nome do participante</td>
@@ -1279,6 +1331,16 @@ Body: {
 <td><code>email</code></td>
 <td>string</td>
 <td>Email do participante</td>
+</tr>
+<tr>
+<td><code>document</code></td>
+<td>string</td>
+<td>CPF do participante que utilizará este ingresso</td>
+</tr>
+<tr>
+<td><code>phone_number</code></td>
+<td>string</td>
+<td>Celular do participante que utilizará este ingresso</td>
 </tr>
 <tr>
 <td><code>invoice_id</code></td>
@@ -1291,7 +1353,7 @@ Body: {
 <td>Código do convite do participante</td>
 </tr>
 <tr>
-<td><code>content_id</code></td>
+<td><code>eduzz_content_id</code></td>
 <td>integer</td>
 <td>Código do conteúdo da eduzz</td>
 </tr>
@@ -1320,6 +1382,16 @@ Body: {
 <td>boolean</td>
 <td>Se o ticket é exibido na página de vendas.</td>
 </tr>
+<tr>
+<td><code>unassigned</code></td>
+<td>string</td>
+<td>Ingressos sem atribuição, que é necessário confirmar os dados</td>
+</tr>
+<tr>
+<td><code>is_gift</code></td>
+<td>string</td>
+<td>Se o ticket é presente</td>
+</tr>
 </tbody></table>
 <h2 id='listar-convites-de-um-evento-que-participei'>Listar convites de um evento que participei</h2>
 <p><strong>Description:</strong> Lista os convites de um evento que participei</p>
@@ -1327,10 +1399,10 @@ Body: {
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-post">GET</i>
-        <h6>/blinket/v1/my-tickets/event/{eventId}</h6>
+        <h6>/blinket/v1/my-tickets/event/{event_id}</h6>
     </div>
 </div>
-<pre class="highlight shell tab-shell"><code>curl GET https://example.com/blinket/v1/my-tickets/event/9039jah2-7c1d-4f7a-83e9-e3b9e2f3992j?page<span class="o">=</span>1 <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl GET https://api-eduzz.com/blinket/v1/my-tickets/event/9039jah2-7c1d-4f7a-83e9-e3b9e2f3992j?page<span class="o">=</span>1 <span class="se">\</span>
     -H <span class="s2">"Accept: application/json"</span>
     -H <span class="s2">"Authorization: Bearer my_token"</span>
 </code></pre>
@@ -1338,25 +1410,66 @@ Body: {
 <p>JSON response example:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"items_per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total_items"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9039jah2-7c1d-4f7a-83e9-e3b9e2f3992j"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Participant example"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"participant@email.com"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"invoice_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">000001</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"invite_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000001-1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"content_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">000001</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"presence_confirmed"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"invite_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"ticket_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket Example"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"ticket_is_paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"ticket_show_on_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"items_per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"total_items"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90583706-1edb-4cf0-9f38-0fc6ab2c1993"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subscribed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-16 22:05:46"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"eduzz_owner_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">35821795</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"eduzz_first_owner_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">35821795</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QA Blinket QA Blinket Oficina Viva Produções Eireli ME Oficina Viva Produções Eireli ME"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qa-blinket@eduzz.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29097666082"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15999999999"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"invoice_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7797295</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"invite_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"326055-100"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"eduzz_content_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">326055</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"presence_confirmed"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"invite_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://edz.la/blk-nQABC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ticket_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Acesso"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ticket_is_paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ticket_show_on_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"901b0b08-5554-4163-beb0-bde5de5ee564"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"payment_detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"invoice_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7797295</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"create_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-16 22:05:44"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sale_installments"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payment_method_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Desconhecido"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payment_method_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"901ef06e-b552-4f7c-845f-b3ee8e52a0f0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subscribed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-19 10:46:12"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"eduzz_owner_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">44305830</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"eduzz_first_owner_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">35821795</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Milton Tawamba"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milton.tawamba@eduzz.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00685462030"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54991634780"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"invoice_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7161997</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"invite_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"326055-1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"eduzz_content_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">326055</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"presence_confirmed"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"invite_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://edz.la/blk-B8lQX"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ticket_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Acesso"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ticket_is_paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ticket_show_on_page"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"901b0b08-5554-4163-beb0-bde5de5ee564"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"payment_detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"invoice_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7161997</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"create_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-19 10:46:11"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sale_installments"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payment_method_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Desconhecido"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payment_method_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Parâmetros</strong></p>
@@ -1371,7 +1484,7 @@ Body: {
 </tr>
 </thead><tbody>
 <tr>
-<td>eventId</td>
+<td>event_id</td>
 <td>path</td>
 <td>Identificador de um evento que participei</td>
 <td>Sim</td>
@@ -1383,6 +1496,342 @@ Body: {
 <td>Número da página referente a paginação.</td>
 <td>Não</td>
 <td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Dado não encontrado</td>
+</tr>
+</tbody></table>
+<h2 id='meus-tickets-formulario-de-ajuda'>Meus tickets - formulário de ajuda</h2>
+<p><strong>Description:</strong> Permite ao participante enviar uma mensagem de suporte ao produtor do evento ou a eduzz</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">POST</i>
+        <h6>/blinket/v1/my-tickets/helpsend_mytickets</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl POST https://api-eduzz.com/blinket/v1/my-tickets/helpsend_mytickets <span class="se">\</span>
+    -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span> <span class="se">\</span>
+    --form <span class="s1">'event_id=8fe8b52c-850c-4d2a-9042-7938237b567a'</span> <span class="se">\</span>
+    --form <span class="s1">'message=Teste de mensagem'</span> <span class="se">\</span>
+    --form <span class="s1">'subject=Críticas ou sugestões'</span> <span class="se">\</span>
+    --form <span class="s1">'subject_opt=producer'</span>
+</code></pre>
+<blockquote>
+<p>JSON response example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_id</td>
+<td>body</td>
+<td>Identificador do evento</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+<tr>
+<td>subject_opt</td>
+<td>body</td>
+<td>Dúvidas sobre o evento que devem ser direcionadas direto para o produtor, deixe como &quot;producer&quot;. Caso se trate de dúvidas referentes ao pagamento e a eduzz, deixe &quot;eduzz&quot;.</td>
+<td>Sim</td>
+<td>enum (eduzz, producer)</td>
+</tr>
+<tr>
+<td>subject</td>
+<td>body</td>
+<td>Título/Categoria do problema, sugestões: &quot;Problema com a compra&quot;, &quot;Tenho dúvidas sobre o evento&quot;, &quot;Críticas ou Sugestões&quot;, &quot;Outros&quot;</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+<tr>
+<td>message</td>
+<td>body</td>
+<td>Conteúdo da mensagem.</td>
+<td>Sim</td>
+<td>string, max:1000</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Dado não encontrado</td>
+</tr>
+</tbody></table>
+<h2 id='meus-tickets-reenvio-de-tickets'>Meus tickets - Reenvio de tickets</h2>
+<p><strong>Description:</strong> Permite ao proprietário do ticket Reenviar o ingresso por email para quem ele transferiu</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">POST</i>
+        <h6>/blinket/v1/my-tickets/send_ticket_again</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl POST https://api-eduzz.com/blinket/v1/my-tickets/send_ticket_again <span class="se">\</span>
+    -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span> <span class="se">\</span>
+    --form <span class="s1">'email=clienteumjobzz+0805@gmail.com'</span> <span class="se">\</span>
+    --form <span class="s1">'event_id=8fe8b52c-850c-4d2a-9042-7938237b567a'</span>
+</code></pre>
+<blockquote>
+<p>JSON response example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_id</td>
+<td>body</td>
+<td>Identificador do evento</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+<tr>
+<td>email</td>
+<td>body</td>
+<td>Email do usuário que gostaria de enviar novamente o ticket</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Dado não encontrado</td>
+</tr>
+</tbody></table>
+<h2 id='meus-tickets-confirmar-dados-do-ingresso'>Meus tickets - Confirmar dados do ingresso</h2>
+<p><strong>Description:</strong> Permite ao detentor do ticket confirmar os dados do ingresso. No sistema é a ação do botão &quot;Este ticket é meu.&quot;</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">POST</i>
+        <h6>/blinket/v1/my-tickets/set_as_mine</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl POST https://api-eduzz.com/blinket/v1/my-tickets/set_as_mine <span class="se">\</span>
+    -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span> <span class="se">\</span>
+    --form <span class="s1">'id=8e4a5432-1781-4f5a-8d3d-31dd01868aef'</span>
+</code></pre>
+<blockquote>
+<p>JSON response example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"eduzz_owner_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">60235725</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"eduzz_content_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">250242</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"subscribed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-30 12:01:52"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30496865021"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"document_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpf"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clienteumjobzz+20122019_2@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8e2dba65-214c-48a4-99f8-380ba645329c"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"invoice_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4995433</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"eduzz_first_owner_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">35821795</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8e4a5432-1781-4f5a-8d3d-31dd01868aef"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"invite_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"250242-5"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teste User Blinket"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11999999999"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"presence_confirmed"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>body</td>
+<td>Identificador do evento</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Dado não encontrado</td>
+</tr>
+</tbody></table>
+<h2 id='meus-tickets-transferir-ticket-para-outra-pessoa'>Meus tickets - Transferir ticket para outra pessoa</h2>
+<p><strong>Description:</strong> Permite ao proprietário do ticket Transferir para outra pessoa</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">POST</i>
+        <h6>/blinket/v1/my-tickets/transfer_ticket</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl POST https://api-eduzz.com/blinket/v1/my-tickets/transfer_ticket <span class="se">\</span>
+    -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span> <span class="se">\</span>
+    --form <span class="s1">'id=8e4a5432-1781-4f5a-8d3d-31dd01868aef'</span> <span class="se">\</span>
+    --form <span class="s1">'document=30496865021'</span> <span class="se">\</span>
+    --form <span class="s1">'document_type=cpf'</span> <span class="se">\</span>
+    --form <span class="s1">'email=clienteumjobzz+20122019_2@gmail.com'</span> <span class="se">\</span>
+    --form <span class="s1">'name=Teste User Blinket'</span> <span class="se">\</span>
+    --form <span class="s1">'phone=11999999999'</span>
+</code></pre>
+<blockquote>
+<p>JSON response example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"eduzz_owner_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">60235725</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"eduzz_content_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">250242</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"subscribed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-30 12:01:52"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"document"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30496865021"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"document_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpf"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clienteumjobzz+20122019_2@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8e2dba65-214c-48a4-99f8-380ba645329c"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"invoice_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4995433</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"eduzz_first_owner_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">35821795</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8e4a5432-1781-4f5a-8d3d-31dd01868aef"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"invite_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"250242-5"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teste User Blinket"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11999999999"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"presence_confirmed"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>body</td>
+<td>Identificador do evento</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+<tr>
+<td>name</td>
+<td>body</td>
+<td>Nome completo da pessoa que receberá o ticket</td>
+<td>Sim</td>
+<td>string, max:100</td>
+</tr>
+<tr>
+<td>document</td>
+<td>body</td>
+<td>Documento da pessoa que receberá o ticket. CPF ou passaporte</td>
+<td>Sim</td>
+<td>string, max:20</td>
+</tr>
+<tr>
+<td>document_type</td>
+<td>body</td>
+<td>Tipo do documento da pessoa que receberá o ticket</td>
+<td>Sim</td>
+<td>enum (cpf, passport)</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>body</td>
+<td>Celular da pessoa que receberá o ticket</td>
+<td>Sim</td>
+<td>string</td>
+</tr>
+<tr>
+<td>email</td>
+<td>body</td>
+<td>E-mail da pessoa que receberá o ticket</td>
+<td>Sim</td>
+<td>string</td>
 </tr>
 </tbody></table>
 
