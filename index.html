@@ -3528,7 +3528,7 @@ Body: {
         <h6>/orbita/v1/sales</h6>
     </div>
 </div>
-<pre class="highlight shell tab-shell"><code>curl GET https://example.com/orbita/v1/sales?start_date<span class="o">=</span>2020-01-01&amp;end_date<span class="o">=</span>2020-01-07 <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl GET https://api-eduzz.com/orbita/v1/sales?start_date<span class="o">=</span>2020-01-01&amp;end_date<span class="o">=</span>2020-01-07 <span class="se">\</span>
     -H <span class="s2">"Accept: application/json"</span>
     -H <span class="s2">"Authorization: Bearer my_token"</span>
 </code></pre>
@@ -3579,6 +3579,17 @@ Body: {
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"affiliate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nome do Afiliado"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"contract"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9999999</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-08-08T23:17:35Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"frequency_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"installments"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_invoices_paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_invoices_to_pay"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_invoices_charged"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">5988.0</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"main_content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">99999999</span><span class="p">,</span><span class="w">
@@ -3682,79 +3693,29 @@ Body: {
 <td>Descrição do método de pagamento</td>
 </tr>
 <tr>
-<td><code>customer.id</code></td>
+<td><code>client.id</code></td>
 <td>integer</td>
 <td>Identificador do cliente</td>
 </tr>
 <tr>
-<td><code>customer.name</code></td>
+<td><code>client.name</code></td>
 <td>string</td>
 <td>Nome do cliente</td>
 </tr>
 <tr>
-<td><code>customer.email</code></td>
+<td><code>client.email</code></td>
 <td>string</td>
 <td>E-mail do cliente</td>
 </tr>
 <tr>
-<td><code>customer.document</code></td>
+<td><code>client.document</code></td>
 <td>string</td>
 <td>Documento do cliente</td>
 </tr>
 <tr>
-<td><code>customer.foreign_document</code></td>
-<td>string</td>
-<td>Documento Estrangeiro do cliente</td>
-</tr>
-<tr>
-<td><code>customer.cellphone</code></td>
+<td><code>client.cellphone</code></td>
 <td>string</td>
 <td>Celular do cliente</td>
-</tr>
-<tr>
-<td><code>customer.country</code></td>
-<td>string</td>
-<td>País do cliente</td>
-</tr>
-<tr>
-<td><code>customer.state</code></td>
-<td>string</td>
-<td>Estado do cliente</td>
-</tr>
-<tr>
-<td><code>customer.city</code></td>
-<td>string</td>
-<td>Cidade do cliente</td>
-</tr>
-<tr>
-<td><code>customer.neighborhood</code></td>
-<td>string</td>
-<td>Bairro do cliente</td>
-</tr>
-<tr>
-<td><code>customer.zipcode</code></td>
-<td>string</td>
-<td>CEP do cliente</td>
-</tr>
-<tr>
-<td><code>customer.street</code></td>
-<td>string</td>
-<td>Rua do cliente</td>
-</tr>
-<tr>
-<td><code>customer.addr_number</code></td>
-<td>string</td>
-<td>Número do endereço do cliente</td>
-</tr>
-<tr>
-<td><code>customer.addr_complement</code></td>
-<td>string</td>
-<td>Complemento do endereço do cliente</td>
-</tr>
-<tr>
-<td><code>customer.language</code></td>
-<td>string</td>
-<td>Idioma do cliente</td>
 </tr>
 <tr>
 <td><code>producer.name</code></td>
@@ -3765,6 +3726,51 @@ Body: {
 <td><code>affiliate.name</code></td>
 <td>string</td>
 <td>Nome do Afiliado</td>
+</tr>
+<tr>
+<td><code>contract.id</code></td>
+<td>integer</td>
+<td>Identificador do contrato</td>
+</tr>
+<tr>
+<td><code>contract.start_date</code></td>
+<td>string - date-time</td>
+<td>Data de início do contrato</td>
+</tr>
+<tr>
+<td><code>contract.frequency</code></td>
+<td>integer</td>
+<td>Frequência de cobrança do contrato</td>
+</tr>
+<tr>
+<td><code>contract.frequency_type</code></td>
+<td>string</td>
+<td>Tipo de frequência de cobrança do contrato</td>
+</tr>
+<tr>
+<td><code>contract.installments</code></td>
+<td>integer</td>
+<td>Quantidade de parcelas do contrato</td>
+</tr>
+<tr>
+<td><code>contract.total_invoices_paid</code></td>
+<td>integer</td>
+<td>Total de faturas pagas</td>
+</tr>
+<tr>
+<td><code>contract.total_invoices_to_pay</code></td>
+<td>integer</td>
+<td>Total de faturas a serem pagas</td>
+</tr>
+<tr>
+<td><code>contract.total_invoices_charged</code></td>
+<td>integer</td>
+<td>Total de faturas cobradas</td>
+</tr>
+<tr>
+<td><code>contract.total_value</code></td>
+<td>number - float</td>
+<td>Valor total do contrato</td>
 </tr>
 <tr>
 <td><code>main_content.id</code></td>
@@ -3900,7 +3906,7 @@ Body: {
         <h6>/orbita/v1/sales/{id}</h6>
     </div>
 </div>
-<pre class="highlight shell tab-shell"><code>curl GET https://example.com/orbita/v1/sales/123321 <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl GET https://api-eduzz.com/orbita/v1/sales/123321 <span class="se">\</span>
     -H <span class="s2">"Accept: application/json"</span>
     -H <span class="s2">"Authorization: Bearer my_token"</span>
 </code></pre>
@@ -3945,6 +3951,17 @@ Body: {
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"affiliate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nome do Afiliado"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"contract"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9999999</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-08-08T23:17:35Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"frequency"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"frequency_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"installments"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_invoices_paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_invoices_to_pay"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_invoices_charged"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">5988.0</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"main_content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">99999999</span><span class="p">,</span><span class="w">
@@ -4066,79 +4083,29 @@ Body: {
 <td>Descrição do método de pagamento</td>
 </tr>
 <tr>
-<td><code>customer.id</code></td>
+<td><code>client.id</code></td>
 <td>integer</td>
 <td>Identificador do cliente</td>
 </tr>
 <tr>
-<td><code>customer.name</code></td>
+<td><code>client.name</code></td>
 <td>string</td>
 <td>Nome do cliente</td>
 </tr>
 <tr>
-<td><code>customer.email</code></td>
+<td><code>client.email</code></td>
 <td>string</td>
 <td>E-mail do cliente</td>
 </tr>
 <tr>
-<td><code>customer.document</code></td>
+<td><code>client.document</code></td>
 <td>string</td>
 <td>Documento do cliente</td>
 </tr>
 <tr>
-<td><code>customer.foreign_document</code></td>
-<td>string</td>
-<td>Documento Estrangeiro do cliente</td>
-</tr>
-<tr>
-<td><code>customer.cellphone</code></td>
+<td><code>client.cellphone</code></td>
 <td>string</td>
 <td>Celular do cliente</td>
-</tr>
-<tr>
-<td><code>customer.country</code></td>
-<td>string</td>
-<td>País do cliente</td>
-</tr>
-<tr>
-<td><code>customer.state</code></td>
-<td>string</td>
-<td>Estado do cliente</td>
-</tr>
-<tr>
-<td><code>customer.city</code></td>
-<td>string</td>
-<td>Cidade do cliente</td>
-</tr>
-<tr>
-<td><code>customer.neighborhood</code></td>
-<td>string</td>
-<td>Bairro do cliente</td>
-</tr>
-<tr>
-<td><code>customer.zipcode</code></td>
-<td>string</td>
-<td>CEP do cliente</td>
-</tr>
-<tr>
-<td><code>customer.street</code></td>
-<td>string</td>
-<td>Rua do cliente</td>
-</tr>
-<tr>
-<td><code>customer.addr_number</code></td>
-<td>string</td>
-<td>Número do endereço do cliente</td>
-</tr>
-<tr>
-<td><code>customer.addr_complement</code></td>
-<td>string</td>
-<td>Complemento do endereço do cliente</td>
-</tr>
-<tr>
-<td><code>customer.language</code></td>
-<td>string</td>
-<td>Idioma do cliente</td>
 </tr>
 <tr>
 <td><code>producer.name</code></td>
@@ -4149,6 +4116,51 @@ Body: {
 <td><code>affiliate.name</code></td>
 <td>string</td>
 <td>Nome do Afiliado</td>
+</tr>
+<tr>
+<td><code>contract.id</code></td>
+<td>integer</td>
+<td>Identificador do contrato</td>
+</tr>
+<tr>
+<td><code>contract.start_date</code></td>
+<td>string - date-time</td>
+<td>Data de início do contrato</td>
+</tr>
+<tr>
+<td><code>contract.frequency</code></td>
+<td>integer</td>
+<td>Frequência de cobrança do contrato</td>
+</tr>
+<tr>
+<td><code>contract.frequency_type</code></td>
+<td>string</td>
+<td>Tipo de frequência de cobrança do contrato</td>
+</tr>
+<tr>
+<td><code>contract.installments</code></td>
+<td>integer</td>
+<td>Quantidade de parcelas do contrato</td>
+</tr>
+<tr>
+<td><code>contract.total_invoices_paid</code></td>
+<td>integer</td>
+<td>Total de faturas pagas</td>
+</tr>
+<tr>
+<td><code>contract.total_invoices_to_pay</code></td>
+<td>integer</td>
+<td>Total de faturas a serem pagas</td>
+</tr>
+<tr>
+<td><code>contract.total_invoices_charged</code></td>
+<td>integer</td>
+<td>Total de faturas cobradas</td>
+</tr>
+<tr>
+<td><code>contract.total_value</code></td>
+<td>number - float</td>
+<td>Valor total do contrato</td>
 </tr>
 <tr>
 <td><code>main_content.id</code></td>
