@@ -120,7 +120,7 @@ curl GET https://api-eduzz.com/orbita/v1/sales?start_date=2020-01-01&end_date=20
 | `contract.frequency_type`         | string             | Tipo de frequência de cobrança do contrato   |
 | `contract.installments`           | integer            | Quantidade de parcelas do contrato           |
 | `contract.total_invoices_paid`    | integer            | Total de faturas pagas                       |
-| `contract.total_invoices_to_pay`  | integer            | Total de faturas a seren pagas               |
+| `contract.total_invoices_to_pay`  | integer            | Total de faturas a serem pagas               |
 | `contract.total_invoices_charged` | integer            | Total de faturas cobradas                    |
 | `contract.total_value`            | number - float     | Valor total do contrato                      |
 | `main_content.id`                 | integer            | Identificador do principal conteúdo da venda |
@@ -282,7 +282,7 @@ curl GET https://api-eduzz.com/orbita/v1/sales/123321 \
 | `contract.frequency_type`         | string             | Tipo de frequência de cobrança do contrato   |
 | `contract.installments`           | integer            | Quantidade de parcelas do contrato           |
 | `contract.total_invoices_paid`    | integer            | Total de faturas pagas                       |
-| `contract.total_invoices_to_pay`  | integer            | Total de faturas a seren pagas               |
+| `contract.total_invoices_to_pay`  | integer            | Total de faturas a serem pagas               |
 | `contract.total_invoices_charged` | integer            | Total de faturas cobradas                    |
 | `contract.total_value`            | number - float     | Valor total do contrato                      |
 | `main_content.id`                 | integer            | Identificador do principal conteúdo da venda |
