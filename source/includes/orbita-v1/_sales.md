@@ -46,12 +46,22 @@ curl GET https://api-eduzz.com/orbita/v1/sales?start_date=2020-01-01&end_date=20
       "total_interest_value": 499,
       "refund_value": 0,
       "payment_method": "Mastercard",
-      "client": {
+      "customer": {
         "id": 123321,
         "name": "Nome do Cliente",
         "email": "emaildocliente@dominio.com",
         "document": "X99999999999",
-        "cellphone": "11999999999"
+        "foreign_document": null,
+        "cellphone": "11999999999",
+        "country": "BR",
+        "state": "SP",
+        "city": "São Paulo",
+        "neighborhood": "11999999999",
+        "zipcode": "18000000",
+        "street": "Rua Endereço do Cliente",
+        "addr_number": "1997",
+        "addr_complement": "complemento do endereço",
+        "language": "PT"
       },
       "producer": {
         "name": "Nome do Produtor"
@@ -190,12 +200,22 @@ curl GET https://api-eduzz.com/orbita/v1/sales/123321 \
   "total_interest_value": 499,
   "refund_value": 0,
   "payment_method": "Mastercard",
-  "client": {
+  "customer": {
     "id": 123321,
     "name": "Nome do Cliente",
     "email": "emaildocliente@dominio.com",
     "document": "X99999999999",
-    "cellphone": "11999999999"
+    "foreign_document": null,
+    "cellphone": "11999999999",
+    "country": "BR",
+    "state": "SP",
+    "city": "São Paulo",
+    "neighborhood": "11999999999",
+    "zipcode": "18000000",
+    "street": "Rua Endereço do Cliente",
+    "addr_number": "1997",
+    "addr_complement": "complemento do endereço",
+    "language": "PT"
   },
   "producer": {
     "name": "Nome do Produtor"
