@@ -46,6 +46,7 @@ curl GET https://api-eduzz.com/orbita/v1/sales?start_date=2020-01-01&end_date=20
       "total_interest_value": 499,
       "refund_value": 0,
       "payment_method": "Mastercard",
+      "installments": 1,
       "customer": {
         "id": 123321,
         "name": "Nome do Cliente",
@@ -117,6 +118,7 @@ curl GET https://api-eduzz.com/orbita/v1/sales?start_date=2020-01-01&end_date=20
 | `total_interest_value`            | number - float     | Valor total da venda com juros               |
 | `refund_value`                    | number - float     | Valor de reembolso                           |
 | `payment_method`                  | string             | Descrição do método de pagamento             |
+| `installments`                    | integer            | Número de parcelas da venda                  |
 | `client.id`                       | integer            | Identificador do cliente                     |
 | `client.name`                     | string             | Nome do cliente                              |
 | `client.email`                    | string             | E-mail do cliente                            |
@@ -200,6 +202,7 @@ curl GET https://api-eduzz.com/orbita/v1/sales/123321 \
   "total_interest_value": 499,
   "refund_value": 0,
   "payment_method": "Mastercard",
+  "installments": 1,
   "customer": {
     "id": 123321,
     "name": "Nome do Cliente",
@@ -289,6 +292,7 @@ curl GET https://api-eduzz.com/orbita/v1/sales/123321 \
 | `total_interest_value`            | number - float     | Valor total da venda com juros               |
 | `refund_value`                    | number - float     | Valor de reembolso                           |
 | `payment_method`                  | string             | Descrição do método de pagamento             |
+| `installments`                    | integer            | Número de parcelas da venda                  |
 | `client.id`                       | integer            | Identificador do cliente                     |
 | `client.name`                     | string             | Nome do cliente                              |
 | `client.email`                    | string             | E-mail do cliente                            |
