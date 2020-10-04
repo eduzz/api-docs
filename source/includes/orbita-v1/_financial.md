@@ -4,7 +4,7 @@ A API de finanças do Órbita permite visualizar os dados financeiros.
 
 ## Composição de transferência
 
-**Description:** Retorna a composição uma transferência que você efetuou
+**Description:** Retorna a composição de uma transferência que você efetuou
 
 ### HTTP Request
 
@@ -33,9 +33,9 @@ Viver de Mercado 6 - PL;2020-09-11;10896453;Daiane Larissa Maria Freitas;Daiane;
 
 **Parâmetros**
 
-| Nome | Tipo do Parâmetro | Descrição                          | Obrigatório | Tipo de dado  |
-|------|-------------------|------------------------------------|-------------|---------------|
-| id   | integer           | Data inicial para listar as vendas | Sim         | string - date |
+| Nome | Tipo do Parâmetro | Descrição                      | Obrigatório | Tipo de dado |
+|------|-------------------|--------------------------------|-------------|--------------|
+| id   | path              | Identificador da transferência | Sim         | integer      |
 
 
 **Respostas**
