@@ -347,6 +347,14 @@
               </ul>
           </li>
           <li>
+            <a href="#orbita-financeiro" class="toc-h1 toc-link" data-title="Órbita: Financeiro">Órbita: Financeiro</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#composicao-de-transferencia" class="toc-h2 toc-link" data-title="Composição de transferência">Composição de transferência</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#orbita-vendas" class="toc-h1 toc-link" data-title="Órbita: Vendas">Órbita: Vendas</a>
               <ul class="toc-list-h2">
                   <li>
@@ -3500,6 +3508,63 @@ Body: {
 <td>query</td>
 <td>Items por página</td>
 <td>Não</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Respostas</strong></p>
+
+<table><thead>
+<tr>
+<th>Código</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Sucesso</td>
+</tr>
+</tbody></table>
+<h1 id='orbita-financeiro'>Órbita: Financeiro</h1>
+<p>A API de finanças do Órbita permite visualizar os dados financeiros.</p>
+<h2 id='composicao-de-transferencia'>Composição de transferência</h2>
+<p><strong>Description:</strong> Retorna a composição de uma transferência que você efetuou</p>
+<h3 id='http-request'>HTTP Request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-post">GET</i>
+        <h6>/transfers/{id:[0-9]+}/composition</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl GET https://api-eduzz.com/orbita/v1/transfers/123456/composition <span class="se">\</span>
+    -H <span class="s2">"Accept: application/json"</span>
+    -H <span class="s2">"Authorization: Bearer my_token"</span>
+</code></pre>
+<blockquote>
+<p>Exemplo de resposta CSV:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>Descrição;Data;Fatura;Nome completo;Primeiro nome;Último nome;Documento;Valor da venda;Valor da taxa;Valor ganho;Ganho como;Data transferencia
+Vendas Expressivas;2020-09-11;1234;Nicolas Diogo Bernardes;Nicolas;Bernardes;10426942060;127.59;5.58;122.01;produtor;2020-07-14
+Ideal Marketing;2020-09-11;4321;Elza Aline da Luz;Elza;Luz;53502968098;200.00;9.98;51.20;produtor;2020-07-14
+Vendas Expressivas;2020-09-11;10896453;Daiane Larissa Maria Freitas;Daiane;Freitas;70024034002;997.00;45.77;95.84;produtor;2020-07-14
+Ideal Marketing;2020-09-11;8765;Alana Maitê Amanda Nogueira;Alana;Nogueira;39063032099;200.00;9.98;19.15;produtor;2020-07-14
+</code></pre>
+<p><strong>Parâmetros</strong></p>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo do Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+<th>Tipo de dado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>Identificador da transferência</td>
+<td>Sim</td>
 <td>integer</td>
 </tr>
 </tbody></table>
