@@ -1,10 +1,10 @@
-# Blinket: Meus Participante
+# Blinket: Participantes
 
-[Descrição aqui]
+Permite ao produtor Listar os participantes de seus eventos
 
-## Adicionar participantes: por arquivo
+## Participantes: Adicionar participantes: Por arquivo
 
-**Description:** Adicionar participantes por arquivo (.csv ou xlsx )
+**Descrição:** Adicionar participantes por arquivo (.csv ou xlsx )
 
 ### HTTP Request
 
@@ -33,13 +33,13 @@ curl POST https://api-eduzz.com/blinket/v1/attendance_list/import_sheet \
 
 **Parâmetros**
 
-| Nome        | Tipo do parâmetro | Descrição                                  | Obrigatório | Tipo de dado |
-| ----------- | ----------------- | ------------------------------------------ | ----------- | ------------ |
-| event_id    | body              | Identificador de um evento que participei. | Sim         | uuid         |
-| file_name   | body              | Nome do arquivo.                           | Sim         | string       |
-| file_upload | body              | Arquivo em formato base64.                 | Sim         | base64       |
-| ticket_id   | body              | Identificador do ticket.                   | Sim         | uuid         |
-| use_stock   | body              | Consumir estoque?                          | Sim         | boolean      |
+| Nome        | Tipo do parâmetro | Descrição                 | Obrigatório | Tipo de dado |
+| ----------- | ----------------- | ------------------------- | ----------- | ------------ |
+| event_id    | body              | Código UUID do evento     | Sim         | uuid         |
+| file_name   | body              | Nome do arquivo           | Sim         | string       |
+| file_upload | body              | Arquivo em formato base64 | Sim         | base64       |
+| ticket_id   | body              | Código UUID do ticket     | Sim         | uuid         |
+| use_stock   | body              | Consumir estoque?         | Sim         | boolean      |
 
 **Respostas**
 
@@ -48,9 +48,9 @@ curl POST https://api-eduzz.com/blinket/v1/attendance_list/import_sheet \
 | 200    | Sucesso             |
 | 404    | Dado não encontrado |
 
-## Adicionar participantes: individual
+## Participantes: Adicionar participantes: Individualmente
 
-**Description:** Adicionar participante individualmente.
+**Descrição:** Adicionar participante individualmente.
 
 ### HTTP Request
 
@@ -97,16 +97,16 @@ curl POST https://api-eduzz.com/blinket/v1/attendance_list/create_manual \
 
 **Parâmetros**
 
-| Nome          | Tipo do parâmetro | Descrição                        | Obrigatório | Tipo de dado        |
-| ------------- | ----------------- | -------------------------------- | ----------- | ------------------- |
-| document      | body              | Nº do documento do participante. | Sim         | uuid                |
-| document_type | body              | Tipo do documento.               | Sim         | enum(cpf, passport) |
-| email         | body              | E-mail do participante.          | Sim         | string              |
-| event_id      | body              | Identificador do evento.         | Sim         | uuid                |
-| name          | body              | Nome do participante             | Sim         | string              |
-| phone         | body              | Contato do participante          | Sim         | string              |
-| ticket_id     | body              | Identificador do ticket.         | Sim         | uuid                |
-| use_stock     | body              | Consumir estoque?                | Não         | boolean             |
+| Nome          | Tipo do parâmetro | Descrição                                                               | Obrigatório | Tipo de dado        |
+| ------------- | ----------------- | ----------------------------------------------------------------------- | ----------- | ------------------- |
+| document      | body              | Nº do CPF do participante (sem pontos), ou passaporte caso estrangeiro. | Sim         | string              |
+| document_type | body              | Tipo do documento.                                                      | Sim         | enum(cpf, passport) |
+| email         | body              | E-mail do participante.                                                 | Sim         | string              |
+| event_id      | body              | Código UUID do evento.                                                  | Sim         | uuid                |
+| name          | body              | Nome do participante                                                    | Sim         | string              |
+| phone         | body              | Contato do participante                                                 | Sim         | string              |
+| ticket_id     | body              | Código UUID do ticket.                                                  | Sim         | uuid                |
+| use_stock     | body              | Consumir estoque?                                                       | Não         | boolean             |
 
 **Respostas**
 
@@ -115,9 +115,9 @@ curl POST https://api-eduzz.com/blinket/v1/attendance_list/create_manual \
 | 200    | Sucesso             |
 | 404    | Dado não encontrado |
 
-## Listagem de Participantes
+## Participantes: Listagem de Participantes
 
-**Description:** Listagem de participantes
+**Descrição:** Permite ao produtor do evento listar todos os participantes de um de seus eventos
 
 ### HTTP Request
 
@@ -173,7 +173,7 @@ curl POST https://api-eduzz.com/blinke/v1/attendance_list/list_grouped \
 
 | Nome                 | Tipo do parâmetro | Descrição                                                     | Obrigatório | Tipo de dado |
 | -------------------- | ----------------- | ------------------------------------------------------------- | ----------- | ------------ |
-| event_id             | body              | Identificador do evento                                       | Sim         | uuid         |
+| event_id             | body              | Código UUID do evento                                         | Sim         | uuid         |
 | page                 | body              | Numero da página                                              | Não         | integer      |
 | pagesize             | body              | Nº de items por página                                        | Não         | uuid         |
 | search               | body              | Palavra a ser pesquisada                                      | Não         | string       |
@@ -186,20 +186,20 @@ curl POST https://api-eduzz.com/blinke/v1/attendance_list/list_grouped \
 | 200    | Sucesso             |
 | 404    | Dado não encontrado |
 
-## Edição de Participantes
+## Participantes: Alteração de dados do ingresso
 
-**Description:** Edição de participantes
+**Descrição:** Permite ao produtor alterar os dados de titularidade de um determinado ingresso
 
 ### HTTP Request
 
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">POST</i>
-		<h6>/blinke/v1/attendance_list/edit_by_invite/{invite_id}</h6>
+		<h6>/blinke/v1/attendance_list/edit_by_invite/{invite_key}</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinket/v1/attendance_list/edit_by_invite/{invite_id} \
+curl POST https://api-eduzz.com/blinket/v1/attendance_list/edit_by_invite/{invite_key} \
     -H "Accept: application/json"
     -H "Authorization: Bearer my_token"
 ```
@@ -235,14 +235,15 @@ curl POST https://api-eduzz.com/blinket/v1/attendance_list/edit_by_invite/{invit
 
 **Parâmetros**
 
-| Nome          | Tipo do parâmetro | Descrição                        | Obrigatório | Tipo de dado        |
-| ------------- | ----------------- | -------------------------------- | ----------- | ------------------- |
-| document      | body              | Nº do documento do participante. | Sim         | uuid                |
-| document_type | body              | Tipo do documento.               | Sim         | enum(cpf, passport) |
-| email         | body              | E-mail do participante.          | Sim         | string              |
-| event_id      | body              | Identificador do evento.         | Sim         | uuid                |
-| name          | body              | Nome do participante             | Sim         | string              |
-| phone         | body              | Contato do participante          | Sim         | string              |
+| Nome          | Tipo do parâmetro | Descrição                                                               | Obrigatório | Tipo de dado        |
+| ------------- | ----------------- | ----------------------------------------------------------------------- | ----------- | ------------------- |
+| invite_key    | path              | Identificador numérico do ingresso                                      | Sim         | string              |
+| document      | body              | Nº do CPF do participante (sem pontos), ou passaporte caso estrangeiro. | Sim         | string              |
+| document_type | body              | Tipo do documento.                                                      | Sim         | enum(cpf, passport) |
+| email         | body              | E-mail do participante.                                                 | Sim         | string              |
+| event_id      | body              | Código UUID do evento.                                                  | Sim         | uuid                |
+| name          | body              | Nome do participante                                                    | Sim         | string              |
+| phone         | body              | Contato do participante                                                 | Sim         | string              |
 
 **Respostas**
 
@@ -251,9 +252,9 @@ curl POST https://api-eduzz.com/blinket/v1/attendance_list/edit_by_invite/{invit
 | 200    | Sucesso             |
 | 404    | Dado não encontrado |
 
-## Checkin de Participantes
+## Participantes: Checkin de Participantes
 
-**Description:** Checkin de participantes
+**Descrição:** Checki-n de participantes
 
 ### HTTP Request
 
@@ -279,9 +280,9 @@ curl POST https://api-eduzz.com/blinket/v1/attendance_list/checkin_attendances \
 
 **Parâmetros**
 
-| Nome                     | Tipo do parâmetro | Descrição                      | Obrigatório | Tipo de dado |
-| ------------------------ | ----------------- | ------------------------------ | ----------- | ------------ |
-| attendances[].invite_key | body              | Nº de identificação do ticket. | Sim         | string       |
+| Nome                     | Tipo do parâmetro | Descrição                          | Obrigatório | Tipo de dado |
+| ------------------------ | ----------------- | ---------------------------------- | ----------- | ------------ |
+| attendances[].invite_key | body              | Identificador numérico do ingresso | Sim         | string       |
 
 **Respostas**
 
@@ -290,9 +291,9 @@ curl POST https://api-eduzz.com/blinket/v1/attendance_list/checkin_attendances \
 | 200    | Sucesso             |
 | 404    | Dado não encontrado |
 
-## Renviar Ingresso
+## Participantes: Reenviar Ingresso
 
-**Description:** Renviar ingresso do participante para confirmação.
+**Descrição:** Permite ao produtor reenviar o e-mail com os dados do ingresso para o detentor deste
 
 ### HTTP Request
 
@@ -306,6 +307,8 @@ curl POST https://api-eduzz.com/blinket/v1/attendance_list/checkin_attendances \
 curl POST https://api-eduzz.com/blinket/v1/attendance_list/send_ticket_again \
     -H "Accept: application/json"
     -H "Authorization: Bearer my_token"
+    --form 'email=joao@gmail.com' \
+    --form 'event_id=91b14922-e6cc-4a68-b30e-a8e1bed132g4'
 ```
 
 > JSON response example:
@@ -318,10 +321,10 @@ curl POST https://api-eduzz.com/blinket/v1/attendance_list/send_ticket_again \
 
 **Parâmetros**
 
-| Nome       | Tipo do parâmetro | Descrição                | Obrigatório | Tipo de dado |
-| ---------- | ----------------- | ------------------------ | ----------- | ------------ |
-| event_id   | body              | Identificação do evento. | Sim         | uuid         |
-| user_email | body              | E-mail do participante.  | Sim         | string       |
+| Nome     | Tipo do parâmetro | Descrição               | Obrigatório | Tipo de dado |
+| -------- | ----------------- | ----------------------- | ----------- | ------------ |
+| event_id | body              | Código UUID do evento.  | Sim         | string       |
+| email    | body              | E-mail do participante. | Sim         | string       |
 
 **Respostas**
 
@@ -330,20 +333,20 @@ curl POST https://api-eduzz.com/blinket/v1/attendance_list/send_ticket_again \
 | 200    | Sucesso             |
 | 404    | Dado não encontrado |
 
-## Detalhes do participante
+## Participantes: Detalhes de um ingresso
 
-**Description:** Lista detalhes de um participante.
+**Descrição:** Permite ao produtor listar os detalhes de um ingresso. Estes dados são exibidos no momento que o produtor clica em um dos itens da lista de participantes a fim de exibir os detalhes.
 
 ### HTTP Request
 
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">GET</i>
-		<h6>/blinket/v1/attendance_list/attendance_detail_by_event/{attendance_id}</h6>
+		<h6>/blinket/v1/attendance_list/attendance_detail_by_event/{event_id}/{eduzz_owner_id}</h6>
 	</div>
 </div>
 ```shell
-curl GET https://api-eduzz.com/blinket/v1/attendance_list/attendance_detail_by_event/{event_id}/{ticket_id}  \
+curl GET https://api-eduzz.com/blinket/v1/attendance_list/attendance_detail_by_event/{event_id}/{eduzz_owner_id}  \
     -H "Accept: application/json"
     -H "Authorization: Bearer my_token"
 ```
@@ -358,10 +361,10 @@ curl GET https://api-eduzz.com/blinket/v1/attendance_list/attendance_detail_by_e
 
 **Parâmetros**
 
-| Nome      | Tipo do parâmetro | Descrição                  | Obrigatório | Tipo de dado |
-| --------- | ----------------- | -------------------------- | ----------- | ------------ |
-| event_id  | param             | Identificação do evento.   | Sim         | uuid         |
-| ticket_id | param             | Ticket de um participante. | Sim         | interger     |
+| Nome           | Tipo do parâmetro | Descrição                                       | Obrigatório | Tipo de dado |
+| -------------- | ----------------- | ----------------------------------------------- | ----------- | ------------ |
+| event_id       | param             | Código UUID do evento.                          | Sim         | string       |
+| eduzz_owner_id | param             | Id Orbita de usuário do detentor deste ingresso | Sim         | string       |
 
 **Respostas**
 
