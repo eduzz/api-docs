@@ -11,11 +11,11 @@ Permite ao produtor Listar os participantes de seus eventos
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">POST</i>
-		<h6>/blinket/v1/attendance_list/import_sheet</h6>
+		<h6>/blinket/v1/attendance-list/import-sheet</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinket/v1/attendance_list/import_sheet \
+curl POST https://api-eduzz.com/blinket/v1/attendance-list/import-sheet \
     -H "Accept: application/json"
     -H "Authorization: Bearer my_token"
 ```
@@ -57,11 +57,11 @@ curl POST https://api-eduzz.com/blinket/v1/attendance_list/import_sheet \
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">POST</i>
-		<h6>/blinket/v1/attendance_list/create_manual</h6>
+		<h6>/blinket/v1/attendance-list/create-manual</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinket/v1/attendance_list/create_manual \
+curl POST https://api-eduzz.com/blinket/v1/attendance-list/create-manual \
     -H "Accept: application/json"
     -H "Authorization: Bearer my_token"
 ```
@@ -124,11 +124,11 @@ curl POST https://api-eduzz.com/blinket/v1/attendance_list/create_manual \
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">POST</i>
-		<h6>/blinke/v1/attendance_list/list_grouped</h6>
+		<h6>/blinke/v1/attendance-list/list-grouped</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinke/v1/attendance_list/list_grouped \
+curl POST https://api-eduzz.com/blinke/v1/attendance-list/list-grouped \
     -H "Accept: application/json"
     -H "Authorization: Bearer my_token"
 ```
@@ -195,11 +195,11 @@ curl POST https://api-eduzz.com/blinke/v1/attendance_list/list_grouped \
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">POST</i>
-		<h6>/blinke/v1/attendance_list/edit_by_invite/{invite_key}</h6>
+		<h6>/blinke/v1/attendance-list/edit-by-invite/{invite_key}</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinket/v1/attendance_list/edit_by_invite/{invite_key} \
+curl POST https://api-eduzz.com/blinket/v1/attendance-list/edit-by-invite/{invite_key} \
     -H "Accept: application/json"
     -H "Authorization: Bearer my_token"
 ```
@@ -254,18 +254,18 @@ curl POST https://api-eduzz.com/blinket/v1/attendance_list/edit_by_invite/{invit
 
 ## Participantes: Checkin de Participantes
 
-**Descrição:** Checki-n de participantes
+**Descrição:** Checkin de participantes
 
 ### HTTP Request
 
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">POST</i>
-		<h6>/blinket/v1/attendance_list/checkin_attendances</h6>
+		<h6>/blinket/v1/attendance-list/checkin-attendances</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinket/v1/attendance_list/checkin_attendances \
+curl POST https://api-eduzz.com/blinket/v1/attendance-list/checkin-attendances \
     -H "Accept: application/json"
     -H "Authorization: Bearer my_token"
 ```
@@ -300,11 +300,11 @@ curl POST https://api-eduzz.com/blinket/v1/attendance_list/checkin_attendances \
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">POST</i>
-		<h6>/blinket/v1/attendance_list/send_ticket_again</h6>
+		<h6>/blinket/v1/attendance-list/send-ticket-again</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinket/v1/attendance_list/send_ticket_again \
+curl POST https://api-eduzz.com/blinket/v1/attendance-list/send-ticket-again \
     -H "Accept: application/json"
     -H "Authorization: Bearer my_token"
     --form 'email=joao@gmail.com' \
@@ -342,11 +342,11 @@ curl POST https://api-eduzz.com/blinket/v1/attendance_list/send_ticket_again \
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">GET</i>
-		<h6>/blinket/v1/attendance_list/attendance_detail_by_event/{event_id}/{eduzz_owner_id}</h6>
+		<h6>/blinket/v1/attendance-list/attendance-detail-by-event/{event_id}/{eduzz_owner_id}</h6>
 	</div>
 </div>
 ```shell
-curl GET https://api-eduzz.com/blinket/v1/attendance_list/attendance_detail_by_event/{event_id}/{eduzz_owner_id}  \
+curl GET https://api-eduzz.com/blinket/v1/attendance-list/attendance-detail-by-event/{event_id}/{eduzz_owner_id}  \
     -H "Accept: application/json"
     -H "Authorization: Bearer my_token"
 ```
