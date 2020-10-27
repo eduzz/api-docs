@@ -11,11 +11,11 @@ Permite ao produtor Listar os participantes de seus eventos
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">POST</i>
-		<h6>/blinket/v1/attendance-list/import-sheet</h6>
+		<h6>/blinket/v1/attendances/import-sheet</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinket/v1/attendance-list/import-sheet \
+curl POST https://api-eduzz.com/blinket/v1/attendances/import-sheet \
     -H "Accept: application/json"
     -H "Authorization: Bearer my_token"
 ```
@@ -57,11 +57,11 @@ curl POST https://api-eduzz.com/blinket/v1/attendance-list/import-sheet \
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">POST</i>
-		<h6>/blinket/v1/attendance-list/create-manual</h6>
+		<h6>/blinket/v1/attendances/create-manual</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinket/v1/attendance-list/create-manual \
+curl POST https://api-eduzz.com/blinket/v1/attendances/create-manual \
     -H "Accept: application/json"
     -H "Authorization: Bearer my_token"
 ```
@@ -124,11 +124,11 @@ curl POST https://api-eduzz.com/blinket/v1/attendance-list/create-manual \
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">POST</i>
-		<h6>/blinke/v1/attendance-list/list-grouped</h6>
+		<h6>/blinke/v1/attendances/list-grouped</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinke/v1/attendance-list/list-grouped \
+curl POST https://api-eduzz.com/blinke/v1/attendances/list-grouped \
     -H "Accept: application/json"
     -H "Authorization: Bearer my_token"
 ```
@@ -195,11 +195,11 @@ curl POST https://api-eduzz.com/blinke/v1/attendance-list/list-grouped \
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">POST</i>
-		<h6>/blinke/v1/attendance-list/edit-by-invite/{invite_key}</h6>
+		<h6>/blinke/v1/attendances/edit-by-invite/{invite_key}</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinket/v1/attendance-list/edit-by-invite/{invite_key} \
+curl POST https://api-eduzz.com/blinket/v1/attendances/edit-by-invite/{invite_key} \
     -H "Accept: application/json"
     -H "Authorization: Bearer my_token"
 ```
@@ -261,11 +261,11 @@ curl POST https://api-eduzz.com/blinket/v1/attendance-list/edit-by-invite/{invit
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">POST</i>
-		<h6>/blinket/v1/attendance-list/checkin-attendances</h6>
+		<h6>/blinket/v1/attendances/checkin-attendances</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinket/v1/attendance-list/checkin-attendances \
+curl POST https://api-eduzz.com/blinket/v1/attendances/checkin-attendances \
     -H "Accept: application/json"
     -H "Authorization: Bearer my_token"
 ```
@@ -300,11 +300,11 @@ curl POST https://api-eduzz.com/blinket/v1/attendance-list/checkin-attendances \
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">POST</i>
-		<h6>/blinket/v1/attendance-list/send-ticket-again</h6>
+		<h6>/blinket/v1/attendances/send-ticket-again</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinket/v1/attendance-list/send-ticket-again \
+curl POST https://api-eduzz.com/blinket/v1/attendances/send-ticket-again \
     -H "Accept: application/json"
     -H "Authorization: Bearer my_token"
     --form 'email=joao@gmail.com' \
@@ -342,11 +342,11 @@ curl POST https://api-eduzz.com/blinket/v1/attendance-list/send-ticket-again \
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">GET</i>
-		<h6>/blinket/v1/attendance-list/attendance-detail-by-event/{event_id}/{eduzz_owner_id}</h6>
+		<h6>/blinket/v1/attendances/attendance-detail-by-event/{event_id}/{eduzz_owner_id}</h6>
 	</div>
 </div>
 ```shell
-curl GET https://api-eduzz.com/blinket/v1/attendance-list/attendance-detail-by-event/{event_id}/{eduzz_owner_id}  \
+curl GET https://api-eduzz.com/blinket/v1/attendances/attendance-detail-by-event/{event_id}/{eduzz_owner_id}  \
     -H "Accept: application/json"
     -H "Authorization: Bearer my_token"
 ```
