@@ -1,36 +1,59 @@
-# Blinket: Meus Tickets
+# Blinket: Meus Ingressos
 
-A API Blinket Meus Tickets permite visualizar dados de tickets de eventos dos quais você participou.
+## Meus Ingressos
 
-## Meus tickets - propriedades do evento
+Permite visualizar seus ingressos de eventos que você adquiriu ou ganhou de presente.
 
-| Atributo             | Tipo de dado       | Descrição                                                     |
-| -------------------- | ------------------ | ------------------------------------------------------------- |
-| `id`                 | string             | Identificador do evento                                       |
-| `type`               | string             | Tipo do evento (online, presential)                           |
-| `title`              | string             | Título do evento                                              |
-| `description`        | string             | Descrição do evento                                           |
-| `start_date`         | string - date-time | Data de início do evento (formato: UTC)                       |
-| `end_date`           | string - date-time | Data de fim do evento (formato: UTC)                          |
-| `sale_url`           | string             | URL da página de vendas do evento                             |
-| `event_img_url`      | string             | URL da imagem do evento                                       |
-| `stream_url`         | string             | URL de transmissão do evento (Somente evento Online)          |
-| `unassigned`         | string             | Ingressos sem atribuição, que é necessário confirmar os dados |
-| `is_gift`            | string             | Se o ticket é presente                                        |
-| `address.place`      | string             | Local onde será realizado o evento                            |
-| `address.country`    | string             | País onde será realizado o evento                             |
-| `address.state`      | string             | Estado onde será realizado o evento                           |
-| `address.city`       | string             | Cidade onde será realizado o evento                           |
-| `address.district`   | string             | Bairro onde será realizado o evento                           |
-| `address.street`     | string             | Rua onde será realizado o evento                              |
-| `address.complement` | string             | Complemento onde será realizado o evento                      |
-| `address.number`     | string             | Número onde será realizado o evento                           |
-| `address.zip`        | string             | CEP onde será realizado o evento                              |
-| `address.reference`  | string             | Referência onde será realizado o evento                       |
+### Propriedades do evento
 
-## Listar eventos que participei
+| Atributo             | Tipo de dado       | Descrição                                            |
+| -------------------- | ------------------ | ---------------------------------------------------- |
+| `id`                 | string             | Código UUID do evento                                |
+| `type`               | string             | Tipo do evento (online, presential)                  |
+| `title`              | string             | Título do evento                                     |
+| `Descrição`          | string             | Descrição do evento                                  |
+| `start_date`         | string - date-time | Data de início do evento (formato: UTC)              |
+| `end_date`           | string - date-time | Data de fim do evento (formato: UTC)                 |
+| `sale_url`           | string             | URL da página de vendas do evento                    |
+| `event_img_url`      | string             | URL da imagem do evento                              |
+| `stream_url`         | string             | URL de transmissão do evento (Somente evento Online) |
+| `address.place`      | string             | Local onde será realizado o evento                   |
+| `address.country`    | string             | País onde será realizado o evento                    |
+| `address.state`      | string             | Estado onde será realizado o evento                  |
+| `address.city`       | string             | Cidade onde será realizado o evento                  |
+| `address.district`   | string             | Bairro onde será realizado o evento                  |
+| `address.street`     | string             | Rua onde será realizado o evento                     |
+| `address.complement` | string             | Complemento onde será realizado o evento             |
+| `address.number`     | string             | Número onde será realizado o evento                  |
+| `address.zip`        | string             | CEP onde será realizado o evento                     |
+| `address.reference`  | string             | Referência onde será realizado o evento              |
 
-**Description:** Lista os eventos no quais participei
+### Propriedades do Ingresso
+
+| Atributo               | Tipo de dado | Descrição                                                                                  |
+| ---------------------- | ------------ | ------------------------------------------------------------------------------------------ |
+| `id`                   | string       | Código UUID do ingresso                                                                    |
+| `subscribed`           | string       | Data que este ingresso recebeu a primeira atribuição                                       |
+| `eduzz_owner_id`       | string       | Id Orbita de usuário do detentor deste ingresso                                            |
+| `eduzz_first_owner_id` | string       | ID Orbita de usuário do proprietário original deste ingresso                               |
+| `name`                 | string       | Nome do participante que detém a posse deste ingresso                                      |
+| `email`                | string       | Email do participante que detém a posse deste ingresso                                     |
+| `document`             | string       | CPF do participante (sem pontos) detentor do ticket, ou passaporte caso estrangeiro        |
+| `phone_number`         | string       | Número de Celular do participante que utilizará este ingresso                              |
+| `invoice_id`           | integer      | Número da fatura na Eduzz                                                                  |
+| `invite_key`           | string       | Identificador numérico do ingresso                                                         |
+| `eduzz_content_id`     | integer      | Código do conteúdo da eduzz                                                                |
+| `status`               | string       | Status do ingresso do participante (paid, refunded, locked, presence_confirmed, confirmed) |
+| `invite_url`           | string       | URL para realização do check-in na portaria (resultado da leitura do QR Code)              |
+| `ticket_name`          | string       | Nome do Ticket deste ingresso                                                              |
+| `ticket_is_paid`       | boolean      | Se o ticket deste ingresso é pago ou gratuíto                                              |
+| `ticket_show_on_page`  | boolean      | Se o ticket deste ingresso é exibido na página de vendas.                                  |
+| `unassigned`           | string       | Ingressos sem atribuição, que é necessário confirmar os dados                              |
+| `is_gift`              | string       | Se o ticket é presente                                                                     |
+
+## Meus Ingressos: Listar eventos que participei
+
+**Descrição:** Lista os eventos dos ingressos que você possua ou ganhou
 
 ### HTTP Request
 
@@ -60,7 +83,7 @@ curl GET https://api-eduzz.com/blinket/v1/my-tickets/event?page=1&title=test&typ
       "event_id": "907785d6-7d12-4d42-b746-912993a4e267",
       "type": "presential",
       "title": "Imersão Especialista em Marketing Digital 2021 - São Paulo",
-      "description": "O mundo est&aacute; cada vez mais digitalizado. Com mais de 1 bilh&atilde;o de usu&aacute;rios, a m&iacute;dia digital est&aacute; criando um impacto significativo em nossas vidas diariamente. \n\nPensando nisso, n&oacute;s criamos um ambiente totalmente controlado para que voc&ecirc; fique totalmente imerso durante 2 dias com os melhores especialistas em marketing digital e ao fim dessa jornada voc&ecirc; seja capaz de trabalhar totalmente focado no markting digital. ",
+      "Descrição": "O mundo est&aacute; cada vez mais digitalizado. Com mais de 1 bilh&atilde;o de usu&aacute;rios, a m&iacute;dia digital est&aacute; criando um impacto significativo em nossas vidas diariamente. \n\nPensando nisso, n&oacute;s criamos um ambiente totalmente controlado para que voc&ecirc; fique totalmente imerso durante 2 dias com os melhores especialistas em marketing digital e ao fim dessa jornada voc&ecirc; seja capaz de trabalhar totalmente focado no markting digital. ",
       "start_date": "2021-01-15 08:00:00",
       "end_date": "2021-01-17 17:00:00",
       "sale_url": "https://evento.blinket.com.br/imersao-especialista-em-marketing-digital-2020-sp",
@@ -85,7 +108,7 @@ curl GET https://api-eduzz.com/blinket/v1/my-tickets/event?page=1&title=test&typ
       "event_id": "8d66dd17-2715-467e-8ffb-b1abedc4808e",
       "type": "presential",
       "title": "Feira de Carreiras",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis lorem nec ante tincidunt porttitor. Nulla et condimentum nunc. Sed vitae magna orci. Quisque gravida leo id nisi commodo vestibulum. Vivamus id ligula eget risus blandit vestibulum non nec metus. Maecenas condimentum a justo eget accumsan. Nulla in pretium tortor.",
+      "Descrição": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis lorem nec ante tincidunt porttitor. Nulla et condimentum nunc. Sed vitae magna orci. Quisque gravida leo id nisi commodo vestibulum. Vivamus id ligula eget risus blandit vestibulum non nec metus. Maecenas condimentum a justo eget accumsan. Nulla in pretium tortor.",
       "start_date": "2019-04-26 07:00:00",
       "end_date": "2019-04-28 18:00:00",
       "sale_url": "https://evento.blinket.com.br/feira_de_carreiras",
@@ -124,33 +147,11 @@ curl GET https://api-eduzz.com/blinket/v1/my-tickets/event?page=1&title=test&typ
 | ------ | ------------------- |
 | 200    | Sucesso             |
 | 404    | Dado não encontrado |
+|        |
 
-## Meus Tickets - propriedades do convite
+## Meus Ingressos: Listar ingressos de um evento
 
-| Atributo               | Tipo de dado | Descrição                                                                                 |
-| ---------------------- | ------------ | ----------------------------------------------------------------------------------------- |
-| `id`                   | string       | Identificador do convite                                                                  |
-| `subscribed`           | string       | Data que o participante foi adicionado a lista de presença                                |
-| `eduzz_owner_id`       | string       | Id do usuário (no Orbita) do participante que utilizará este ingresso                     |
-| `eduzz_first_owner_id` | string       | Código do lote (Também é o mesmo código do conteúdo na Eduzz)                             |
-| `name`                 | string       | Nome do participante                                                                      |
-| `email`                | string       | Email do participante                                                                     |
-| `document`             | string       | CPF do participante que utilizará este ingresso                                           |
-| `phone_number`         | string       | Celular do participante que utilizará este ingresso                                       |
-| `invoice_id`           | integer      | Número da fatura Eduzz                                                                    |
-| `invite_key`           | string       | Código do convite do participante                                                         |
-| `eduzz_content_id`     | integer      | Código do conteúdo da eduzz                                                               |
-| `status`               | string       | Status do convite do participante (paid, refunded, locked, presence_confirmed, confirmed) |
-| `invite_url`           | string       | URL de confirmação de presença.                                                           |
-| `ticket_name`          | string       | Nome do ticket do convite                                                                 |
-| `ticket_is_paid`       | boolean      | Se o ticket do convite é pago ou gratuíto                                                 |
-| `ticket_show_on_page`  | boolean      | Se o ticket é exibido na página de vendas.                                                |
-| `unassigned`           | string       | Ingressos sem atribuição, que é necessário confirmar os dados                             |
-| `is_gift`              | string       | Se o ticket é presente                                                                    |
-
-## Listar convites de um evento que participei
-
-**Description:** Lista os convites de um evento que participei
+**Descrição:** Lista os ingressos que possuo de um determinado evento
 
 ### HTTP Request
 
@@ -235,10 +236,10 @@ curl GET https://api-eduzz.com/blinket/v1/my-tickets/event/9039jah2-7c1d-4f7a-83
 
 **Parâmetros**
 
-| Nome     | Tipo do parâmetro | Descrição                                 | Obrigatório | Tipo de dado |
-| -------- | ----------------- | ----------------------------------------- | ----------- | ------------ |
-| event_id | path              | Identificador de um evento que participei | Sim         | string       |
-| page     | query             | Número da página referente a paginação.   | Não         | integer      |
+| Nome     | Tipo do parâmetro | Descrição                               | Obrigatório | Tipo de dado |
+| -------- | ----------------- | --------------------------------------- | ----------- | ------------ |
+| event_id | path              | Código UUID do evento                   | Sim         | string       |
+| page     | query             | Número da página referente a paginação. | Não         | integer      |
 
 **Respostas**
 
@@ -247,9 +248,9 @@ curl GET https://api-eduzz.com/blinket/v1/my-tickets/event/9039jah2-7c1d-4f7a-83
 | 200    | Sucesso             |
 | 404    | Dado não encontrado |
 
-## Meus tickets - formulário de ajuda
+## Meus Ingressos: Formulário de ajuda
 
-**Description:** Permite ao participante enviar uma mensagem de suporte ao produtor do evento ou a eduzz
+**Descrição:** Permite ao participante enviar uma mensagem de suporte ao produtor do evento ou a eduzz
 
 ### HTTP Request
 
@@ -281,7 +282,7 @@ curl POST https://api-eduzz.com/blinket/v1/my-tickets/helpsend-mytickets \
 
 | Nome        | Tipo do parâmetro | Descrição                                                                                                                                                                   | Obrigatório | Tipo de dado           |
 | ----------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ---------------------- |
-| event_id    | body              | Identificador do evento                                                                                                                                                     | Sim         | string                 |
+| event_id    | body              | Código UUID do evento                                                                                                                                                       | Sim         | string                 |
 | subject_opt | body              | Dúvidas sobre o evento que devem ser direcionadas direto para o produtor, deixe como "producer". Caso se trate de dúvidas referentes ao pagamento e a eduzz, deixe "eduzz". | Sim         | enum (eduzz, producer) |
 | subject     | body              | Título/Categoria do problema, sugestões: "Problema com a compra", "Tenho dúvidas sobre o evento", "Críticas ou Sugestões", "Outros"                                         | Sim         | string                 |
 | message     | body              | Conteúdo da mensagem.                                                                                                                                                       | Sim         | string, max:1000       |
@@ -293,9 +294,9 @@ curl POST https://api-eduzz.com/blinket/v1/my-tickets/helpsend-mytickets \
 | 200    | Sucesso             |
 | 404    | Dado não encontrado |
 
-## Meus tickets - Reenvio de tickets
+## Meus Ingressos: Reenviar ingresso
 
-**Description:** Permite ao proprietário do ticket Reenviar o ingresso por email para quem ele transferiu
+**Descrição:** Permite ao proprietário do ticket Reenviar o ingresso por email para quem ele transferiu
 
 ### HTTP Request
 
@@ -325,7 +326,7 @@ curl POST https://api-eduzz.com/blinket/v1/my-tickets/send-ticket-again \
 
 | Nome     | Tipo do parâmetro | Descrição                                                  | Obrigatório | Tipo de dado |
 | -------- | ----------------- | ---------------------------------------------------------- | ----------- | ------------ |
-| event_id | body              | Identificador do evento                                    | Sim         | string       |
+| event_id | body              | Código UUID do evento                                      | Sim         | string       |
 | email    | body              | Email do usuário que gostaria de enviar novamente o ticket | Sim         | string       |
 
 **Respostas**
@@ -335,9 +336,9 @@ curl POST https://api-eduzz.com/blinket/v1/my-tickets/send-ticket-again \
 | 200    | Sucesso             |
 | 404    | Dado não encontrado |
 
-## Meus tickets - Confirmar dados do ingresso
+## Meus Ingressos: Confirmar dados do ingresso
 
-**Description:** Permite ao detentor do ticket confirmar os dados do ingresso. No sistema é a ação do botão "Este ticket é meu."
+**Descrição:** Permite ao detentor do ingresso confirmar seus dados pessoais que serão atribuídos ao ingresso. No sistema é a ação do botão "Este ticket é meu."
 
 ### HTTP Request
 
@@ -351,7 +352,7 @@ curl POST https://api-eduzz.com/blinket/v1/my-tickets/send-ticket-again \
 curl POST https://api-eduzz.com/blinket/v1/my-tickets/set-as-mine \
     -H "Accept: application/json" \
     -H "Authorization: Bearer my_token" \
-    --form 'id=8e4a5432-1781-4f5a-8d3d-31dd01868aef'
+    --form 'id={Código UUID do ingresso}'
 ```
 
 > JSON response example:
@@ -382,7 +383,7 @@ curl POST https://api-eduzz.com/blinket/v1/my-tickets/set-as-mine \
 
 | Nome | Tipo do parâmetro | Descrição               | Obrigatório | Tipo de dado |
 | ---- | ----------------- | ----------------------- | ----------- | ------------ |
-| id   | body              | Identificador do evento | Sim         | string       |
+| id   | body              | Código UUID do ingresso | Sim         | string       |
 
 **Respostas**
 
@@ -391,9 +392,9 @@ curl POST https://api-eduzz.com/blinket/v1/my-tickets/set-as-mine \
 | 200    | Sucesso             |
 | 404    | Dado não encontrado |
 
-## Meus tickets - Transferir ticket para outra pessoa
+## Meus Ingressos: Transferir ingresso para outra pessoa
 
-**Description:** Permite ao proprietário do ticket Transferir para outra pessoa
+**Descrição:** Permite ao proprietário do ticket transferir sua posse deste ingresso para outra pessoa
 
 ### HTTP Request
 
@@ -441,14 +442,199 @@ curl POST https://api-eduzz.com/blinket/v1/my-tickets/transfer-ticket \
 
 **Parâmetros**
 
-| Nome          | Tipo do parâmetro | Descrição                                                    | Obrigatório | Tipo de dado         |
-| ------------- | ----------------- | ------------------------------------------------------------ | ----------- | -------------------- |
-| id            | body              | Identificador do evento                                      | Sim         | string               |
-| name          | body              | Nome completo da pessoa que receberá o ticket                | Sim         | string, max:100      |
-| document      | body              | Documento da pessoa que receberá o ticket. CPF ou passaporte | Sim         | string, max:20       |
-| document_type | body              | Tipo do documento da pessoa que receberá o ticket            | Sim         | enum (cpf, passport) |
-| phone         | body              | Celular da pessoa que receberá o ticket                      | Sim         | string               |
-| email         | body              | E-mail da pessoa que receberá o ticket                       | Sim         | string               |
+| Nome          | Tipo do parâmetro | Descrição                                                         | Obrigatório | Tipo de dado         |
+| ------------- | ----------------- | ----------------------------------------------------------------- | ----------- | -------------------- |
+| id            | body              | Código UUID do ingresso                                           | Sim         | string               |
+| name          | body              | Nome completo da pessoa que receberá o ticket                     | Sim         | string, max:100      |
+| document      | body              | Nº do CPF da pessoa (sem pontos), ou passaporte caso estrangeiro. | Sim         | string, max: 20      |
+| document_type | body              | Tipo do documento da pessoa que receberá o ticket                 | Sim         | enum (cpf, passport) |
+| phone         | body              | Celular da pessoa que receberá o ticket                           | Sim         | string               |
+| email         | body              | E-mail da pessoa que receberá o ticket                            | Sim         | string               |
+
+**Respostas**
+
+| Código | Descrição           |
+| ------ | ------------------- |
+| 200    | Sucesso             |
+| 404    | Dado não encontrado |
+
+## Meus Ingressos: Transferir via link: Geração de Link
+
+**Descrição:** Permite ao proprietário do ingresso transferir a posse deste para outra pessoa, gerando um link único
+
+### HTTP Request
+
+<div class="api-endpoint">
+	<div class="endpoint-data">
+		<i class="label label-post">POST</i>
+		<h6>/blinket/v1/my-tickets/create_transfer_link</h6>
+	</div>
+</div>
+```shell
+curl POST https://api-eduzz.com/blinket/v1/my-tickets/create_transfer_link \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer my_token" \
+    --form 'id={código uuid do ingresso}' \
+```
+
+> JSON response example:
+
+```json
+{
+  "success": true,
+  "data": {
+    "link": "https://evento.blinket.com.br/transfer/{token_gerado_aqui}"
+  }
+}
+```
+
+**Parâmetros**
+
+| Nome | Tipo do parâmetro | Descrição               | Obrigatório | Tipo de dado |
+| ---- | ----------------- | ----------------------- | ----------- | ------------ |
+| id   | body              | Código UUID do ingresso | Sim         | string       |
+
+**Respostas**
+
+| Código | Descrição           |
+| ------ | ------------------- |
+| 200    | Sucesso             |
+| 404    | Dado não encontrado |
+
+## Meus Ingressos: Transferir via link: Remover link gerado
+
+**Descrição:** Permite ao proprietário do ingresso apagar um link de transferência que ele gerou anteriormente
+
+### HTTP Request
+
+<div class="api-endpoint">
+	<div class="endpoint-data">
+		<i class="label label-post">DELETE</i>
+		<h6>/blinket/v1/my-tickets/delete_links/{invite_key}</h6>
+	</div>
+</div>
+```shell
+curl POST https://api-eduzz.com/blinket/v1/my-tickets/delete_links/{invite_key do ingresso} \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer my_token" \
+```
+
+> JSON response example:
+
+```json
+{
+  "success": true
+}
+```
+
+**Parâmetros**
+
+| Nome       | Tipo do parâmetro | Descrição              | Obrigatório | Tipo de dado |
+| ---------- | ----------------- | ---------------------- | ----------- | ------------ |
+| invite_key | path              | invite_key do ingresso | Sim         | string       |
+
+**Respostas**
+
+| Código | Descrição           |
+| ------ | ------------------- |
+| 200    | Sucesso             |
+| 404    | Dado não encontrado |
+
+## Meus Ingressos: Transferir via link: Presenteado confirma os dados
+
+**Descrição:** Participante presenteado confirma seus dados do ingresso que recebeu via link
+
+### HTTP Request
+
+<div class="api-endpoint">
+	<div class="endpoint-data">
+		<i class="label label-post">POST</i>
+		<h6>/blinket/v1/public/my-tickets/edit_by_link/{token}</h6>
+	</div>
+</div>
+```shell
+curl POST https://api-eduzz.com/blinket/v1/public/my-tickets/edit_by_link/81c2f71536ac3168a423f2721d81576f \
+    --form 'name=José da Silva Teste' \
+    --form 'document=69860481067' \
+    --form 'document_type=cpf' \
+    --form 'phone=11999999999' \
+    --form 'email=usuarioteste@gmail.com' \
+
+````
+
+> JSON response example:
+
+```json
+{
+  "success": true
+}
+````
+
+**Parâmetros**
+
+| Nome          | Tipo do parâmetro | Descrição                                                               | Obrigatório | Tipo de dado        |
+| ------------- | ----------------- | ----------------------------------------------------------------------- | ----------- | ------------------- |
+| token         | path              | Token obtido do link gerado                                             | Sim         | string              |
+| name          | body              | Nome completo da pessoa que recebeu o ingresso de presente via link     | Sim         | string              |
+| document      | body              | Nº do CPF do participante (sem pontos), ou passaporte caso estrangeiro. | Sim         | string              |
+| document_type | body              | Tipo do documento.                                                      | Sim         | enum(cpf, passport) |
+| phone         | body              | Número de celular do participante                                       | Sim         | string              |
+| email         | body              | E-mail do participante.                                                 | Sim         | string              |
+
+**Respostas**
+
+| Código | Descrição           |
+| ------ | ------------------- |
+| 200    | Sucesso             |
+| 404    | Dado não encontrado |
+
+## Meus Ingressos: Transferir via link: Validar link
+
+**Descrição:** Deve ser chamado assim que o presenteado acessa o link de presente gerado. Utilizado para validar se o token do link é válido e não está expirado. Caso seja válido, permitir ao presenteado confirmar seus dados enviando-os ao endpoint edit_by_link.
+
+### HTTP Request
+
+<div class="api-endpoint">
+	<div class="endpoint-data">
+		<i class="label label-post">GET</i>
+		<h6>/blinket/v1/public/my-tickets/validate_transfer_link/{token}</h6>
+	</div>
+</div>
+```shell
+curl POST https://api-eduzz.com/blinket/v1/public/my-tickets/validate_transfer_link/81c2f71536ac3168a423f2721d81576f \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer my_token" \
+````
+
+> JSON response example:
+
+```json
+{
+  "success": true,
+  "data": {
+    "event_id": "8cbc8fbe-b81e-4240-b93d-b5c1a714624a",
+    "title": "Como configurar uma boa página para seu Evento",
+    "start_date": "2020-10-09 07:45:00",
+    "end_date": "2020-10-17 19:41:00",
+    "place": "Shopping Center Norte",
+    "type": "presential",
+    "event_img_src": "/myeduzz/upload/1b/3u/1a3a1e7a5eff4f6b676513735dcd1333",
+    "sale_url": "teste_de_evento_como_configurar_api",
+    "ticket_name": "Inscrição - VIP",
+    "id": "8dc122e4-01de-447f-8448-e716a9e74a9d",
+    "name": "José da Silva",
+    "invite_key": "92137-2",
+    "status": "paid",
+    "eduzz_owner_id": 21321219
+  }
+}
+```
+
+**Parâmetros**
+
+| Nome  | Tipo do parâmetro | Descrição                   | Obrigatório | Tipo de dado |
+| ----- | ----------------- | --------------------------- | ----------- | ------------ |
+| token | path              | Token obtido do link gerado | Sim         | string       |
 
 **Respostas**
 
