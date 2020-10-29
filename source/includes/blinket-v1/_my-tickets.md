@@ -257,11 +257,11 @@ curl GET https://api-eduzz.com/blinket/v1/my-tickets/event/9039jah2-7c1d-4f7a-83
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">POST</i>
-		<h6>/blinket/v1/my-tickets/helpsend_mytickets</h6>
+		<h6>/blinket/v1/my-tickets/helpsend-mytickets</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinket/v1/my-tickets/helpsend_mytickets \
+curl POST https://api-eduzz.com/blinket/v1/my-tickets/helpsend-mytickets \
     -H "Accept: application/json" \
     -H "Authorization: Bearer my_token" \
     --form 'event_id=8fe8b52c-850c-4d2a-9042-7938237b567a' \
@@ -303,11 +303,11 @@ curl POST https://api-eduzz.com/blinket/v1/my-tickets/helpsend_mytickets \
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">POST</i>
-		<h6>/blinket/v1/my-tickets/send_ticket_again</h6>
+		<h6>/blinket/v1/my-tickets/send-ticket-again</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinket/v1/my-tickets/send_ticket_again \
+curl POST https://api-eduzz.com/blinket/v1/my-tickets/send-ticket-again \
     -H "Accept: application/json" \
     -H "Authorization: Bearer my_token" \
     --form 'email=clienteumjobzz+0805@gmail.com' \
@@ -345,11 +345,11 @@ curl POST https://api-eduzz.com/blinket/v1/my-tickets/send_ticket_again \
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">POST</i>
-		<h6>/blinket/v1/my-tickets/set_as_mine</h6>
+		<h6>/blinket/v1/my-tickets/set-as-mine</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinket/v1/my-tickets/set_as_mine \
+curl POST https://api-eduzz.com/blinket/v1/my-tickets/set-as-mine \
     -H "Accept: application/json" \
     -H "Authorization: Bearer my_token" \
     --form 'id={Código UUID do ingresso}'
@@ -401,11 +401,11 @@ curl POST https://api-eduzz.com/blinket/v1/my-tickets/set_as_mine \
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">POST</i>
-		<h6>/blinket/v1/my-tickets/transfer_ticket</h6>
+		<h6>/blinket/v1/my-tickets/transfer-ticket</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinket/v1/my-tickets/transfer_ticket \
+curl POST https://api-eduzz.com/blinket/v1/my-tickets/transfer-ticket \
     -H "Accept: application/json" \
     -H "Authorization: Bearer my_token" \
     --form 'id=8e4a5432-1781-4f5a-8d3d-31dd01868aef' \
@@ -467,11 +467,11 @@ curl POST https://api-eduzz.com/blinket/v1/my-tickets/transfer_ticket \
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">POST</i>
-		<h6>/blinket/v1/my-tickets/create_transfer_link</h6>
+		<h6>/blinket/v1/my-tickets/create-transfer-link</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinket/v1/my-tickets/create_transfer_link \
+curl POST https://api-eduzz.com/blinket/v1/my-tickets/create-transfer-link \
     -H "Accept: application/json" \
     -H "Authorization: Bearer my_token" \
     --form 'id={código uuid do ingresso}' \
@@ -510,11 +510,11 @@ curl POST https://api-eduzz.com/blinket/v1/my-tickets/create_transfer_link \
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">DELETE</i>
-		<h6>/blinket/v1/my-tickets/delete_links/{invite_key}</h6>
+		<h6>/blinket/v1/my-tickets/delete-links/{invite_key}</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinket/v1/my-tickets/delete_links/{invite_key do ingresso} \
+curl POST https://api-eduzz.com/blinket/v1/my-tickets/delete-links/{invite_key do ingresso} \
     -H "Accept: application/json" \
     -H "Authorization: Bearer my_token" \
 ```
@@ -549,11 +549,11 @@ curl POST https://api-eduzz.com/blinket/v1/my-tickets/delete_links/{invite_key d
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">POST</i>
-		<h6>/blinket/v1/public/my-tickets/edit_by_link/{token}</h6>
+		<h6>/blinket/v1/public/my-tickets/edit-by-link/{token}</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinket/v1/public/my-tickets/edit_by_link/81c2f71536ac3168a423f2721d81576f \
+curl POST https://api-eduzz.com/blinket/v1/public/my-tickets/edit-by-link/81c2f71536ac3168a423f2721d81576f \
     --form 'name=José da Silva Teste' \
     --form 'document=69860481067' \
     --form 'document_type=cpf' \
@@ -590,18 +590,18 @@ curl POST https://api-eduzz.com/blinket/v1/public/my-tickets/edit_by_link/81c2f7
 
 ## Meus Ingressos: Transferir via link: Validar link
 
-**Descrição:** Deve ser chamado assim que o presenteado acessa o link de presente gerado. Utilizado para validar se o token do link é válido e não está expirado. Caso seja válido, permitir ao presenteado confirmar seus dados enviando-os ao endpoint edit_by_link.
+**Descrição:** Deve ser chamado assim que o presenteado acessa o link de presente gerado. Utilizado para validar se o token do link é válido e não está expirado. Caso seja válido, permitir ao presenteado confirmar seus dados enviando-os ao endpoint edit-by-link.
 
 ### HTTP Request
 
 <div class="api-endpoint">
 	<div class="endpoint-data">
 		<i class="label label-post">GET</i>
-		<h6>/blinket/v1/public/my-tickets/validate_transfer_link/{token}</h6>
+		<h6>/blinket/v1/public/my-tickets/validate-transfer-link/{token}</h6>
 	</div>
 </div>
 ```shell
-curl POST https://api-eduzz.com/blinket/v1/public/my-tickets/validate_transfer_link/81c2f71536ac3168a423f2721d81576f \
+curl GET https://api-eduzz.com/blinket/v1/public/my-tickets/validate-transfer-link/81c2f71536ac3168a423f2721d81576f \
     -H "Accept: application/json" \
     -H "Authorization: Bearer my_token" \
 ````
